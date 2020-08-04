@@ -1,13 +1,13 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start" class="ion-padding">
-      <ion-menu-button></ion-menu-button>
+      <ion-menu-button class="menu"></ion-menu-button>
     </ion-buttons>
     <ion-text color="secondary">
-      <div class="heading">Hiree</div>
+      <div class="heading">Ezee Jobs</div>
     </ion-text>
     <ion-button slot="end" [routerLink] = "['../requirements-page']" *ngIf='!this.active_job_post_name[2]'>Post new job</ion-button>
-    <ion-button slot="end" *ngIf='this.active_job_post_name[2]' color='Warning' (click)="presentAlertJobMax()">Post new job  </ion-button>
+    <ion-button slot="end" *ngIf='this.active_job_post_name[2]' color='warning' (click)="presentAlertJobMax()">Post new job  </ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -53,7 +53,7 @@
                     {{ result.eyee_name }} 
                   </ion-card-title>
                   <ion-card-subtitle >
-                    Location : {{ result.eyee_city }}
+                    Phone Number :<b> {{ result.eyee_phone }} </b>
                   </ion-card-subtitle>
                 </ion-col>
                 <ion-col offset="1" size="2"  >
@@ -64,20 +64,20 @@
             </ion-card-header>
           <ion-card-content >
             <ion-item>
-              Postion {{ result.eyee_choice }}
+              Postion: <b> {{ result.eyee_choice }}</b>
              </ion-item>
             <ion-item>
-             Previous Experience {{ result.eyee_pre_experience }}
+               Previous Experience: <b>{{ result.eyee_pre_experience }} </b>
             </ion-item>
             <ion-item>
-             Education : {{ result.eyee_education }}
+             Education: <b>{{ result.eyee_education }}</b>
             </ion-item>
             <ion-item>
-             Skills : {{ result.eyee_add_skills }}
+             Skills: <b>{{ result.eyee_add_skills }}</b>
             </ion-item>
            </ion-card-content>
           <ion-card-content>
-            <ion-button  [routerLink] = "['./', result.id]" color="success" expand="block">Offer job</ion-button>
+            <ion-button  [routerLink] = "['./', result.id]" color="secondary" expand="block">View More</ion-button>
           </ion-card-content>
 
         </ion-card>

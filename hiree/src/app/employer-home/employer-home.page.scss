@@ -13,7 +13,7 @@ ion-menu-button {
 
 .heading{
   text-align: center;
-  font-size: 40px;
+  font-size: 25px;
   font-style: initial;  
 }
 #container {
@@ -39,4 +39,8 @@ ion-menu-button {
 
 #container a {
   text-decoration: none;
+}
+.menu{
+  padding-right: 0px;
+  margin: 0px
 }

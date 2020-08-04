@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'Help',
-      url: '/Help',
+      url: '/help',
       icon: 'warning'
     }
   ];
@@ -69,7 +69,7 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'Help',
-      url: '/Help',
+      url: '/help',
       icon: 'warning'
     }
   ];

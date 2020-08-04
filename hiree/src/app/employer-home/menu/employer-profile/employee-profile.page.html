@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title><ion-text color="secondary">
-      <div class="heading">Hiree</div>
+      <div class="heading">Ezee Jobs</div>
     </ion-text></ion-title>
     <ion-buttons slot="start" class="ion-padding">
       <ion-menu-button></ion-menu-button>
@@ -161,33 +161,15 @@
       <ion-card-content>
         <div>GST Number: {{ details.eyer_gst_no }}</div>
         <div>{{ details.eyer_category }}-{{ details.eyer_cuisines}}</div>
-        <ion-item>
-          Address Line 1: {{ details.eyer_address_1 }}
-        </ion-item>
-        <ion-item>
-          Address Line 2: {{ details.eyer_address_2 }}
-        </ion-item>
-        <ion-item>
-          City: {{ details.eyer_city }}
-        </ion-item>
-        <ion-item>
-          State: {{ details.eyer_state }}
-        </ion-item>
-        <ion-item>
-          Type: {{ details.eyer_type }}
-        </ion-item>
-        <ion-item>
-           Website: {{ details.eyer_website }}
-        </ion-item>
-        <ion-item>
-          Category: {{ details.eyer_category }}
-        </ion-item>
-        <ion-item>
-          Cuisines: {{ details.eyer_cuisines }}
-        </ion-item>
-        <ion-item>
-          Number Of Seats: {{ details.eyer_no_seats }}
-        </ion-item>
+        <div> Address Line 1: {{ details.eyer_address_1 }}</div>
+         <div> Address Line 2: {{ details.eyer_address_2 }} </div>
+         <div> City: {{ details.eyer_city }} </div>
+         <div> State: {{ details.eyer_state }} </div>
+         <div> Type: {{ details.eyer_type }} </div>
+         <div> Website: {{ details.eyer_website }} </div>
+         <div> Category: {{ details.eyer_category }} </div>
+        <div> Cuisines: {{ details.eyer_cuisines }} </div>
+        <div> Number Of Seats: {{ details.eyer_no_seats }} </div>
         <p>
           <ion-chip color="secondary">
             <ion-label>Active Job Post: {{ details.eyer_active_job_post}} </ion-label>

@@ -32,7 +32,7 @@ export class DetailsPage implements OnInit {
           console.log(data);
           this.image1 = data[0].image;
           this.image2 = data[1].image;
-          this.image1 = data[2].image;
+          this.image3 = data[2].image;
         });
       });
     });
