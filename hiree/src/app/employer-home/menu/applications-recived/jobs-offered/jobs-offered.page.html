@@ -1,0 +1,109 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title><ion-text color="secondary">
+      <div class="heading">Hiree</div>
+    </ion-text></ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <ion-card *ngFor = " let result of offered_jobs; let i = index" >
+          <div *ngIf= "!job_post_toggle">
+            <ion-card-header  color="light">
+              <ion-card-title>
+                {{ result.eyee_name }}
+              </ion-card-title>
+              <ion-card-subtitle >
+                Phone Number : {{ result.eyee_phone }}
+              </ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content >
+              <ion-item>
+              Previous Experience {{ result.eyee_pre_experience }}
+              </ion-item>
+              <ion-item>
+              Education : {{ result.eyee_education }}
+              </ion-item>
+              <ion-item>
+              Skills : {{ result.eyee_add_skills }}
+              </ion-item>
+            </ion-card-content>
+            <ion-card-content>
+              <ion-button  color="primary" expand="block" (click) = "state(i)">Read More</ion-button>
+            </ion-card-content>
+          </div>
+        </ion-card>
+        <div *ngIf= "job_post_toggle">
+          <ion-row>
+            <ion-col size="10" offset="1">
+              <ion-img [src]='this.image' class="img" ></ion-img>
+            </ion-col>
+          </ion-row>
+          <ion-card-header color="light">
+            <ion-card-title>
+              {{ offered_jobs[n].eyee_name }}
+            </ion-card-title>
+            <ion-card-subtitle >
+             Phone Number : {{ offered_jobs[n].eyee_phone }}
+            </ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content >
+            <ion-grid>
+            <ion-row>
+              <ion-col col-6>
+                <div class="ques">Previous Experience :</div>
+                <div class="ans">{{ offered_jobs[n].eyee_pre_experience }}</div>
+              </ion-col>
+              <ion-col>
+                <div class="ques">Expected Salary :</div>
+                <div class="ans">{{ offered_jobs[n].eyee_salary_expected }}</div>
+              </ion-col>
+              <ion-col>
+                <div class="ques">Minimum Education :</div>
+                <div class="ans">{{ offered_jobs[n].eyee_education }}</div>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-6>
+                <div class="ques">Job Preference :</div>
+                <div class="ans">{{ offered_jobs[n].eyee_choice }}</div>
+              </ion-col>
+              <ion-col>
+                <div class="ques">Time of Work :</div>
+                <div class="ans">{{ offered_jobs[n].eyee_time }}</div>
+              </ion-col>
+            </ion-row>
+            
+            <ion-row>
+              <ion-col col-6>
+                <div class="ques">Age :</div>
+                <div class="ans">{{ offered_jobs[n].eyee_age }}</div>
+              </ion-col>
+              <ion-col>
+                <div class="ques">Gender :</div>
+                <div class="ans">{{ offered_jobs[n].eyee_gender }}</div>
+              </ion-col>
+            </ion-row>
+             
+            <ion-row>
+              <ion-col>
+                <div class="ques">Additional Skills : </div>
+                  <div class="ans">{{ offered_jobs[n].eyee_add_skills}}</div>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-button  color="primary" expand="block" (click) = "state(0)">Back To List</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+             
+          </ion-card-content>
+         
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,245 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-padding">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title><ion-text color="secondary">
+      <div class="heading">Hiree</div>
+    </ion-text>
+  </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="6" offset-med="6">
+        <div class="req">* Required</div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <ion-item>
+          <ion-label>Position to be offered:*</ion-label>
+          <ion-select interface="popover" ngModel name ="post" required #postCtrl="ngModel">
+            <ion-select-option value="Bartender">Bartender</ion-select-option>
+            <ion-select-option value="Chef">Chef</ion-select-option>
+            <ion-select-option value="deliver">Delivery Person</ion-select-option>
+            <ion-select-option value="janitor">Janitor</ion-select-option>
+            <ion-select-option value="manager">Manager</ion-select-option>            
+            <ion-select-option value="receptionist">Receptionist</ion-select-option>
+            <ion-select-option value="waiter">Waiter</ion-select-option>        
+          </ion-select>
+      </ion-item>
+      <ion-item *ngIf="!postCtrl.valid && postCtrl.touched" lines="none">
+        <div class="warn">Please Fill It</div>
+       </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <ion-item>
+          <ion-label>Monthly Salary:*</ion-label>
+          <ion-select interface="popover" ngModel name ="salary" required #salCtrl="ngModel">
+            <ion-select-option value="lessThan10000"> less than 10000</ion-select-option>
+            <ion-select-option value="10000-20000">10000-20000</ion-select-option>
+            <ion-select-option value="20000_30000">20000-30000</ion-select-option>
+            <ion-select-option value="30000_40000">30000-40000</ion-select-option>
+            <ion-select-option value="40000_50000">40000-50000</ion-select-option>
+            <ion-select-option value="50000_75000">50000-75000</ion-select-option>
+            <ion-select-option value="75000_100000">75000-100000</ion-select-option>
+            <ion-select-option value="100000">100000+</ion-select-option>
+          </ion-select>
+        </ion-item> 
+        <ion-item *ngIf="!salCtrl.valid && salCtrl.touched" lines="none">
+          <div class="warn">Please Fill It</div>
+         </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <ion-item>
+          <ion-label>Working Days:*</ion-label>
+          <ion-select interface="popover"ngModel name ="workingDays" required #dayCtrl="ngModel">
+            <ion-select-option value="five">5</ion-select-option>
+            <ion-select-option value="six">6</ion-select-option>
+            <ion-select-option value="seven">7</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item *ngIf="!dayCtrl.valid && dayCtrl.touched" lines="none">
+          <div class="warn">Please Fill It</div>
+         </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <ion-item>
+          <ion-label>Previous Experience:*</ion-label>
+          <ion-select interface="popover"ngModel name ="previousExperience" required #exCtrl="ngModel">
+            <ion-select-option value="fresher">fresher</ion-select-option>
+            <ion-select-option value="1_3">1-3</ion-select-option>
+            <ion-select-option value="3_5">3-5</ion-select-option>
+            <ion-select-option value="5_10">5-10</ion-select-option>
+            <ion-select-option value="10_15">10-15</ion-select-option>    
+            <ion-select-option value="15+">15+</ion-select-option>
+          </ion-select>
+       </ion-item>
+       <ion-item *ngIf="!exCtrl.valid && exCtrl.touched" lines="none">
+        <div class="warn">Please Fill It</div>
+       </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <ion-item>
+          <ion-label>Employment:*</ion-label>
+          <ion-select interface="popover"ngModel name ="employment" required #emCtrl="ngModel">
+            <ion-select-option value="full Time">Full Time</ion-select-option>
+            <ion-select-option value="part Time">Part Time</ion-select-option>
+            <ion-select-option value="work From Home">Work from Home</ion-select-option>
+          </ion-select>
+        </ion-item> 
+        <ion-item *ngIf="!emCtrl.valid && emCtrl.touched" lines="none">
+          <div class="warn">Please Fill It</div>
+         </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <ion-item>
+          <ion-label>Gender:*</ion-label>
+          <ion-select interface="popover"ngModel name ="gender" required #genCtrl="ngModel">
+            <ion-select-option value="Male">Male</ion-select-option>
+            <ion-select-option value="Female">Female</ion-select-option>
+            <ion-select-option value="Others">Others</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item *ngIf="!genCtrl.valid && genCtrl.touched" lines="none">
+          <div class="warn">Please Fill It</div>
+         </ion-item> 
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+       <ion-item>
+          <ion-label>Education:*</ion-label>
+          <ion-select interface="popover" ngModel name ="education" required #edCtrl="ngModel">
+            <ion-select-option value="None">None</ion-select-option>
+            <ion-select-option value="tenth">Tenth</ion-select-option>
+            <ion-select-option value="intermediate">Intermediate</ion-select-option>
+            <ion-select-option value="Diploma">Diploma</ion-select-option>
+            <ion-select-option value="Degree">Degree</ion-select-option>
+            <ion-select-option value="Masters">Masters</ion-select-option>
+            <ion-select-option value="PhD">Ph.D</ion-select-option>
+          </ion-select>
+        </ion-item> 
+        <ion-item *ngIf="!edCtrl.valid && edCtrl.touched" lines="none">
+          <div class="warn">Please Fill It</div>
+         </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <ion-item>
+          <ion-label>Languages Known:*</ion-label>
+          <ion-select multiple="true" cancelText="Cancel" okText="Confirm" ngModel name ="language" required #lanCtrl="ngModel">
+            <ion-select-option value="kannada">Kannada</ion-select-option>
+            <ion-select-option value="hindi">Hindi</ion-select-option>
+            <ion-select-option value="english">English</ion-select-option>
+            <ion-select-option value="telugu">Telugu</ion-select-option>
+            <ion-select-option value="tamil">Tamil</ion-select-option>            
+            <ion-select-option value="malayalam">Malayalam</ion-select-option>
+            <ion-select-option value="others">Others</ion-select-option>      
+          </ion-select>
+        </ion-item>
+        <ion-item *ngIf="!lanCtrl.valid && lanCtrl.touched" lines="none">
+          <div class="warn">Please Fill It</div>
+         </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <ion-item>
+          <ion-label>Perks And Benefits:*</ion-label>
+          <ion-select multiple="true" cancelText="Cancel" okText="Confirm" ngModel name ="perksBenefits" required #pbCtrl="ngModel">
+            <ion-select-option value="Appraisals">Performance Based Appraisals</ion-select-option>
+            <ion-select-option value="Cab">Cab Service</ion-select-option>
+            <ion-select-option value="Health">Health Insurance</ion-select-option>
+            <ion-select-option value="Over-Time">Over-Time Allowances</ion-select-option>
+            <ion-select-option value="Bonus">Bonus - Annual/Half Yearly/Quaterly</ion-select-option>            
+            <ion-select-option value="Attendance">Attendance Bonus</ion-select-option>
+            <ion-select-option value="Accommodation">Accommodation Allowances</ion-select-option>   
+            <ion-select-option value="others">Others</ion-select-option>       
+          </ion-select>
+        </ion-item>
+        <ion-item *ngIf="!pbCtrl.valid && pbCtrl.touched" lines="none">
+          <div class="warn">Please Fill It</div>
+         </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <ion-item>
+          <ion-label>Working Shift:*</ion-label>
+          <ion-select interface="popover"ngModel name ="Shift" required #shiftCtrl="ngModel">
+            <ion-select-option value="day">Day Shift</ion-select-option>
+            <ion-select-option value="night">Night Shift</ion-select-option>
+          </ion-select>
+        </ion-item> 
+        <ion-item *ngIf="!shiftCtrl.valid && shiftCtrl.touched" lines="none">
+          <div class="warn">Please Fill It</div>
+         </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <ion-item>
+          <ion-label position="floating">Skills*:</ion-label>
+          <ion-input type = 'text' ngModel name ="additionalSkills" required #sklCtrl="ngModel" ></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!sklCtrl.valid && sklCtrl.touched" lines="none">
+          <div class="warn">Please Enter Skills</div>
+         </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <ion-item>
+          <ion-label position="floating">Job Description (less than 280 char):</ion-label>
+          <ion-input type = 'textarea' ngModel name ="jobDescription" ></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row> 
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <ion-item>
+          <ion-label position="floating">Employer Name:*</ion-label>
+          <ion-input type = 'text' ngModel name ="employerName" required #nameCtrl="ngModel"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!nameCtrl.valid && nameCtrl.touched" lines="none">
+          <div class="warn">Please Enter Your Name</div>
+         </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <ion-item>
+          <ion-label position="floating">Employer Designation:*</ion-label>
+          <ion-input type = 'text' ngModel name ="employerDesignation" required #desCtrl="ngModel"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!desCtrl.valid && desCtrl.touched" lines="none">
+          <div class="warn">Please Enter Your Designation</div>
+         </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <ion-button class="ion-margin-vertical"[disabled]="!form.valid" type = 'submit' size='default' color="secondary" expand="full" [routerLink] = "['../employer-home']">
+         Search 
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  </form>  
+  </ion-content>

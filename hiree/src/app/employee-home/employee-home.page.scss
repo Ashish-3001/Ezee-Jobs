@@ -1,0 +1,20 @@
+.heading{
+  text-align: center;
+  font-size: 40px;
+  font-style: initial;  
+}
+:root {
+    --ion-color-favorite: #808080;
+    --ion-color-favorite-rgb: 105,187,123;
+    --ion-color-favorite-contrast: #ffffff;
+    --ion-color-favorite-contrast-rgb: 255,255,255;
+    --ion-color-favorite-shade: #5ca56c;
+    --ion-color-favorite-tint: #78c288;
+  }
+.or{
+  text-align: center;
+  font-size: 20px; 
+}
+.text{
+  color: red($color: #da2e28);
+}

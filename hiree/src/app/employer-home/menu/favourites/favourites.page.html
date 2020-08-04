@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title><ion-text color="secondary">
+      <div class="heading">Hiree</div>
+    </ion-text></ion-title>
+    <ion-buttons slot="start" class="ion-padding">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="this.fav[0]">
+    <ion-grid>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-card *ngFor = " let result of this.results; let i = index" >
+            <ion-card-header  color="light">
+                <ion-row>
+                  <ion-col size="8">
+                    <ion-card-title>
+                      {{ result.eyee_name }} 
+                    </ion-card-title>
+                    <ion-card-subtitle >
+                      Location : {{ result.eyee_city }}
+                    </ion-card-subtitle>
+                  </ion-col>
+                  <ion-col offset="2" size="2"  >
+                    <ion-icon (click)='dislike(result.id, i) ' *ngIf='selectedIndex.indexOf(result.id) !== -1' name="heart" size ="large" ></ion-icon>
+                  </ion-col>
+                </ion-row>
+              </ion-card-header>
+            <ion-card-content >
+              <ion-item>
+              Previous Experience {{ result.eyee_pre_experience }}
+              </ion-item>
+              <ion-item>
+              Education : {{ result.eyee_education }}
+              </ion-item>
+              <ion-item>
+              Skills : {{ result.eyee_add_skills }}
+              </ion-item>
+            </ion-card-content>
+            <ion-card-content>
+              <ion-button  [routerLink] = "['/employer-profile/employer-home/', result.id]" color="success" expand="block">Offer job</ion-button>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

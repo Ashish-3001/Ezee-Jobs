@@ -1,0 +1,312 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title><ion-title><ion-text color="secondary">
+      <div class="heading">Hiree</div>
+    </ion-text></ion-title>
+  </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="6" offset-med="6">
+        <div class="req">* Required</div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <app-image-picker (imagePick)="onImagePickedDp($event)"  ></app-image-picker>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <ion-item>
+          <ion-label position="floating">Full Name:*</ion-label>
+          <ion-input type = 'text' ngModel name ="Name" required #nameCtrl="ngModel"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!nameCtrl.valid && nameCtrl.touched" lines="none">
+         <div class="warn">  Please Enter Your Name</div>
+        </ion-item>
+
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">   
+        <ion-item>
+          <ion-label position="floating">Aadhar Number:*</ion-label>
+          <ion-input type = 'text' inputmode="numeric" ngModel name ="aadhar"required minlength="12" maxlength="12" #aadCtrl="ngModel" ></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!aadCtrl.valid && aadCtrl.touched" lines="none">
+          <div class="warn">  Please Do not leave spaces in between</div>
+         </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-button color="light" (click)="onIdImageClick()" expand="full" >Upload Aadgar Card: *</ion-button>
+    <div *ngIf="onIdImageToggel">
+      <ion-text> Please Add Clear Images It Will Be Verified </ion-text>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <app-image-picker (imagePick)="onImagePickedIdF($event)"  ></app-image-picker>
+        </ion-col>
+      </ion-row>
+      <ion-text> Front Side Of The Card</ion-text>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <app-image-picker (imagePick)="onImagePickedIdB($event)"  ></app-image-picker>
+        </ion-col>
+      </ion-row>
+      <ion-text> Back Side Of The Card</ion-text>
+    </div>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <ion-item>
+          <ion-label position="floating">Age:*</ion-label>
+          <ion-input type = 'number'ngModel name ="age" required #ageCtrl="ngModel"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!ageCtrl.valid && ageCtrl.touched" lines="none">
+          <div class="warn">Please Enter Your Age</div>
+         </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+       <ion-item>
+          <ion-label>Gender:*</ion-label>
+          <ion-select interface="popover"ngModel name ="gender" required #genderCtrl="ngModel">
+            <ion-select-option value="M">Male</ion-select-option>
+            <ion-select-option value="F">Female</ion-select-option>
+            <ion-select-option value="O">Others</ion-select-option>
+          </ion-select>
+        </ion-item> 
+        <ion-item *ngIf="!genderCtrl.valid && genderCtrl.touched" lines="none">
+          <div class="warn">  Please Enter Valid Gender</div>
+         </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col size-md="6" offset-md="3">       
+       <ion-item>
+        <ion-label position="floating">Address 1:*</ion-label>
+        <ion-input type = 'text'ngModel name ="address1" required #addCtrl="ngModel"></ion-input>
+       </ion-item>
+       <ion-item *ngIf="!addCtrl.valid && addCtrl.touched" lines="none">
+        <div class="warn">  Please Enter Valid Address</div>
+       </ion-item>
+
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col size-md="6" offset-md="3">
+       <ion-item>
+        <ion-label position="floating">Address 2:</ion-label>
+        <ion-input type = 'text'ngModel name ="address2"></ion-input>
+       </ion-item>
+        </ion-col>
+    </ion-row>
+     <ion-row>
+        <ion-col size-md="6" offset-md="3">
+       <ion-item>
+        <ion-label position="floating">City:*</ion-label>
+        <ion-input type = 'text'ngModel name ="city" autocomplete autocorrect required #cityCtrl="ngModel"> </ion-input>
+       </ion-item>
+       <ion-item *ngIf="!cityCtrl.valid && cityCtrl.touched" lines="none">
+        <div class="warn">  Please Enter Valid City</div>
+       </ion-item>
+
+        </ion-col>
+     </ion-row>
+     <ion-row>
+        <ion-col size-md="6" offset-md="3">
+         <ion-item>
+            <ion-label>State:*</ion-label>
+           <ion-select interface="popover"ngModel name ="state" required #stateCtrl="ngModel">
+            <ion-select-option value="Andhra Pradesh">Andhra Pradesh</ion-select-option>
+            <ion-select-option value="Arunachal Pradesh">Arunachal Pradesh</ion-select-option>
+            <ion-select-option value="Assam">Assam</ion-select-option>
+            <ion-select-option value="Bihar">Bihar</ion-select-option>
+            <ion-select-option value="Chhattisgarh">Chhattisgarh</ion-select-option>
+            <ion-select-option value="Goa">Goa</ion-select-option>
+            <ion-select-option value="Gujarat">Gujarat</ion-select-option>
+            <ion-select-option value="Haryana">Haryana</ion-select-option>
+            <ion-select-option value="Himachal Pradesh">Himachal Pradesh</ion-select-option>
+            <ion-select-option value="Jammu & Kashmir">Jammu & Kashmir</ion-select-option>
+            <ion-select-option value="Jharkhand">Jharkhand</ion-select-option>
+            <ion-select-option value="Karnataka">Karnataka</ion-select-option>
+            <ion-select-option value="Kerala">Kerala</ion-select-option>
+            <ion-select-option value="Ladakh">Ladakh</ion-select-option>
+            <ion-select-option value="Madhya Pradesh">Madhya Pradesh</ion-select-option>
+            <ion-select-option value="Maharashtra">Maharashtra</ion-select-option>
+            <ion-select-option value="Manipur">Manipur</ion-select-option>
+            <ion-select-option value="Meghalaya">Meghalaya</ion-select-option>
+            <ion-select-option value="Mizoram">Mizoram</ion-select-option>
+            <ion-select-option value="Nagaland">Nagaland</ion-select-option>
+            <ion-select-option value="Oddissa">Oddissa</ion-select-option>
+            <ion-select-option value="Punjab">Punjab</ion-select-option>
+            <ion-select-option value="Rajasthan">Rajasthan</ion-select-option>
+            <ion-select-option value="Sikkim">Sikkim</ion-select-option>
+            <ion-select-option value="Tamil Nadu">Tamil Nadu</ion-select-option>
+            <ion-select-option value="Telangana">Telangana</ion-select-option>
+            <ion-select-option value="Tripura">Tripura</ion-select-option>
+            <ion-select-option value="Uttar Pradesh">Uttar Pradesh</ion-select-option>
+            <ion-select-option value="Uttrakhand">Uttrakhand</ion-select-option>
+            <ion-select-option value="West Bengal">West Bengal</ion-select-option>
+            </ion-select>
+         </ion-item>
+         <ion-item *ngIf="!stateCtrl.valid && stateCtrl.touched" lines="none">
+          <div class="warn">  Please Enter Valid State</div>
+         </ion-item>
+ 
+        </ion-col> 
+     </ion-row>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+         <ion-item>
+           <ion-label>Type of Hotel to work in:*</ion-label>
+           <ion-select multiple="true" cancelText="Cancel" okText="Confirm" ngModel name ="type" required #typeCtrl="ngModel">
+            <ion-select-option value="5 Star">5 Star</ion-select-option>
+            <ion-select-option value="3 Star">3 Star</ion-select-option>
+            <ion-select-option value="Fine Dining">Fine Dining</ion-select-option>
+            <ion-select-option value="Casual Dining">Casual Dining</ion-select-option>
+            <ion-select-option value="Pubs & Bars">Pubs & Bars</ion-select-option>
+            <ion-select-option value="Cafe and Bistro">Cafe and Bistro</ion-select-option>
+            <ion-select-option value="Fast Foods">Fast Foods</ion-select-option>
+            <ion-select-option value="Quick Service">Quick Service</ion-select-option>
+            <ion-select-option value="Mobile Hotel">Mobile Hotel</ion-select-option>
+            <ion-select-option value="Bakery">Bakery</ion-select-option>
+            <ion-select-option value="Sweet-Shop">Sweet-Shop</ion-select-option>
+            <ion-select-option value="Ice-Cream Shop">Ice-Cream Shop</ion-select-option>
+            <ion-select-option value="Juice Bar">Juice Bar</ion-select-option>
+           </ion-select>
+         </ion-item>
+         <ion-item *ngIf="!typeCtrl.valid && typeCtrl.touched" lines="none">
+          <div class="warn">  Please Enter Valid Type of Hotel</div>
+         </ion-item>
+ 
+      </ion-col>
+    </ion-row>
+     <ion-row>
+         <ion-col size-md="6" offset-md="3">
+           <ion-item>
+            <ion-label>Education:*</ion-label>
+            <ion-select interface="popover" ngModel name ="education" required #edCtrl="ngModel"> 
+              <ion-select-option value="None">None</ion-select-option>
+              <ion-select-option value="tenth">Tenth</ion-select-option>
+              <ion-select-option value="intermediate">Intermediate</ion-select-option>
+              <ion-select-option value="Diploma">Diploma</ion-select-option>
+              <ion-select-option value="Degree">Degree</ion-select-option>
+              <ion-select-option value="Masters">Masters</ion-select-option>
+              <ion-select-option value="PhD">Ph.D</ion-select-option>
+            </ion-select>
+           </ion-item> 
+           <ion-item *ngIf="!edCtrl.valid && edCtrl.touched" lines="none">
+            <div class="warn">  Please Enter Valid Education Credentials</div>
+           </ion-item>
+   
+         </ion-col>
+     </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">   
+         <ion-item>
+            <ion-label>Area of Choice:*</ion-label>
+            <ion-select multiple="true" cancelText="Cancel" okText="Confirm" ngModel name ="choice" required #areaCtrl="ngModel">
+            <ion-select-option value="Bartender">Bartender</ion-select-option>
+            <ion-select-option value="Chef">Chef</ion-select-option>
+            <ion-select-option value="Delivery Person">Delivery Person</ion-select-option>
+            <ion-select-option value="Janitor">Janitor</ion-select-option>
+            <ion-select-option value="Manager">Manager</ion-select-option>            
+            <ion-select-option value="Receptionist">Receptionist</ion-select-option>
+            <ion-select-option value="Waiter">Waiter</ion-select-option>        
+            </ion-select>
+         </ion-item>
+         <ion-item *ngIf="!areaCtrl.valid && areaCtrl.touched" lines="none">
+          <div class="warn">  Please Enter Your Desired Position</div>
+         </ion-item>
+ 
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+         <ion-item>
+          <ion-label>Time of work:*</ion-label>
+          <ion-select interface="popover"ngModel name ="time" required #timeCtrl="ngModel">
+            <ion-select-option value="0-6 hrs">0-6 hrs</ion-select-option>
+            <ion-select-option value="6-8 hrs">6-8 hrs</ion-select-option>
+            <ion-select-option value="8-14 hrs">8-14 hrs</ion-select-option>
+          </ion-select>
+          </ion-item>
+          <ion-item *ngIf="!timeCtrl.valid && timeCtrl.touched" lines="none">
+            <div class="warn">  Please Enter the amount of time</div>
+           </ion-item>
+   
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+         <ion-item>
+          <ion-label position="floating">Previous Experience(in years):*</ion-label>
+          <ion-input type = 'number' ngModel name ="previousExperience" required #expCtrl="ngModel"></ion-input>
+         </ion-item>
+         <ion-item *ngIf="!expCtrl.valid && expCtrl.touched" lines="none">
+          <div class="warn">  Please Enter Valid Number </div>
+         </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+           <ion-item>
+            <ion-label position="floating">Place of Experience:</ion-label>
+           <ion-input type = 'text' ngModel name ="placePreviousExprience"></ion-input>
+           </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-item>
+            <ion-label position="floating">Skills:*</ion-label>
+            <ion-input type = 'text'ngModel name ="additionalSkills" required #skillCtrl="ngModel"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="!skillCtrl.valid && skillCtrl.touched" lines="none">
+            <div class="warn">  Please Enter Your Skilss</div>
+           </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-button color="light" (click)="onEImageClick()" expand="full" >Any Additional Certifications</ion-button>
+      <div *ngIf="onEImageToggel">
+        <ion-text> Please Add Clear Images Of Any Certifications Or You Can Also Add Your Resume (Optional)</ion-text>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <app-image-picker (imagePick)="onImagePickedE1($event)" ></app-image-picker>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <app-image-picker (imagePick)="onImagePickedE2($event)" ></app-image-picker>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <app-image-picker (imagePick)="onImagePickedE3($event)" ></app-image-picker>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <app-image-picker (imagePick)="onImagePickedE4($event)" ></app-image-picker>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <app-image-picker (imagePick)="onImagePickedE5($event)" ></app-image-picker>
+          </ion-col>
+        </ion-row>
+      </div>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-button class="ion-margin-vertical" type="submit" [disabled]="!form.valid || this.imageStringIdF==undefined || this.imageStringIdB==undefined" size='default' color="secondary" expand="full" [routerLink]="['/login']">
+            Go To Payment
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

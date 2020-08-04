@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title><ion-text color="secondary">
+      <div class="heading">Hiree</div>
+    </ion-text></ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="10" offset="1">
+        <ion-img [src]='this.image' class="img" ></ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <ion-card>
+          <ion-card-header color="light">
+            <ion-card-title>
+              {{ details.eyee_name }}
+            </ion-card-title>
+            <ion-card-subtitle >            
+             Phone Number: {{ details.eyee_phone }}
+            </ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content >
+            <ion-row>
+              <ion-col>
+                <div class="head">Expected Salary :</div>
+                <div class="body">{{ details.eyee_salary_expected }}</div>
+              </ion-col>
+              <ion-col>
+                <div class="head">Minimum Education :</div>
+                <div class="body">{{ details.eyee_education }}</div>
+              </ion-col>
+              <ion-col>
+                <div class="head">Previous Experience :</div>
+                <div class="body">{{ details.eyee_pre_experience }}</div>
+              </ion-col>
+            </ion-row>
+            
+          
+             
+             <ion-item >
+              <div class="ques">Job Preference :</div> <div class="ans"><b>{{ details.eyee_choice }}</b></div>
+             </ion-item>
+             
+             <ion-item >
+              <div class="ques">Time of Work :</div> <div class="ans"><b>{{ details.eyee_time }}</b></div>
+             </ion-item>
+             <ion-item >
+              <div class="ques">Age :</div> <div class="ans"><b>{{ details.eyee_age }}</b></div>
+             </ion-item>
+             <ion-item >
+              <div class="ques">Gender:</div> <div class="ans"><b>{{ details.eyee_gender }}</b></div>
+             </ion-item>
+             <ion-item >
+              <div class="ques">Skills:</div> <div class="ans"><b>{{ details.eyee_add_skills}}</b></div>
+             </ion-item>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-button [routerLink] = "['../job-offer']"  color="success" expand="block">
+    Offer job
+  </ion-button>
+</ion-footer>
+  

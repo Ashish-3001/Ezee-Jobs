@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title><ion-title><ion-text color="secondary">
+        <div class="heading">Hiree</div>
+      </ion-text></ion-title> </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+    <form #form="ngForm" (ngSubmit)="basic_details(form)">
+    <ion-grid>
+        <ion-row>
+            <ion-col size-md="6" offset-med="6">
+              <div class="req">* Required</div>
+            </ion-col>
+          </ion-row>       
+        <ion-row>
+            <ion-col size-md="6" offset-md="3">
+     <ion-item>
+         <ion-label position="floating">Phone Number: *</ion-label>
+         <ion-input type = 'text' inputmode="numeric" minlength="10" maxlength="10" ngModel name ="phone" required #phoneCtrl="ngModel"></ion-input>
+     </ion-item>
+     <ion-item *ngIf="!phoneCtrl.valid && phoneCtrl.touched" lines="none">
+        <div class="warn">Enter Your Phone Number</div>
+       </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size-md="6" offset-md="3">
+     <ion-item>
+         <ion-label position="floating">Password:*</ion-label>
+         <ion-input type = 'password' ngModel name ="password2" minlength="8" maxlength="30"  #pCtrl='ngModel' required></ion-input>
+     </ion-item>
+     <ion-item *ngIf="!pCtrl.valid && pCtrl.touched" lines="none">
+        <div class="warn">Enter Valid Password</div>
+       </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size-md="6" offset-md="3">
+     <ion-item>
+         <ion-label position="floating">Re-enter Password:</ion-label>
+         <ion-input type = 'password' ngModel name ="password" minlength="8" maxlength="30" required #repCtrl='ngModel' ></ion-input>
+     </ion-item>
+     <ion-item *ngIf="!repCtrl.valid && pCtrl.valid != repCtrl.valid" lines="none">
+        <div class="warn">Does not match</div>
+        
+       </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size-md="6" offset-md="3">
+     <ion-item>
+         <ion-label position="floating">Email:</ion-label>
+         <ion-input type = 'email'ngModel name ="email" ></ion-input>
+     </ion-item>
+     
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size-md="6" offset-md="3">
+     <ion-button class="ion-margin-vertical" [disabled]="!form.valid" type ='submit' size='default' color="danger" expand="full">
+         Get OTP
+     </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    </form>
+ </ion-content>

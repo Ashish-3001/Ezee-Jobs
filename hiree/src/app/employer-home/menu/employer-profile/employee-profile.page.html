@@ -1,0 +1,225 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title><ion-text color="secondary">
+      <div class="heading">Hiree</div>
+    </ion-text></ion-title>
+    <ion-buttons slot="start" class="ion-padding">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <div *ngIf= "!job_post_toggle" >
+    <ion-grid>
+      <ion-row>
+        <ion-col size="10" offset="1">
+          <ion-slides pager="true">
+            <ion-slide>
+              <ion-img [src]='this.image1' class="img" ></ion-img>
+            </ion-slide>
+            <ion-slide *ngIf='this.image2' >
+              <ion-img [src]='this.image2' class="img" ></ion-img>
+            </ion-slide>
+            <ion-slide *ngIf='this.image3' >
+              <ion-img [src]='this.image3' class="img" ></ion-img>
+            </ion-slide>
+          </ion-slides>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-card>
+      <ion-card-header >
+        <ion-card-title color="primary">{{ details.eyer_hotel_name }}</ion-card-title>
+        <ion-card-subtitle color="medium">Phone Number: {{ details.eyer_phone }}
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <div>GST Number: {{ details.eyer_gst_no}}</div>
+        <div>{{ details.eyer_category }}-{{ details.eyer_cuisines }}</div>
+        <ion-button (click) = "state()" fill="outline" slot="end" expand="block" >
+          View More
+        </ion-button>
+      </ion-card-content>
+      
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-card>
+      <ion-card-header >
+        <ion-card-title color="primary">Job Post Details:</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col offset-4>
+             <ion-text color="danger">
+             <h2>Active Job Post:</h2>
+              </ion-text>
+             
+            </ion-col>
+            <ion-col offset-4>
+              <ion-text color="danger">
+                <h2>Total Job Post:</h2>
+              </ion-text>
+             </ion-col>
+
+          </ion-row>
+         
+            <ion-row>
+              <ion-col offset-4 class="ion-margin">
+               <div  class="ion-text-center">
+                 <ion-text color="success">
+                    <H1>{{ details.eyer_active_job_post}}</H1> 
+                </ion-text> 
+              </div>
+              </ion-col>
+              <ion-col offset-4 class="ion-margin">
+                <div  class="ion-text-center">
+                  <ion-text color="success">
+                     <H1>{{ details.eyer_tot_no_job_post}}</H1> 
+                 </ion-text> 
+               </div>
+               </ion-col>
+            </ion-row>
+        </ion-grid>
+      </ion-card-content>
+      
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-card>
+            <ion-card-header >
+              <ion-card-title color="primary">Employee Relationship Status:</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-grid>
+                <ion-row>
+                  <ion-col offset-4>
+                   <ion-text color="danger">
+                   <h2>Total Job Offered:</h2>
+                    </ion-text>
+                   
+                  </ion-col>
+                  <ion-col offset-4>
+                    <ion-text color="danger">
+                      <h2>Total Employees Hired:</h2>
+                    </ion-text>
+                   </ion-col>
+      
+                </ion-row>
+               
+                  <ion-row>
+                    <ion-col offset-4 class="ion-margin">
+                     <div  class="ion-text-center">
+                       <ion-text color="success">
+                          <H1>{{ details.eyer_job_offer }}</H1> 
+                      </ion-text> 
+                    </div>
+                    </ion-col>
+                    <ion-col offset-4 class="ion-margin">
+                      <div  class="ion-text-center">
+                        <ion-text color="success">
+                           <H1>{{ details.eyer_job_hier}}</H1> 
+                       </ion-text> 
+                     </div>
+                     </ion-col>
+                  </ion-row>
+              </ion-grid>
+            </ion-card-content>
+            
+                </ion-card>
+          
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+      
+         
+          
+         
+         
+       
+      
+  </div>
+  <div *ngIf= "job_post_toggle">
+    <ion-grid>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-card>
+      <ion-card-header >
+        <ion-card-title color="primary">{{ details.eyer_hotel_name }}</ion-card-title>
+        <ion-card-subtitle color="medium">Phone Number: {{details.eyer_phone }}
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <div>GST Number: {{ details.eyer_gst_no }}</div>
+        <div>{{ details.eyer_category }}-{{ details.eyer_cuisines}}</div>
+        <ion-item>
+          Address Line 1: {{ details.eyer_address_1 }}
+        </ion-item>
+        <ion-item>
+          Address Line 2: {{ details.eyer_address_2 }}
+        </ion-item>
+        <ion-item>
+          City: {{ details.eyer_city }}
+        </ion-item>
+        <ion-item>
+          State: {{ details.eyer_state }}
+        </ion-item>
+        <ion-item>
+          Type: {{ details.eyer_type }}
+        </ion-item>
+        <ion-item>
+           Website: {{ details.eyer_website }}
+        </ion-item>
+        <ion-item>
+          Category: {{ details.eyer_category }}
+        </ion-item>
+        <ion-item>
+          Cuisines: {{ details.eyer_cuisines }}
+        </ion-item>
+        <ion-item>
+          Number Of Seats: {{ details.eyer_no_seats }}
+        </ion-item>
+        <p>
+          <ion-chip color="secondary">
+            <ion-label>Active Job Post: {{ details.eyer_active_job_post}} </ion-label>
+          </ion-chip>
+          <ion-chip color="secondary">
+            <ion-label>total Number of Job Post: {{ details.eyer_tot_no_job_post}} </ion-label>
+          </ion-chip>
+          <ion-chip color="danger">
+            <ion-label>Total Number of Job Offered: {{ details.eyer_job_offer}} </ion-label>
+          </ion-chip>
+          <ion-chip color="danger">
+            <ion-label>Total Number of Employees Hired: {{ details.eyer_job_hier}} </ion-label>
+          </ion-chip>
+        </p>
+        
+          <ion-button fill="outline"
+           color="warning"slot="end" expand="block">
+            Edit Profile 
+          </ion-button>
+          <ion-button (click) = "state()" fill="outline" slot="end" expand="block">
+            View Less
+          </ion-button>
+        
+        
+      </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    
+    
+  </div>
+</ion-content>
+

@@ -1,0 +1,126 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title><ion-text color="secondary">
+      <div class="heading">Hiree</div>
+    </ion-text></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <ion-card *ngFor = " let result of applied_jobs; let i = index" >
+          <div *ngIf='this.value[0]'>
+            <div *ngIf= "!job_post_toggle">
+              <ion-card-header  color="light">
+                <ion-card-title>
+                  {{ result.eyee_name }}
+                </ion-card-title>
+                <ion-card-subtitle >
+                  Location : {{ result.eyee_city }}
+                </ion-card-subtitle>
+              </ion-card-header>
+              <ion-card-content >
+                <ion-item>
+                Previous Experience {{ result.eyee_pre_experience }}
+                </ion-item>
+                <ion-item>
+                Education : {{ result.eyee_education }}
+                </ion-item>
+                <ion-item>
+                Skills : {{ result.eyee_add_skills }}
+                </ion-item>
+              </ion-card-content>
+              <ion-card-content>
+                <ion-button  color="primary" expand="block" (click) = "state(i)">Read More</ion-button>
+              </ion-card-content>
+            </div>
+          </div>
+        </ion-card>
+        <div *ngIf= "job_post_toggle">
+          <ion-row>
+            <ion-col size="10" offset="1">
+              <ion-img [src]='this.image' class="img" ></ion-img>
+            </ion-col>
+          </ion-row>
+          <ion-card>
+            <ion-card-header color="light">
+              <ion-card-title>
+                {{ applied_jobs[n].eyee_name }}
+              </ion-card-title>
+              <ion-card-subtitle >
+               Phone Number : {{ applied_jobs[n].eyee_phone }}
+              </ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content >
+              <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div class="head">Previous Experience: </div>
+                  <div class="body">{{ applied_jobs[n].eyee_pre_experience }}</div>
+                </ion-col>
+                <ion-col>
+                  <div class="head">Minimum Education:</div>
+                  <div class="body">{{ applied_jobs[n].eyee_education }}</div>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <div class="head">Job Preference: </div>
+                  <div class="body">{{ applied_jobs[n].eyee_choice }}</div>
+                </ion-col>
+                <ion-col>
+                  <div class="head">Time of Work:</div>
+                  <div class="body">{{ applied_jobs[n].eyee_time }}</div>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <div class="ques">Age: </div>
+                  <div class="ans">{{ applied_jobs[n].eyee_age }}</div>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <div class="ques">Gender:</div>
+                  <div class="ans"> {{ applied_jobs[n].eyee_gender }}</div>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <div class="ques">Skills:</div>
+                  <div class="ans">{{ applied_jobs[n].eyee_add_skills}}</div>
+                </ion-col>
+              </ion-row>
+              </ion-grid>
+             
+           </ion-card-content>
+          </ion-card>
+          <ion-card>
+          <ion-card-content>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <ion-button  color="warning" expand="block" (click) = "state(0)">Back</ion-button>
+                </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <ion-button  color="success" expand="block" (click) = "presentAlertComfirm()">Confrim</ion-button>
+                  </ion-col>
+                <ion-col>
+                  <ion-button expand="block" color="danger" (click) = "presentAlertReject()" >Reject</ion-button>
+                </ion-col>
+                
+              </ion-row>
+            </ion-grid>
+           
+          </ion-card-content>
+        </ion-card>
+         
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

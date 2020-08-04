@@ -1,0 +1,228 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title><ion-text color="secondary">
+      <div class="heading">Hiree</div>
+    </ion-text></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="6" offset-med="6">
+        <div class="req">* Required</div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <app-image-picker (imagePick)="onImagePicked1($event)" ></app-image-picker>
+      </ion-col>
+    </ion-row>
+    <ion-button color="light" (click)="onImageClick()" expand="full" >Add More Pictures</ion-button>
+    <div *ngIf="onImageToggel">
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <app-image-picker (imagePick)="onImagePicked2($event)" ></app-image-picker>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <app-image-picker (imagePick)="onImagePicked3($event)"  ></app-image-picker>
+        </ion-col>
+      </ion-row>
+    </div>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+<ion-item>
+    <ion-label position="floating">Hotel Name:</ion-label>
+    <ion-input type = 'text'  ngModel name="hotel_name" required #hotelCtrl="ngModel" ></ion-input>
+</ion-item>
+<ion-item *ngIf="!hotelCtrl.valid && hotelCtrl.touched" lines="none">
+  <div class="warn">  Please Enter Hotel Name</div>
+ </ion-item>
+</ion-col>
+</ion-row>
+<ion-row>
+  <ion-col size-md="6" offset-md="3">
+    <ion-item>
+    <ion-label position="floating">GST No.</ion-label>
+        <ion-input type = 'text' ngModel name ="gst" required maxlength="15" minlength="15" #gstCtrl="ngModel" ></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!gstCtrl.valid && gstCtrl.touched" lines="none">
+      <div class="warn">  Please Enter Valid GST Number</div>
+    </ion-item>
+  </ion-col>
+</ion-row>
+<ion-row>
+  <ion-col size-md="6" offset-md="3">
+<ion-item>
+    <ion-label position="floating">Address 1:</ion-label>
+    <ion-input type = 'text' ngModel name="address_1" required #adCtrl="ngModel"></ion-input>
+</ion-item>
+<ion-item *ngIf="!adCtrl.valid && adCtrl.touched" lines="none">
+  <div class="warn">  Please Enter Valid Address</div>
+ </ion-item>
+</ion-col>
+</ion-row>
+<ion-row>
+  <ion-col size-md="6" offset-md="3">
+<ion-item>
+    <ion-label position="floating">Address 2:</ion-label>
+    <ion-input type = 'text' ngModel name="address_2"></ion-input>
+</ion-item>
+</ion-col>
+</ion-row>
+<ion-row>
+  <ion-col size-md="6" offset-md="3">
+<ion-item>
+    <ion-label position="floating">City:</ion-label>
+    <ion-input type = 'text' ngModel name="city" autocomplete autocorrect required #cityCtrl="ngModel"></ion-input>
+</ion-item>
+<ion-item *ngIf="!cityCtrl.valid && cityCtrl.touched" lines="none">
+  <div class="warn">  Please Enter Valid City</div>
+ </ion-item>
+</ion-col>
+</ion-row>
+<ion-row>
+  <ion-col size-md="6" offset-md="3">
+<ion-item>
+     <ion-label>State:</ion-label>
+     <ion-select interface="popover" ngModel name="state" required #stateCtrl="ngModel">
+       <ion-select-option value="Andhra Pradesh">Andhra Pradesh</ion-select-option>
+       <ion-select-option value="Arunachal Pradesh">Arunachal Pradesh</ion-select-option>
+       <ion-select-option value="Assam">Assam</ion-select-option>
+       <ion-select-option value="Bihar">Bihar</ion-select-option>
+       <ion-select-option value="Chhattisgarh">Chhattisgarh</ion-select-option>
+       <ion-select-option value="Goa">Goa</ion-select-option>
+       <ion-select-option value="Gujarat">Gujarat</ion-select-option>
+       <ion-select-option value="Haryana">Haryana</ion-select-option>
+       <ion-select-option value="Himachal Pradesh">Himachal Pradesh</ion-select-option>
+       <ion-select-option value="Jammu & Kashmir">Jammu & Kashmir</ion-select-option>
+       <ion-select-option value="Jharkhand">Jharkhand</ion-select-option>
+       <ion-select-option value="Karnataka">Karnataka</ion-select-option>
+       <ion-select-option value="Kerala">Kerala</ion-select-option>
+       <ion-select-option value="Ladakh">Ladakh</ion-select-option>
+       <ion-select-option value="Madhya Pradesh">Madhya Pradesh</ion-select-option>
+       <ion-select-option value="Maharashtra">Maharashtra</ion-select-option>
+       <ion-select-option value="Manipur">Manipur</ion-select-option>
+       <ion-select-option value="Meghalaya">Meghalaya</ion-select-option>
+       <ion-select-option value="Mizoram">Mizoram</ion-select-option>
+       <ion-select-option value="Nagaland">Nagaland</ion-select-option>
+       <ion-select-option value="Oddissa">Oddissa</ion-select-option>
+       <ion-select-option value="Punjab">Punjab</ion-select-option>
+       <ion-select-option value="Rajasthan">Rajasthan</ion-select-option>
+       <ion-select-option value="Sikkim">Sikkim</ion-select-option>
+       <ion-select-option value="Tamil Nadu">Tamil Nadu</ion-select-option>
+       <ion-select-option value="Telangana">Telangana</ion-select-option>
+       <ion-select-option value="Tripura">Tripura</ion-select-option>
+       <ion-select-option value="Uttar Pradesh">Uttar Pradesh</ion-select-option>
+       <ion-select-option value="Uttrakhand">Uttrakhand</ion-select-option>
+       <ion-select-option value="West Bengal">West Bengal</ion-select-option>
+       
+     </ion-select>
+</ion-item>
+<ion-item *ngIf="!stateCtrl.valid && stateCtrl.touched" lines="none">
+  <div class="warn">  Please Enter Valid State</div>
+ </ion-item>
+</ion-col>
+</ion-row>
+<ion-row>
+  <ion-col size-md="6" offset-md="3">
+<ion-item>
+      <ion-label position="floating">Website:</ion-label>
+      <ion-input type = 'website' ngModel name="website"></ion-input>
+</ion-item>
+</ion-col>
+</ion-row>
+<ion-row>
+  <ion-col size-md="6" offset-md="3">
+<ion-list>
+  <ion-item>
+    <ion-label>Type of Hotel:</ion-label>
+     <ion-select interface="popover" ngModel name="type" required #typeCtrl="ngModel">
+       <ion-select-option value="Vegetarian">Vegetarian</ion-select-option>
+       <ion-select-option value="Non Vegetarian">Non Vegetarian</ion-select-option>
+      </ion-select>
+      </ion-item>
+      <ion-item *ngIf="!typeCtrl.valid && typeCtrl.touched" lines="none">
+        <div class="warn">Please don't leave it empty</div>
+       </ion-item>
+ </ion-list>
+ </ion-col>
+ </ion-row>
+ <ion-row>
+  <ion-col size-md="6" offset-md="3">
+ <ion-item>
+     <ion-label>Category:</ion-label>
+     <ion-select interface="popover" ngModel name="category" required #catCtrl="ngModel">
+       <ion-select-option value="5 Star">5 Star</ion-select-option>
+       <ion-select-option value="3 Star">3 Star</ion-select-option>
+       <ion-select-option value="Fine Dining">Fine Dining</ion-select-option>
+       <ion-select-option value="Casual Dining">Casual Dining</ion-select-option>
+       <ion-select-option value="Pubs & Bars">Pubs & Bars</ion-select-option>
+       <ion-select-option value="Cafe & Bistro">Cafe and Bistro</ion-select-option>
+       <ion-select-option value="Fast Foods">Fast Foods</ion-select-option>
+       <ion-select-option value="Quick Services">Quick Service</ion-select-option>
+       <ion-select-option value="Mobile Hotel">Mobile Hotel</ion-select-option>
+       <ion-select-option value="Bakery">Bakery</ion-select-option>
+       <ion-select-option value="Sweet Shop">Sweet-Shop</ion-select-option>
+       <ion-select-option value="Ice-Cream">Ice-Cream Shop</ion-select-option>
+       <ion-select-option value="Juice Bar">Juice Bar</ion-select-option>
+     </ion-select>
+ </ion-item>
+ <ion-item *ngIf="!catCtrl.valid && catCtrl.touched" lines="none">
+  <div class="warn">Please don't leave this empty</div>
+ </ion-item>
+ </ion-col>
+ </ion-row>
+ <ion-row>
+  <ion-col size-md="6" offset-md="3">
+ <ion-item>
+       <ion-label>Cuisines:</ion-label>
+       <ion-select multiple="true" cancelText="Cancel" okText="Submit" ngModel name="cuisines" required #cCtrl="ngModel">
+       <ion-select-option value="American">American</ion-select-option>
+       <ion-select-option value="British">British</ion-select-option>
+       <ion-select-option value="Caribbean">Caribbean</ion-select-option>
+       <ion-select-option value="Chinnese">Chinnese</ion-select-option>
+       <ion-select-option value="French">French</ion-select-option>
+       <ion-select-option value="Greek">Greek</ion-select-option>
+       <ion-select-option value="Italian">Italian</ion-select-option>
+       <ion-select-option value="Japanese">Japanese</ion-select-option>
+       <ion-select-option value="Mediterranean">Mediterranean</ion-select-option>
+       <ion-select-option value="Mexican">Mexican</ion-select-option>
+       <ion-select-option value="Moroccan">Moroccan</ion-select-option>
+       <ion-select-option value="North Indian">North Indian</ion-select-option>
+       <ion-select-option value="South Indian">South Indian</ion-select-option>
+       <ion-select-option value="Spanish">Spanish</ion-select-option>
+       <ion-select-option value="Thai">Thai</ion-select-option>
+       <ion-select-option value="Turkish">Turkish</ion-select-option>
+       <ion-select-option value="Vietnamese">Vietnamese</ion-select-option>
+       </ion-select>
+ </ion-item> 
+ <ion-item *ngIf="!cCtrl.valid && cCtrl.touched" lines="none">
+  <div class="warn">Please don't leave this empty</div>
+ </ion-item>
+ </ion-col>
+ </ion-row>
+ <ion-row>
+  <ion-col size-md="6" offset-md="3">           
+ <ion-item>
+        <ion-label position="floating">Number of Seats in Hotel:</ion-label>
+        <ion-input type = 'number' ngModel name="seats" required #seatCtrl="ngModel"></ion-input>
+ </ion-item>
+ <ion-item *ngIf="!seatCtrl.valid && seatCtrl.touched" lines="none">
+  <div class="warn">  Please Enter The seats in the hotel</div>
+ </ion-item>
+ </ion-col>
+ </ion-row>
+ <ion-row>
+  <ion-col size-md="6" offset-md="3">
+      <ion-button type="submit" class="ion-margin-vertical" [disabled]="!form.valid" size='default' color="secondary" expand="block" [routerLink]="['/login']">
+        Go To Payment
+      </ion-button>
+      </ion-col>
+      </ion-row>
+      </ion-grid>
+      </form>
+</ion-content>

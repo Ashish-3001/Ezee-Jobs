@@ -1,0 +1,193 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title><ion-text color="secondary">
+      <div class="heading">Hiree</div>
+    </ion-text></ion-title>
+    <ion-buttons slot="start" class="ion-padding">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+   
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  
+  <div *ngIf= "!job_post_toggle" >
+    <ion-grid>
+      <ion-row>
+        <ion-col size="10" offset="1">
+          <ion-img [src]='this.image' class="img" ></ion-img>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-card>
+            <ion-card-header >
+              <ion-card-title color="primary">{{ details.eyee_name }}</ion-card-title>
+              <ion-card-subtitle color="medium">Phone Number: {{ details.eyee_phone }}
+              </ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+              <div>Previous Experience: {{ details.eyee_pre_experience}}</div>
+              <div>Education: {{ details.eyee_education }}</div>
+              <div>Area of Choice: {{ details.eyee_choice }}</div>
+              <div>Salary Expected: {{details.eyee_salary_expected}}</div>
+              <ion-button (click) = "state()" fill="outline" slot="end" expand="block" >
+                View More
+              </ion-button>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-card>
+            <ion-card-header >
+              <ion-card-title color="primary">Job Post Details:</ion-card-title>
+            </ion-card-header>
+              <ion-card-content>
+                <ion-grid>
+                  <ion-row>
+                    <ion-col offset-4>
+                      <ion-text color="danger">
+                        <h2>Jobs Applied:</h2>
+                      </ion-text>
+                    </ion-col>
+            <ion-col offset-4>
+              <ion-text color="danger">
+                <h2>Jobs Offered:</h2>
+              </ion-text>
+             </ion-col>
+
+          </ion-row>
+         
+            <ion-row>
+              <ion-col offset-4 class="ion-margin">
+               <div  class="ion-text-center">
+                 <ion-text color="success">
+                    <H1>{{ details.eyee_no_appiled}}</H1> 
+                </ion-text> 
+              </div>
+              </ion-col>
+              <ion-col offset-4 class="ion-margin">
+                <div  class="ion-text-center">
+                  <ion-text color="success">
+                     <H1>{{ details.eyee_no_offered}}</H1> 
+                 </ion-text> 
+               </div>
+               </ion-col>
+            </ion-row>
+        </ion-grid>
+      </ion-card-content>
+      
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-card>
+            <ion-card-header >
+              <ion-card-title color="primary">Employer Relationship Status:</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-grid>
+                <ion-row>
+                  <ion-col offset-4>
+                   <ion-text color="danger">
+                   <h2>Jobs Accepted:</h2>
+                    </ion-text>
+                   
+                  </ion-col>
+                  <ion-col offset-4>
+                    <ion-text color="danger">
+                      <h2>Jobs Short-Listed:</h2>
+                    </ion-text>
+                   </ion-col>
+      
+                </ion-row>
+               
+                  <ion-row>
+                    <ion-col offset-4 class="ion-margin">
+                     <div  class="ion-text-center">
+                       <ion-text color="success">
+                          <H1>{{ details.eyee_no_accept }}</H1> 
+                      </ion-text> 
+                    </div>
+                    </ion-col>
+                    <ion-col offset-4 class="ion-margin">
+                      <div  class="ion-text-center">
+                        <ion-text color="success">
+                           <H1>{{ details.eyee_no_shortlisted}}</H1> 
+                       </ion-text> 
+                     </div>
+                     </ion-col>
+                  </ion-row>
+              </ion-grid>
+            </ion-card-content>
+            
+                </ion-card>
+          
+        </ion-col>
+      </ion-row>
+    </ion-grid>         
+  </div>
+  
+  <div *ngIf= "job_post_toggle">
+    <ion-grid>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-card>
+      <ion-card-header >
+        <ion-card-title color="primary">{{ details.eyee_name }}</ion-card-title>
+        <ion-card-subtitle color="medium">Phone Number: {{details.eyee_phone }}
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <div>Previous Experience: {{ details.eyee_pre_experience}}</div>
+        <div>Education: {{ details.eyee_education }}</div>
+        <div>Area of Choice: {{ details.eyee_choice }}</div>
+        <div>Salary Expected: {{details.eyee_salary_expected}}</div>
+        <div>Aadhar Number: {{ details.eyee_aadhar_no }}</div>
+        <div>Age: {{ details.eyee_age }}</div>
+        <div> Gender: {{ details.eyee_gender }}</div>
+        <div>Address Line 1: {{ details.eyee_address_1 }}</div>
+        <div>Address Line 2: {{ details.eyee_address_2 }}</div>
+        <div>City: {{ details.eyee_city }}</div>
+        <div>State: {{ details.eyee_state }}</div>
+        <div>Type: {{ details.eyee_type_hotel }}</div>
+        <div>Time of work: {{ details.eyee_time }}</div>
+        <div>Skills: {{ details.eyee_add_skills }}</div>   
+        <p>
+          <ion-chip color="secondary">
+            <ion-label>Jobs Applied: {{ details.eyee_no_appiled}} </ion-label>
+          </ion-chip>
+          <ion-chip color="secondary">
+            <ion-label>Jobs Offered: {{ details.eyee_no_offered}} </ion-label>
+          </ion-chip>
+          <ion-chip color="warning">
+            <ion-label>Short Listed: {{ details.eyee_no_shortlisted}} </ion-label>
+          </ion-chip>
+          <ion-chip color="success">
+            <ion-label>Jobs Accepted: {{ details.eyee_no_accept}} </ion-label>
+          </ion-chip>          
+        </p>
+        
+          <ion-button fill="outline"
+           color="warning"slot="end" expand="block" (click)="presentAlertConfirm()">
+            Edit Profile 
+          </ion-button>
+          <ion-button (click) = "state()" fill="outline" slot="end" expand="block">
+            View Less
+          </ion-button>
+        
+        
+      </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    
+    
+  </div>
+</ion-content>
+

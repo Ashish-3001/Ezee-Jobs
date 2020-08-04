@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title><ion-text color="secondary">
+      <div class="heading">Hiree</div>
+    </ion-text></ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form #form="ngForm" (ngSubmit)="presentAlertConfirm(form)">
+    <ion-grid>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <div class="ion-text-center">
+          <h4>You have applied for a job </h4>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col size-md="6" offset-md="3">
+              <ion-card>
+                  <ion-card-header>
+                      <ion-card-title>Go through the Formal Procedures</ion-card-title>
+                  </ion-card-header>
+                  <ion-card-content>
+                      <ion-item>
+                          <ion-label position="floating">reason:</ion-label>
+                          <ion-input type = 'text' ngModel name ="reason" ></ion-input>
+                      </ion-item>
+                      <ion-item>
+                          <ion-label position="floating">what can you do for the hotel</ion-label>
+                          <ion-input type = 'text' ngModel name ="for_hotel" ></ion-input>
+                      </ion-item>
+                      <ion-item>
+                        <ion-label position="floating">Any queries related to the job?</ion-label>
+                        <ion-input type = 'text' ngModel name ="queries" ></ion-input>
+                    </ion-item>
+                    <ion-button class="ion-margin-vertical" type ='submit' color="success" size='default'>
+                      Apply
+                    </ion-button>
+                  </ion-card-content>
+              </ion-card>
+          </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
