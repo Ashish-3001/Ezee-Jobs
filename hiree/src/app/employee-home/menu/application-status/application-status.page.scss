@@ -3,7 +3,13 @@
     font-size: 40px;
     font-style: initial;  
   }
-
+.null{
+  text-align: center;
+  font-size: 50px;
+  font-style: oblique;
+  color: red;
+  padding-top: 20px;
+}
 .horizontal-scroll {
   overflow: auto;
   white-space: nowrap;

@@ -10,7 +10,7 @@
     <ion-row>
       <ion-col size-md="6" offset-md="3">
         <div *ngIf="!this.offered_jobs[0]">
-          Null
+          <div class="null">No Jobs Offered</div>
         </div>
         <div *ngIf="this.offered_jobs[0]">
           <ion-card *ngFor = " let result of offered_jobs; let i = index" >

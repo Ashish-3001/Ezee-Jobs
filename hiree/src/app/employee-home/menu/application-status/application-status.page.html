@@ -25,7 +25,7 @@
 
   <div *ngIf='this.page_state == "Offers Recived"'>
     <div *ngIf='!this.value1[0]'>
-      Null
+      <div class="null">No Offers Recived</div>
     </div>
     <div *ngIf='this.value1[0]'>
       <ion-grid>
@@ -186,7 +186,7 @@
 
   <div *ngIf='this.page_state == "Applied Jobs"'>
     <div *ngIf='!this.value2[0]'>
-      Null
+      <div class="null">No Jobs Applied</div>
     </div>
     <div *ngIf='this.value2[0]'>
       <ion-grid>
@@ -320,7 +320,7 @@
 
   <div *ngIf='this.page_state == "Shortlisted"'>
     <div *ngIf='!this.value3[0]'>
-      Null
+      <div class="null">No Shortlisted items</div>
     </div>
     <div *ngIf='this.value3[0]'>
       <ion-grid>
