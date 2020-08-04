@@ -43,12 +43,9 @@ export class PostService {
 
   post_basic_details(postdata:any) {
     this.http.post('http://tekhab.pythonanywhere.com/UserLogin/', postdata).subscribe( (data) =>{
-      console.log("success");
       this.data =data;
       this.user_id.next(this.data.id);
       this.user_phone.next(this.data.user_phone_no);
-      console.log(this.user_id.value);
-      console.log(this.user_phone.value);
     });
   }
 
@@ -59,22 +56,14 @@ export class PostService {
     postdata.user_id = this.user_id.value;
     postdata.eyer_phone = this.user_phone.value;
     this.http.post('http://tekhab.pythonanywhere.com/EmployerDetails/', postdata).subscribe( (data) =>{
-      console.log("success");
       this.data =data;
       this.user_id.next(this.data.id);
-      console.log(this.user_id.value);
       if(this.user_id.value && imageString1 && typeof imageString1 === 'string' ) {
-        console.log(imageString1);
         var file: Blob = this.onImagePicked(imageString1);
         var postimage = new FormData(document.forms[0]);
         postimage.append('eyer_id',this.user_id.value.toString());
         postimage.append('image',file, 'name:image.jpeg');
-        console.log("hii");
-        this.http.post('http://tekhab.pythonanywhere.com/ImageEyerPic/' , postimage).subscribe( (data:  any) =>{
-          console.log('heyy');  
-          console.log(data);
-          console.log('hii');
-        });
+        this.http.post('http://tekhab.pythonanywhere.com/ImageEyerPic/' , postimage).subscribe( () =>{ });
       }
       if(this.user_id.value && imageString2 && typeof imageString2 === 'string' ) {
         console.log(imageString2);
@@ -83,11 +72,7 @@ export class PostService {
         postimage.append('eyer_id',this.user_id.value.toString());
         postimage.append('image',file, 'name:image.jpeg');
         console.log("hii");
-        this.http.post('http://tekhab.pythonanywhere.com/ImageEyerPic/' , postimage).subscribe( (data:  any) =>{
-          console.log('heyy');  
-          console.log(data);
-          console.log('hii');
-        });
+        this.http.post('http://tekhab.pythonanywhere.com/ImageEyerPic/' , postimage).subscribe( () =>{ });
       }
       if(this.user_id.value && imageString3 && typeof imageString3 === 'string' ) {
         console.log(imageString3);
@@ -96,11 +81,7 @@ export class PostService {
         postimage.append('eyee_id',this.user_id.value.toString());
         postimage.append('image',file, 'name:image.jpeg');
         console.log("hii");
-        this.http.post('http://tekhab.pythonanywhere.com/ImageEyerPic/' , postimage).subscribe( (data:  any) =>{
-          console.log('heyy');  
-          console.log(data);
-          console.log('hii');
-        });
+        this.http.post('http://tekhab.pythonanywhere.com/ImageEyerPic/' , postimage).subscribe( () =>{ });
       }
     });
   }
@@ -125,11 +106,7 @@ export class PostService {
         postimage.append('eyee_id',this.user_id.value.toString());
         postimage.append('image_dp',file, 'name:image.jpeg');
         console.log("hii");
-        this.http.post('http://tekhab.pythonanywhere.com/ImageEyeeDp/' , postimage).subscribe( (data:  any) =>{
-          console.log('heyy');  
-          console.log(data);
-          console.log('hii');
-        });
+        this.http.post('http://tekhab.pythonanywhere.com/ImageEyeeDp/' , postimage).subscribe( () =>{ });
       }
       if(this.user_id.value && imageStringIdF && typeof imageStringIdF === 'string' ) {
         console.log(imageStringIdF);
@@ -138,11 +115,7 @@ export class PostService {
         postimage.append('eyee_id',this.user_id.value.toString());
         postimage.append('image',file, 'name:image.jpeg');
         console.log("hii");
-        this.http.post('http://tekhab.pythonanywhere.com/ImageEyeeIdF/' , postimage).subscribe( (data:  any) =>{
-          console.log('heyy');  
-          console.log(data);
-          console.log('hii');
-        });
+        this.http.post('http://tekhab.pythonanywhere.com/ImageEyeeIdF/' , postimage).subscribe( () =>{ });
       }
       if(this.user_id.value && imageStringIdB && typeof imageStringIdB === 'string' ) {
         console.log(imageStringIdB);
@@ -151,11 +124,7 @@ export class PostService {
         postimage.append('eyee_id',this.user_id.value.toString());
         postimage.append('image',file, 'name:image.jpeg');
         console.log("hii");
-        this.http.post('http://tekhab.pythonanywhere.com/ImageEyeeIdB/' , postimage).subscribe( (data:  any) =>{
-          console.log('heyy');  
-          console.log(data);
-          console.log('hii');
-        });
+        this.http.post('http://tekhab.pythonanywhere.com/ImageEyeeIdB/' , postimage).subscribe( () =>{ });
       }
       if(this.user_id.value && imageStringE1 && typeof imageStringE1 === 'string' ) {
         console.log(imageStringE1);
@@ -164,11 +133,7 @@ export class PostService {
         postimage.append('eyee_id',this.user_id.value.toString());
         postimage.append('image',file, 'name:image.jpeg');
         console.log("hii");
-        this.http.post('http://tekhab.pythonanywhere.com/ImageEyeeE/' , postimage).subscribe( (data:  any) =>{
-          console.log('heyy');  
-          console.log(data);
-          console.log('hii');
-        });
+        this.http.post('http://tekhab.pythonanywhere.com/ImageEyeeE/' , postimage).subscribe( () =>{ });
       }
       if(this.user_id.value && imageStringE2 && typeof imageStringE2 === 'string' ) {
         console.log(imageStringE2);
@@ -177,11 +142,7 @@ export class PostService {
         postimage.append('eyee_id',this.user_id.value.toString());
         postimage.append('image',file, 'name:image.jpeg');
         console.log("hii");
-        this.http.post('http://tekhab.pythonanywhere.com/ImageEyeeE/' , postimage).subscribe( (data:  any) =>{
-          console.log('heyy');  
-          console.log(data);
-          console.log('hii');
-        });
+        this.http.post('http://tekhab.pythonanywhere.com/ImageEyeeE/' , postimage).subscribe( () =>{ });
       }
       if(this.user_id.value && imageStringE3 && typeof imageStringE3 === 'string' ) {
         console.log(imageStringE3);
@@ -190,11 +151,7 @@ export class PostService {
         postimage.append('eyee_id',this.user_id.value.toString());
         postimage.append('image',file, 'name:image.jpeg');
         console.log("hii");
-        this.http.post('http://tekhab.pythonanywhere.com/ImageEyeeE/' , postimage).subscribe( (data:  any) =>{
-          console.log('heyy');  
-          console.log(data);
-          console.log('hii');
-        });
+        this.http.post('http://tekhab.pythonanywhere.com/ImageEyeeE/' , postimage).subscribe( () =>{ });
       }
       if(this.user_id.value && imageStringE4 && typeof imageStringE4 === 'string' ) {
         console.log(imageStringE4);
@@ -203,11 +160,7 @@ export class PostService {
         postimage.append('eyee_id',this.user_id.value.toString());
         postimage.append('image',file, 'name:image.jpeg');
         console.log("hii");
-        this.http.post('http://tekhab.pythonanywhere.com/ImageEyeeE/' , postimage).subscribe( (data:  any) =>{
-          console.log('heyy');  
-          console.log(data);
-          console.log('hii');
-        });
+        this.http.post('http://tekhab.pythonanywhere.com/ImageEyeeE/' , postimage).subscribe( () =>{ });
       }
       if(this.user_id.value && imageStringE5 && typeof imageStringE5 === 'string' ) {
         console.log(imageStringE5);
@@ -216,19 +169,13 @@ export class PostService {
         postimage.append('eyee_id',this.user_id.value.toString());
         postimage.append('image',file, 'name:image.jpeg');
         console.log("hii");
-        this.http.post('http://tekhab.pythonanywhere.com/ImageEyeeE/' , postimage).subscribe( (data:  any) =>{
-          console.log('heyy');  
-          console.log(data);
-          console.log('hii');
-        });
+        this.http.post('http://tekhab.pythonanywhere.com/ImageEyeeE/' , postimage).subscribe( () =>{ });
       }
     });
   }
 
   post_job_post(postdata: any, total_job_post: number, eyer_id: number, active_job_post: number) {
-    this.http.post('http://tekhab.pythonanywhere.com/JobPost/', postdata).subscribe( (data) =>{
-      console.log("success");
-      console.log(eyer_id);
+    this.http.post('http://tekhab.pythonanywhere.com/JobPost/', postdata).subscribe( () =>{
       total_job_post += 1;
       active_job_post += 1;
       this.test_put(total_job_post, eyer_id, active_job_post)
@@ -240,9 +187,7 @@ export class PostService {
       eyer_tot_no_job_post: total_job_post,
       eyer_active_job_post: active_job_post,
     }
-    this.http.patch(`http://tekhab.pythonanywhere.com/EmployerDetails/${eyer_id}/`, data ).subscribe( (data) =>{
-      console.log(data);
-    });
+    this.http.patch(`http://tekhab.pythonanywhere.com/EmployerDetails/${eyer_id}/`, data ).subscribe( () =>{ });
   }
 
   onImagePicked(imageData:string) {

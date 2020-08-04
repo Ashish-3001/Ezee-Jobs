@@ -32,7 +32,6 @@ export class EyeeAppliedPage implements OnInit {
       const job_id = paraMap.get('eyer_id');
       this.http.get(`http://tekhab.pythonanywhere.com/JobApplied/?job_id=${job_id}&job_active=true&short_listed=false`).subscribe( (value:any) => {
         this.value = value;
-        console.log(value);
         var k: number = 0;
         for(value.id in value) {
           var j:number =0;
@@ -67,24 +66,16 @@ export class EyeeAppliedPage implements OnInit {
     var pacth = {
       eyee_no_accept: ++this.eyee_no_accept,
     }
-    this.http.patch(`http://tekhab.pythonanywhere.com/JobApplied/${this.value[this.n].id}/`, data ).subscribe( (data) =>{
-      console.log(data);
-    });
-    this.http.post('http://tekhab.pythonanywhere.com/ShortListed/', postdata).subscribe( (data) => {
-      console.log(data);
-    });
-    this.http.patch(`http://tekhab.pythonanywhere.com/EmployeeDetails/${this.value[this.n].eyee_id}/`, pacth).subscribe( (data) => {
-      console.log(data);
-    });
+    this.http.patch(`http://tekhab.pythonanywhere.com/JobApplied/${this.value[this.n].id}/`, data ).subscribe( () =>{ });
+    this.http.post('http://tekhab.pythonanywhere.com/ShortListed/', postdata).subscribe( () => { });
+    this.http.patch(`http://tekhab.pythonanywhere.com/EmployeeDetails/${this.value[this.n].eyee_id}/`, pacth).subscribe( () => { });
   }
 
   reject() {
     var data = {
       job_active: false,
     }
-    this.http.patch(`http://tekhab.pythonanywhere.com/JobApplied/${this.value[this.n].id}/`, data ).subscribe( (data) =>{
-      console.log(data);
-    });
+    this.http.patch(`http://tekhab.pythonanywhere.com/JobApplied/${this.value[this.n].id}/`, data ).subscribe( () =>{ });
   }
   async presentAlertAccept() {
     const alert = await this.alertController.create({
@@ -96,13 +87,9 @@ export class EyeeAppliedPage implements OnInit {
           text: 'Cancel',
           role: 'cancel',
           cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
         }, {
           text: 'Accept',
           handler: () => {
-            console.log('Confirm Okay');
             this.accept();
             this.router.navigate(['/employer-profile/employer-home/menu/apllication-status/', this.value[this.n].job_id]);
           }
@@ -123,13 +110,9 @@ export class EyeeAppliedPage implements OnInit {
           text: 'Cancel',
           role: 'cancel',
           cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
         }, {
           text: 'Reject',
           handler: () => {
-            console.log('Confirm Okay');
             this.reject();
             this.router.navigate(['/employer-profile/employer-home/menu/apllication-status/', this.value[this.n].job_id]);
           }

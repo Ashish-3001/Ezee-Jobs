@@ -32,8 +32,6 @@ export class RegEmployeeBasicPage implements OnInit {
       "phone":postdata.user_phone_no
     }
     this.http.post('http://tekhab.pythonanywhere.com/validate-otp/',otpdata).subscribe( (data:any)=> {
-      console.log(data);
-      console.log("heyy");
       var otp =data.otp.toString();
       this.get.otp_verification.next(otp);
       this.get.eyer_time.next(data.time)

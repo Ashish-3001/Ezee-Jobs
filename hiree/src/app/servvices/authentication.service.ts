@@ -32,11 +32,9 @@ export class AuthenticationService {
   login(type:string, user_id: number) {
     if(type == 'employee'){
       this.http.get('http://tekhab.pythonanywhere.com/EmployeeDetails/').subscribe( (data) =>{
-        console.log(data);
         for(var j=0; j >=0;j++) {
           if(user_id == data[j].user_id) {
             this.storage.set(DATA_KEY, data[j] ).then(res => {
-              console.log(res);
             });
             break;
           }
@@ -45,11 +43,9 @@ export class AuthenticationService {
     }
     else if(type == 'employer') {
       this.http.get('http://tekhab.pythonanywhere.com/EmployerDetails/').subscribe( (data) =>{
-        console.log(data);
         for(var j=0; j >=0;j++) {
           if(user_id == data[j].user_id) {
             this.storage.set(DATA_KEY, data[j] ).then(res => {
-              console.log(res);
             });
             break;
           }

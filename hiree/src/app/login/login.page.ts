@@ -34,14 +34,10 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    /*this.form = new FormGroup({
-      image: new FormControl(null, { validators: [Validators.required]}),
-    })*/
   }
 
   ionViewWillEnter() {
     this.menuCtrl.enable(false);
-    
   }
 
   LogIn_var(form: NgForm) {
@@ -49,20 +45,16 @@ export class LoginPage implements OnInit {
     
     this.http.get('http://tekhab.pythonanywhere.com/UserLogin/').subscribe( (data) =>{      
       this.dat = data;
-      console.log("heyy");
       var state:boolean;
       for(this.i; this.i >= 0; this.i++){
         if(this.dat[this.i]) {
           if(login_id == this.dat[this.i].user_phone_no){
             this.authService.login(this.dat[this.i].user_type, this.dat[this.i].id);
             this.login.logged_user_id.next(this.dat[this.i].id);
-            console.log("heyy");
             var postdata = {
               "phone":this.dat[this.i].user_phone_no
             }
             this.http.post('http://tekhab.pythonanywhere.com/validate-otp/',postdata).subscribe( (data:any)=> {
-              console.log(data);
-              console.log("heyy");
               var otp =data.otp.toString();
               this.login.otp_verification.next(otp);
               this.login.eyer_time.next(data.time)
@@ -71,8 +63,6 @@ export class LoginPage implements OnInit {
               modalEl.present();
             });
             state = true;
-            console.log(this.menu.state);
-            console.log(this.dat[this.i].id);
             this.i=0;
             break;
           }
@@ -94,8 +84,5 @@ export class LoginPage implements OnInit {
     this.menu.ngOnInit();
   }
 
-  ionViewDidLeave() {
-    
-  }
 }
  

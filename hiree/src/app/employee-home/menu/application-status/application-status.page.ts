@@ -36,7 +36,6 @@ export class ApplicationStatusPage implements OnInit {
       this.eyee_no_accept = value.eyee_no_accept;
       this.http.get(`http://tekhab.pythonanywhere.com/JobOffer/?job_id=&eyee_id=${this.eyee_id}&job_active=true&short_listed=false`).subscribe( (value:any) =>{
         this.value1 = value;
-        console.log(value);
         var k: number = 0;
         for(value.id in value) {
           var j:number =0;
@@ -47,7 +46,6 @@ export class ApplicationStatusPage implements OnInit {
       });
       this.http.get(`http://tekhab.pythonanywhere.com/JobApplied/?job_id=&eyee_id=${this.eyee_id}&job_active=true&short_listed=false`).subscribe( (value:any) =>{
         this.value2 = value;
-        console.log(value);
         var k: number = 0;
         for(value.id in value) {
           var j:number =0;
@@ -58,7 +56,6 @@ export class ApplicationStatusPage implements OnInit {
       });
       this.http.get(`http://tekhab.pythonanywhere.com/ShortListed/?job_id=&eyee_id=${this.eyee_id}&confirmed=false&job_active=true`).subscribe( (value:any) =>{
         this.value3 = value;
-        console.log(value);
         var k: number = 0;
         for(value.id in value) {
           var j:number =0;
@@ -89,28 +86,25 @@ export class ApplicationStatusPage implements OnInit {
     if(type=='jobs_offered'){
       this.eyer_id = this.jobs_offered[this.n].eyer_id;
       this.http.get(`http://tekhab.pythonanywhere.com/ImageEyerPic/?eyer_id=${this.eyer_id}`).subscribe((data: any) => {
-        console.log(data);
         this.image1 = data[0].image;
         this.image2 = data[1].image;
-        this.image1 = data[2].image;
+        this.image3 = data[2].image;
       });
     }
     else if(type=='applied_jobs') {
       this.eyer_id = this.applied_jobs[this.n].eyer_id;
       this.http.get(`http://tekhab.pythonanywhere.com/ImageEyerPic/?eyer_id=${this.eyer_id}`).subscribe((data: any) => {
-        console.log(data);
         this.image1 = data[0].image;
         this.image2 = data[1].image;
-        this.image1 = data[2].image;
+        this.image3 = data[2].image;
       });
     }
     else if(type=='shortlisted') {
       this.eyer_id = this.shortlisted[this.n].eyer_id;
       this.http.get(`http://tekhab.pythonanywhere.com/ImageEyerPic/?eyer_id=${this.eyer_id}`).subscribe((data: any) => {
-        console.log(data);
         this.image1 = data[0].image;
         this.image2 = data[1].image;
-        this.image1 = data[2].image;
+        this.image3 = data[2].image;
       });
     }
   }
@@ -129,24 +123,16 @@ export class ApplicationStatusPage implements OnInit {
     var pacth = {
       eyee_no_accept: ++this.eyee_no_accept,
     }
-    this.http.patch(`http://tekhab.pythonanywhere.com/JobOffer/${this.value1[this.n].id}/`, data ).subscribe( (data) =>{
-      console.log(data);
-    });
-    this.http.post('http://tekhab.pythonanywhere.com/ShortListed/', postdata).subscribe( (data) => {
-      console.log(data);
-    });
-    this.http.patch(`http://tekhab.pythonanywhere.com/EmployeeDetails/${this.eyee_id}/`, pacth).subscribe( (data) => {
-      console.log(data);
-    });
+    this.http.patch(`http://tekhab.pythonanywhere.com/JobOffer/${this.value1[this.n].id}/`, data ).subscribe( () =>{ });
+    this.http.post('http://tekhab.pythonanywhere.com/ShortListed/', postdata).subscribe( () => { });
+    this.http.patch(`http://tekhab.pythonanywhere.com/EmployeeDetails/${this.eyee_id}/`, pacth).subscribe( () => { });
   }
 
   reject() {
     var data = {
       job_active: false,
     }
-    this.http.patch(`http://tekhab.pythonanywhere.com/JobApplied/${this.value1[this.n].id}/`, data ).subscribe( (data) =>{
-      console.log(data);
-    });
+    this.http.patch(`http://tekhab.pythonanywhere.com/JobApplied/${this.value1[this.n].id}/`, data ).subscribe( () =>{ });
   }
 
   async presentAlertAccept() {
@@ -159,14 +145,12 @@ export class ApplicationStatusPage implements OnInit {
           text: 'Cancel',
           role: 'cancel',
           cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
         }, {
           text: 'Accept',
           handler: () => {
-            console.log('Confirm Okay');
             this.accept();
+            this.state1(0,'null');
+            this.ngOnInit();
           }
         }
       ]
@@ -185,14 +169,11 @@ export class ApplicationStatusPage implements OnInit {
           text: 'Cancel',
           role: 'cancel',
           cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
         }, {
           text: 'Reject',
           handler: () => {
-            console.log('Confirm Okay');
             this.reject();
+            this.state1(0,'null');
           }
         }
       ]

@@ -28,9 +28,7 @@ export class DetailsPage implements OnInit {
       }
       const eyee_id = paraMap.get('eyer_id');
       var i:number =0;
-      this.http.get(`http://tekhab.pythonanywhere.com/EmployeeDetails/${eyee_id}`).subscribe((data)=>{
-        this.details = data;
-      });
+      this.http.get(`http://tekhab.pythonanywhere.com/EmployeeDetails/${eyee_id}`).subscribe(() =>{ });
       this.http.get(`http://tekhab.pythonanywhere.com/ImageEyeeDp/?eyee_id=${eyee_id}`).subscribe((data: any) => {
         this.image = data[0].image_dp;
       });

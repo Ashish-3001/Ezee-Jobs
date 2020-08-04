@@ -20,19 +20,17 @@ export class DetailsPage implements OnInit {
   ngOnInit() {
     this.acitivatedRoute.paramMap.subscribe(paraMap => {
       if(!paraMap.has('eyee_id')) {
-        console.log('error');
+          console.log('error');
         return
       }
       const eyee_id = paraMap.get('eyee_id');
       var i:number =0;
       this.http.get(`http://tekhab.pythonanywhere.com/JobPost/${eyee_id}`).subscribe((data:any)=>{
         this.details = data;
-        console.log(data.eyer_id);
         this.http.get(`http://tekhab.pythonanywhere.com/ImageEyerPic/?eyer_id=${data.eyer_id}`).subscribe((data: any) => {
-          console.log(data);
           this.image1 = data[0].image;
           this.image2 = data[1].image;
-          this.image1 = data[2].image;
+          this.image3 = data[2].image;
         });
       });
     });

@@ -38,12 +38,10 @@ export class GetService {
 
 
   get_employee(e_c:any,e_s:any,e_ex:any,e_e:any,e_l:any,e_a:any,e_g:any,eyer_id:number) {
-    console.log(e_c);
     this.results_eyee_details = [];
     var remove_offer_jobs:any =[];
     return this.http.get(`http://tekhab.pythonanywhere.com/JobOffer/?eyer_id=${eyer_id}`).toPromise().then( (data) =>{
       remove_offer_jobs = data;
-      console.log(remove_offer_jobs);
       this.http.get(`http://tekhab.pythonanywhere.com/JobApplied/?eyer_id=${eyer_id}`).toPromise().then( (data) =>{
         for(var i=0; i>=0;i++) {
           if(data[i]) {
@@ -60,8 +58,7 @@ export class GetService {
                 console.log("hi");
               }
               else {
-                this.results_eyee_details.push(data[i]);
-                console.log(data[i]);
+                this.results_eyee_details.push(data[i]);  
               }
             }
             else {
@@ -76,7 +73,6 @@ export class GetService {
                 }
                 else {
                   this.results_eyee_details.push(data[i]);
-                  console.log(data[i]);
                 }
               }
               else {
@@ -91,7 +87,6 @@ export class GetService {
                   }
                   else {
                     this.results_eyee_details.push(data[i]);
-                    console.log(data[i]);
                   }
                 }
                 else {
@@ -105,8 +100,7 @@ export class GetService {
                       console.log("hi");
                     }
                     else {
-                      this.results_eyee_details.push(data[i]);
-                      console.log(data[i]);
+                      this.results_eyee_details.push(data[i]);  
                     }
                   }
                   else {
@@ -120,8 +114,7 @@ export class GetService {
                         console.log("hi");
                       }
                       else {
-                        this.results_eyee_details.push(data[i]);
-                        console.log(data[i]);
+                        this.results_eyee_details.push(data[i]);  
                       }
                     }
                     else {
@@ -135,8 +128,7 @@ export class GetService {
                           console.log("hi");
                         }
                         else {
-                          this.results_eyee_details.push(data[i]);
-                          console.log(data[i]);
+                          this.results_eyee_details.push(data[i]);  
                         }
                       }
                       else {
@@ -151,7 +143,6 @@ export class GetService {
                           }
                           else {
                             this.results_eyee_details.push(data[i]);
-                            console.log(data[i]);
                           }
                         }
                         else {
@@ -166,7 +157,6 @@ export class GetService {
                             }
                             else {
                               this.results_eyee_details.push(data[i]);
-                              console.log(data[i]);
                             }
                           }
                           else {
@@ -189,7 +179,6 @@ export class GetService {
   get_employer() {
     let promise= new Promise((resolve, reject ) =>{
       this.http.get('http://tekhab.pythonanywhere.com/EmployerDetails/').toPromise().then( (data) =>{
-      console.log(data);
       this.results_eyer_details = data;
       resolve();
     },
@@ -202,11 +191,9 @@ export class GetService {
   }
 
   get_job_post(j_P:any,j_s:any,j_l:any,j_e:any,j_a:any,j_g:any,j_ex:any,j_c:any,s:any,eyee_id:any) {
-    console.log(s);
     this.results_job_post =[];
     return this.http.get(`http://tekhab.pythonanywhere.com/JobApplied/?eyee_id=${eyee_id}`).toPromise().then( (data) =>{
       var remove_offer_jobs:any = data;
-      console.log(remove_offer_jobs);
       this.http.get(`http://tekhab.pythonanywhere.com/JobOffer/?eyee_id=${eyee_id}`).toPromise().then( (data) =>{
         for(var i=0; i>=0;i++) {
           if(data[i]) {
@@ -224,7 +211,6 @@ export class GetService {
               }
               else {
                 this.results_job_post.push(data[i]);
-                console.log(data[i]);
               }
             }
             else {
@@ -239,7 +225,6 @@ export class GetService {
                 }
                 else {
                   this.results_job_post.push(data[i]);
-                  console.log(data[i]);
                 }
               }
               else {
@@ -254,7 +239,6 @@ export class GetService {
                   }
                   else {
                     this.results_job_post.push(data[i]);
-                    console.log(data[i]);
                   }
                 }
                 else {
@@ -269,7 +253,6 @@ export class GetService {
                     }
                     else {
                       this.results_job_post.push(data[i]);
-                      console.log(data[i]);
                     }
                   }
                   else {
@@ -283,8 +266,7 @@ export class GetService {
                         console.log("hi");
                       }
                       else {
-                        this.results_job_post.push(data[i]);
-                        console.log(data[i]);
+                        this.results_job_post.push(data[i]);  
                       }
                     }
                     else {
@@ -299,7 +281,6 @@ export class GetService {
                         }
                         else {
                           this.results_job_post.push(data[i]);
-                          console.log(data[i]);
                         }
                       }
                       else {
@@ -314,7 +295,6 @@ export class GetService {
                           }
                           else {
                             this.results_job_post.push(data[i]);
-                            console.log(data[i]);
                           }
                         }
                         else {
@@ -329,7 +309,6 @@ export class GetService {
                             }
                             else {
                               this.results_job_post.push(data[i]);
-                              console.log(data[i]);
                             }
                           }
                           else {
@@ -348,32 +327,4 @@ export class GetService {
       });
     });
   }
-  get data() {
-    return this.results_job_post;
-  }
-
-
-
-  /* get_image(data: any) {
-    
-    for(var i=0; i>=0;i++){
-      if(data[i]) {
-        var b =data[i].id;
-        this.http.get(`http://tekhab.pythonanywhere.com/ImageEyeeDp/?eyee_id=${b}`).subscribe(
-          (data:any) => {
-            if(data[0]) {
-              this.image_eyee.push(data[0]);
-            }
-            else {
-              this.image_eyee.push(null);
-            }
-          });
-      }
-      else {
-        console.log(this.image_eyee);
-        break;
-      }
-    }
-  } */
-
 }

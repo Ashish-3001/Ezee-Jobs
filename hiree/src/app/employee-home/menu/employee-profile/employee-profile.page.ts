@@ -32,28 +32,4 @@ export class EmployeeProfilePage implements OnInit {
     this.job_post_toggle = !this.job_post_toggle;
   }
 
-  async presentAlertConfirm() {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'Confirm!',
-      message: 'Message <strong>text</strong>!!!',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
-        }, {
-          text: 'Okay',
-          handler: () => {
-            console.log('Confirm Okay');
-          }
-        }
-      ]
-    });
-
-    await alert.present();
-  }
 }
