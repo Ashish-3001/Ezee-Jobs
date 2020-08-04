@@ -92,12 +92,13 @@ export class FolderPage implements OnInit {
   ionViewWillEnter() {
     this.menuCtrl.enable(true);
     this.get.job_post_state.subscribe( (number) => {
+      this.active_job_post_name = [];
       this.authService.data.then((value:any) => {
         this.eyer_details = value;
         this.http.get(`http://tekhab.pythonanywhere.com/JobPost/?eyer_id=${value.id}&job_active=true`).subscribe( (value:any) => {
           for(var i=0;i<3;i++) {
             if(value[i]) {
-              this.active_job_post_name.push(value[i].job_post) 
+              this.active_job_post_name.push(value[i].job_post);
             }
             else {
               break;
