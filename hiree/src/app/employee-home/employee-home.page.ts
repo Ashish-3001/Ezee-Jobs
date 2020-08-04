@@ -41,11 +41,8 @@ export class EmployeeHomePage implements OnInit {
         var pacthdata = {
           unliked: false,
         }
-        this.http.patch(`http://tekhab.pythonanywhere.com/EmployeeDetailsFav/${this.fav[i].id}/`, pacthdata).subscribe( () => { 
-          console.log("success");
-        });
+        this.http.patch(`http://tekhab.pythonanywhere.com/EmployeeDetailsFav/${this.fav[i].id}/`, pacthdata).subscribe( () => { });
         this.selectedIndex.push(f);
-        console.log(this.selectedIndex);
         return;
       }
     }
@@ -56,11 +53,9 @@ export class EmployeeHomePage implements OnInit {
       job_post: this.results_job[a].job_post,
     }
     this.http.post('http://tekhab.pythonanywhere.com/EmployeeDetailsFav/', postdata).subscribe( (value:any) => {
-      console.log("post ('liking for the 1st time')");
       this.http.get(`http://tekhab.pythonanywhere.com/EmployeeDetailsFav/?eyee_id=${this.eyee_details.id}`).subscribe( (data:any) => {
         this.fav = data;
         this.selectedIndex.push(value.job_id);
-        console.log(this.selectedIndex);
       });
       this.k++;
     });
@@ -72,13 +67,10 @@ export class EmployeeHomePage implements OnInit {
         var pacthdata = {
           unliked: true,
         }
-        this.http.patch(`http://tekhab.pythonanywhere.com/EmployeeDetailsFav/${this.fav[i].id}/`, pacthdata).subscribe( () => { 
-          console.log("success");
-        });
+        this.http.patch(`http://tekhab.pythonanywhere.com/EmployeeDetailsFav/${this.fav[i].id}/`, pacthdata).subscribe( () => { });
         const index = this.selectedIndex.indexOf(f);
         if (index > -1) {
           this.selectedIndex.splice(index, 1);
-          console.log(this.selectedIndex);
         }
       }
     }
@@ -89,9 +81,7 @@ export class EmployeeHomePage implements OnInit {
       var pacthjob = {
         job_post_opened: ++data.job_post_opened,
       }
-      this.http.patch(`http://tekhab.pythonanywhere.com/JobPost/${id}/`, pacthjob).subscribe( (data) => {
-        console.log(data);
-      });
+      this.http.patch(`http://tekhab.pythonanywhere.com/JobPost/${id}/`, pacthjob).subscribe( () => { });
     });
 
   }
@@ -103,8 +93,6 @@ export class EmployeeHomePage implements OnInit {
   ionViewDidEnter() {
     this.authService.data.then((value:any) => {
       this.eyee_details = value;
-      console.log(value);
-      console.log(this.test);
       var eyee_choice:any;
       if(this.test.toLowerCase() == "manager" || 
         this.test.toLowerCase() == "chef" || 
@@ -129,7 +117,6 @@ export class EmployeeHomePage implements OnInit {
         this.test,
         this.eyee_details.id).then((res:any) => {
         this.results_job = this.get.results_job_post;
-        console.log(this.results_job);
         this.http.get(`http://tekhab.pythonanywhere.com/EmployeeDetailsFav/?eyee_id=${this.eyee_details.id}&unliked=`).subscribe( (data:any) => {
           this.fav = data;
           for(var i=0; i>=0;i++) {
@@ -138,7 +125,6 @@ export class EmployeeHomePage implements OnInit {
                 this.selectedIndex.push(this.fav[i].job_id);
               }
               this.k++;
-              console.log(this.k);
             }
             else {
               break;
@@ -152,7 +138,6 @@ export class EmployeeHomePage implements OnInit {
   tset(search:string) {
     this.search_state = !this.search_state;
     this.test = search;
-    console.log(search);
     this.ionViewDidEnter();
   }
 }
