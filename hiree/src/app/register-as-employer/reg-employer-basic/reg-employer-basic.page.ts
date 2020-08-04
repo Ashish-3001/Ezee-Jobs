@@ -18,8 +18,7 @@ export class RegEmployerBasicPage implements OnInit {
   constructor(private modalCtrl: ModalController, 
     private postdata:PostService,
     private http: HttpClient,
-    private get: GetService,
-    private otp: OtpVerifyComponent) { }
+    private get: GetService) { }
 
   ngOnInit() {
   }
@@ -39,8 +38,6 @@ export class RegEmployerBasicPage implements OnInit {
       "phone":form.value.phone
     }
     this.http.post('http://tekhab.pythonanywhere.com/validate-otp/',otpdata).subscribe( (data:any)=> {
-      console.log(data);
-      console.log("heyy");
       var otp =data.otp.toString();
       this.get.otp_verification.next(otp);
       this.get.eyer_time.next(data.time)

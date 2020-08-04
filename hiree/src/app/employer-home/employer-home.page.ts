@@ -44,7 +44,6 @@ export class FolderPage implements OnInit {
 
   state() {
     this.job_post_toggle = !this.job_post_toggle;
-    console.log(this.get.job_post_state.value);
   }
  
   like(f, a) {
@@ -54,11 +53,8 @@ export class FolderPage implements OnInit {
         var pacthdata = {
           unliked: false,
         }
-        this.http.patch(`http://tekhab.pythonanywhere.com/EmployerDetailsFav/${this.fav[i].id}/`, pacthdata).subscribe( () => { 
-          console.log("success");
-        });
+        this.http.patch(`http://tekhab.pythonanywhere.com/EmployerDetailsFav/${this.fav[i].id}/`, pacthdata).subscribe( () => { });
         this.selectedIndex.push(f);
-        console.log(this.selectedIndex);
         return;
       }
     }
@@ -69,11 +65,9 @@ export class FolderPage implements OnInit {
       eyee_name: this.results[a].eyee_name,
     }
     this.http.post('http://tekhab.pythonanywhere.com/EmployerDetailsFav/', postdata).subscribe( (value:any) => {
-      console.log("post ('liking for the 1st time')");
       this.http.get(`http://tekhab.pythonanywhere.com/EmployerDetailsFav/?eyer_id=${this.eyer_details.id}`).subscribe( (data:any) => {
         this.fav = data;
         this.selectedIndex.push(value.eyee_id);
-        console.log(this.selectedIndex);
       });
       this.k++;
     });
@@ -85,13 +79,10 @@ export class FolderPage implements OnInit {
         var pacthdata = {
           unliked: true,
         }
-        this.http.patch(`http://tekhab.pythonanywhere.com/EmployerDetailsFav/${this.fav[i].id}/`, pacthdata).subscribe( () => { 
-          console.log("success");
-        });
+        this.http.patch(`http://tekhab.pythonanywhere.com/EmployerDetailsFav/${this.fav[i].id}/`, pacthdata).subscribe( () => { });
         const index = this.selectedIndex.indexOf(f);
         if (index > -1) {
           this.selectedIndex.splice(index, 1);
-          console.log(this.selectedIndex);
         }
       }
     }
@@ -113,7 +104,6 @@ export class FolderPage implements OnInit {
             }
           }
           this.active_job_post = value[this.get.job_post_state.value];
-          console.log(this.active_job_post);
           this.get.get_employee(this.active_job_post.job_post,
             this.active_job_post.job_salary,
             this.active_job_post.job_experience,
@@ -124,7 +114,6 @@ export class FolderPage implements OnInit {
             this.eyer_details.id).then( (res) => {
             this.results = this.get.results_eyee_details;
             this.test = this.get.image_eyee;
-            console.log(this.test);
             this.http.get(`http://tekhab.pythonanywhere.com/EmployerDetailsFav/?eyer_id=${this.eyer_details.id}`).subscribe( (data:any) => {
               this.fav = data;
               for(var i=0; i>=0;i++) {
@@ -133,7 +122,6 @@ export class FolderPage implements OnInit {
                     this.selectedIndex.push(this.fav[i].eyee_id);
                   }
                   this.k++;
-                  console.log(this.k);
                 }
                 else {
                   break;

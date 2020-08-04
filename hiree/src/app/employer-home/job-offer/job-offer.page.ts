@@ -54,15 +54,11 @@ export class JobOfferPage implements OnInit {
               job_no_emplyee_offered = data[0].job_no_emplyee_offered;
               postdata.job_id = data[0].id;
               postdata.job_post = data[0].job_post;
-              this.http.post('http://tekhab.pythonanywhere.com/JobOffer/', postdata).subscribe( (data) => {
-                console.log(data);
-              });
+              this.http.post('http://tekhab.pythonanywhere.com/JobOffer/', postdata).subscribe( () => { });
               var pacthjob = {
                 job_no_emplyee_offered: ++job_no_emplyee_offered,
               }
-              this.http.patch(`http://tekhab.pythonanywhere.com/JobPost/${postdata.job_id}/`, pacthjob).subscribe( (data) => {
-                console.log(data);
-              });
+              this.http.patch(`http://tekhab.pythonanywhere.com/JobPost/${postdata.job_id}/`, pacthjob).subscribe( () => { });
             });
           }
           else if(this.get.job_post_state.value == 1) {
@@ -70,15 +66,11 @@ export class JobOfferPage implements OnInit {
               job_no_emplyee_offered = data[1].job_no_emplyee_offered;
               postdata.job_id = data[1].id;
               postdata.job_post = data[1].job_post;
-              this.http.post('http://tekhab.pythonanywhere.com/JobOffer/', postdata).subscribe( (data) => {
-                console.log(data);
-              });
+              this.http.post('http://tekhab.pythonanywhere.com/JobOffer/', postdata).subscribe( () => { });
               var pacthjob = {
                 job_no_emplyee_offered: ++job_no_emplyee_offered,
               }
-              this.http.patch(`http://tekhab.pythonanywhere.com/JobPost/${postdata.job_id}/`, pacthjob).subscribe( (data) => {
-                console.log(data);
-              });
+              this.http.patch(`http://tekhab.pythonanywhere.com/JobPost/${postdata.job_id}/`, pacthjob).subscribe( () => { });
             });
           }
           else if(this.get.job_post_state.value == 2) {
@@ -86,29 +78,21 @@ export class JobOfferPage implements OnInit {
               job_no_emplyee_offered = data[2].job_no_emplyee_offered;
               postdata.job_id = data[2].id;
               postdata.job_post = data[2].job_post;
-              this.http.post('http://tekhab.pythonanywhere.com/JobOffer/', postdata).subscribe( (data) => {
-                console.log(data);
-              });
+              this.http.post('http://tekhab.pythonanywhere.com/JobOffer/', postdata).subscribe( () => { });
               var pacthjob = {
                 job_no_emplyee_offered: ++job_no_emplyee_offered,
               }
-              this.http.patch(`http://tekhab.pythonanywhere.com/JobPost/${postdata.job_id}/`, pacthjob).subscribe( (data) => {
-                console.log(data);
-              });
+              this.http.patch(`http://tekhab.pythonanywhere.com/JobPost/${postdata.job_id}/`, pacthjob).subscribe( () => { });
             });
           }
           var pactheyee = {
             eyee_no_offered: ++eyee_no_offered,
           }
-          this.http.patch(`http://tekhab.pythonanywhere.com/EmployeeDetails/${postdata.eyee_id}/`, pactheyee).subscribe( (data) => {
-            console.log(data);
-          });
+          this.http.patch(`http://tekhab.pythonanywhere.com/EmployeeDetails/${postdata.eyee_id}/`, pactheyee).subscribe( () => { });
           var pactheyer = {
             eyer_job_offer: ++eyer_job_offer,
           }
-          this.http.patch(`http://tekhab.pythonanywhere.com/EmployerDetails/${value.id}/`, pactheyer).subscribe( (data) => {
-            console.log(data);
-          });
+          this.http.patch(`http://tekhab.pythonanywhere.com/EmployerDetails/${value.id}/`, pactheyer).subscribe( () => { });
         });
       });
     });
@@ -118,20 +102,16 @@ export class JobOfferPage implements OnInit {
   async presentAlertConfirm() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Ofeer Job',
+      header: 'Offer Job',
       message: 'Are you <strong>Sure</strong>!!!',
       buttons: [
         {
           text: 'Cancel',
           role: 'cancel',
           cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
         }, {
           text: 'Offer',
           handler: () => {
-            console.log('Confirm Okay');
             this.offer_job();
           }
         }

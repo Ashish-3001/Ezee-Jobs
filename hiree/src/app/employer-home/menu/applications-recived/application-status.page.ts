@@ -18,10 +18,8 @@ export class ApplicationsRecPage implements OnInit {
 
   ngOnInit() {
     this.authService.data.then((value) => {
-      console.log(value);
       this.eyer_id = value.id;
       this.http.get(`http://tekhab.pythonanywhere.com/JobPost/?eyer_id=${value.id}&job_active=true`).subscribe((data)=>{
-       console.log(data);
        this.results_job = data;
       });
     });

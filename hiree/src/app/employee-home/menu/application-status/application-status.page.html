@@ -24,6 +24,9 @@
   </div>
 
   <div *ngIf='this.page_state == "Offers Recived"'>
+    <div *ngIf='!this.value1[0]'>
+      Null
+    </div>
     <div *ngIf='this.value1[0]'>
       <ion-grid>
         <ion-row>
@@ -166,10 +169,10 @@
                   </ion-row>
                   <ion-row>
                     <ion-col>
-                      <ion-button expand="block" color="danger" (click) = "presentAlertReject() || state1(0)" >Reject</ion-button>
+                      <ion-button expand="block" color="danger" (click) = "presentAlertReject() " >Reject</ion-button>
                     </ion-col>
                     <ion-col>
-                      <ion-button expand="block" color="success" (click) = "presentAlertAccept() || state1(0) || ngOnInit()">Accept</ion-button>
+                      <ion-button expand="block" color="success" (click) = "presentAlertAccept() ">Accept</ion-button>
                     </ion-col>
                   </ion-row>
               </ion-grid>         
@@ -182,6 +185,9 @@
   </div>
 
   <div *ngIf='this.page_state == "Applied Jobs"'>
+    <div *ngIf='!this.value2[0]'>
+      Null
+    </div>
     <div *ngIf='this.value2[0]'>
       <ion-grid>
         <ion-row>
@@ -313,12 +319,21 @@
   </div>
 
   <div *ngIf='this.page_state == "Shortlisted"'>
+    <div *ngIf='!this.value3[0]'>
+      Null
+    </div>
     <div *ngIf='this.value3[0]'>
       <ion-grid>
         <ion-row>
           <ion-col size-md="6" offset-md="3">
             <ion-card *ngFor = " let result of this.shortlisted; let i = index" >
               <div *ngIf= "!job_post_toggle">
+                <div class="reason">
+                  <b> Congratulations</b><br><br>
+                  You have been Shortlisted<br>
+                  Just one step Away from Working with US !!<br><br>
+                  <b>Regards</b>
+                </div>
                 <ion-card-header color="light">
                   <ion-row>
                     <ion-col size="8">
@@ -327,7 +342,6 @@
                       </ion-card-title>
                       <ion-card-subtitle >
                       {{ result.eyer_name }}<br>
-                      
                       </ion-card-subtitle>
                     </ion-col>
                   </ion-row>
@@ -365,6 +379,14 @@
                   </ion-slides>
                 </ion-col>
               </ion-row>
+              <div class="reason">
+                <b> Congratulations</b><br><br>
+                You have been Shortlisted<br>
+                Just one step Away from Working with US !!<br>
+                <b>If Interested</b><br>
+                  Get in Touch Later You are required to ensure that your douments are Ready before the first day of work.<br><br>
+                <b>Regards</b>
+              </div>
               <ion-card-header color="light">
                 <ion-card-title>
                   {{ shortlisted[n].job_post }}

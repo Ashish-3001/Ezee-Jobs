@@ -33,7 +33,6 @@ export class EyeeShortlistedPage implements OnInit {
       const job_id = paraMap.get('eyer_id');
       this.http.get(`http://tekhab.pythonanywhere.com/ShortListed/?job_id=${job_id}&confirmed=false&job_active=true`).subscribe( (value:any) => {
         this.value = value;
-        console.log(value);
         var k: number = 0;
         for(value.id in value) {
           var j:number =0;
@@ -59,28 +58,20 @@ export class EyeeShortlistedPage implements OnInit {
       confirmed: true,
       job_active: false,
     }
-    this.http.patch(`http://tekhab.pythonanywhere.com/ShortListed/${this.value[this.n].id}/`, data ).subscribe( (data) =>{
-      console.log(data);
-    });
+    this.http.patch(`http://tekhab.pythonanywhere.com/ShortListed/${this.value[this.n].id}/`, data ).subscribe( () =>{ });
     var deletedata = {
       job_active: false,
     }
-    this.http.patch(`http://tekhab.pythonanywhere.com/JobPost/${this.value[this.n].job_id}/`, deletedata ).subscribe( (data) =>{
-      console.log(data);
-    });
+    this.http.patch(`http://tekhab.pythonanywhere.com/JobPost/${this.value[this.n].job_id}/`, deletedata ).subscribe( () =>{ });
     var pactheyee = {
       eyee_no_shortlisted: ++this.eyee_no_shortlisted,
     }
-    this.http.patch(`http://tekhab.pythonanywhere.com/EmployeeDetails/${this.value[this.n].eyee_id}/`, pactheyee).subscribe( (data) => {
-      console.log(data);
-    });
+    this.http.patch(`http://tekhab.pythonanywhere.com/EmployeeDetails/${this.value[this.n].eyee_id}/`, pactheyee).subscribe( () => { });
     this.authService.data.then( (value) => {
       var pactheyer = {
         eyer_job_hier: ++value.eyer_job_hier,
       }
-      this.http.patch(`http://tekhab.pythonanywhere.com/EmployerDetails/${this.value[this.n].eyee_id}/`, pactheyer).subscribe( (data) => {
-        console.log(data);
-      });
+      this.http.patch(`http://tekhab.pythonanywhere.com/EmployerDetails/${this.value[this.n].eyee_id}/`, pactheyer).subscribe( () => { });
     });
   }
 
@@ -88,9 +79,7 @@ export class EyeeShortlistedPage implements OnInit {
     var data = {
       job_active: false,
     }
-    this.http.patch(`http://tekhab.pythonanywhere.com/ShortListed/${this.value[this.n].id}/`, data ).subscribe( (data) =>{
-      console.log(data);
-    });
+    this.http.patch(`http://tekhab.pythonanywhere.com/ShortListed/${this.value[this.n].id}/`, data ).subscribe( () =>{ });
   }
 
   async presentAlertComfirm() {
@@ -103,13 +92,9 @@ export class EyeeShortlistedPage implements OnInit {
           text: 'Cancel',
           role: 'cancel',
           cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
         }, {
           text: 'confirm',
           handler: () => {
-            console.log('Confirm Okay');
             this.confirm();
             this.router.navigate(['/employer-profile/employer-home/menu/apllication-status/']);
           }
@@ -130,13 +115,9 @@ export class EyeeShortlistedPage implements OnInit {
           text: 'Cancel',
           role: 'cancel',
           cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
         }, {
           text: 'Reject',
           handler: () => {
-            console.log('Confirm Okay');
             this.reject();
             this.router.navigate(['/employer-profile/employer-home/menu/apllication-status/', this.value[this.n].job_id]);
           }

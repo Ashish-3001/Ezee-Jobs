@@ -53,25 +53,18 @@ export class EmployeeApplyPage implements OnInit {
     });
   }
   apply(form: NgForm) {
-    console.log("good");
     this.postdata.reason = form.value.reason;
     this.postdata.what_can_he_do = form.value.for_hotel;
     this.postdata.quries = form.value.queries;
-    this.http.post('http://tekhab.pythonanywhere.com/JobApplied/', this.postdata).subscribe( (data) => {
-      console.log(data);
-    });
+    this.http.post('http://tekhab.pythonanywhere.com/JobApplied/', this.postdata).subscribe( () => { });
     var pactheyee = {
       eyee_no_appiled: ++this.eyee_no_appiled,
     }
-    this.http.patch(`http://tekhab.pythonanywhere.com/EmployeeDetails/${this.postdata.eyee_id}/`, pactheyee).subscribe( (data) => {
-      console.log(data);
-    });
+    this.http.patch(`http://tekhab.pythonanywhere.com/EmployeeDetails/${this.postdata.eyee_id}/`, pactheyee).subscribe( () => { });
     var pacthjob = {
       job_no_emplyee_appilied: ++this.job_no_emplyee_appilied,
     }
-    this.http.patch(`http://tekhab.pythonanywhere.com/JobPost/${this.postdata.job_id}/`, pacthjob).subscribe( (data) => {
-      console.log(data);
-    });
+    this.http.patch(`http://tekhab.pythonanywhere.com/JobPost/${this.postdata.job_id}/`, pacthjob).subscribe( () => { });
     setTimeout(()=>{ this.router.navigate(['/employee-home']); }, 2000)
   }
   
@@ -85,19 +78,14 @@ export class EmployeeApplyPage implements OnInit {
           text: 'Cancel',
           role: 'cancel',
           cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
         }, {
           text: 'Apply',
           handler: () => {
-            console.log('Confirm Okay');
             this.apply(form);
           }
         }
       ]
     });
-
     await alert.present();
   }
 }

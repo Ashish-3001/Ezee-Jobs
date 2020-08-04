@@ -36,11 +36,9 @@ export class FavouritesPage implements OnInit {
               this.selectedIndex.push(this.fav[i].job_id);
               this.http.get(`http://tekhab.pythonanywhere.com/JobPost/${this.fav[i].job_id}/`).subscribe( (data) => {
                 this.results_job[b++] = data;
-                console.log(this.results_job);
               });
             }
             this.k++;
-            console.log(this.k);
           }
           else {
             break;
@@ -57,19 +55,14 @@ export class FavouritesPage implements OnInit {
         var pacthdata = {
           unliked: true,
         }
-        this.http.patch(`http://tekhab.pythonanywhere.com/EmployeeDetailsFav/${this.fav[i].id}/`, pacthdata).subscribe( () => { 
-          console.log("success");
-        });
+        this.http.patch(`http://tekhab.pythonanywhere.com/EmployeeDetailsFav/${this.fav[i].id}/`, pacthdata).subscribe( () => { });
         const index = this.selectedIndex.indexOf(f);
         if (index > -1) {
           this.selectedIndex.splice(index, 1);
-          console.log(this.selectedIndex);
         }
         const index2 = this.results_job.indexOf(this.results_job[a]);
         if (index2 > -1) {
-          console.log(index2);
           this.results_job.splice(index2, 1);
-          console.log(this.results_job);
         }
       }
     }

@@ -24,12 +24,10 @@ export class EmployerProfilePage implements OnInit {
   ngOnInit() {
     this.authService.data.then((value) => {
       this.details = value;
-      console.log(value);
       this.http.get(`http://tekhab.pythonanywhere.com/ImageEyerPic/?eyer_id=${value.id}`).subscribe((data: any) => {
-        console.log(data);
         this.image1 = data[0].image;
         this.image2 = data[1].image;
-        this.image1 = data[2].image;
+        this.image3 = data[2].image;
       });
     });    
   }
