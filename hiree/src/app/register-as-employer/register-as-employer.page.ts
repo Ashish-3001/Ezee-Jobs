@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { MenuController, AlertController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
 import { PostService } from '../servvices/post.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-as-employer',
@@ -15,7 +16,7 @@ export class RegisterAsEmployerPage implements OnInit {
   imageString3: string;
   onImageToggel:boolean= false;
 
-  constructor(public menuCtrl: MenuController, private postdata: PostService) { }
+  constructor(public menuCtrl: MenuController, private postdata: PostService,public alertController: AlertController,private router: Router,) { }
 
   ngOnInit() {
   }
@@ -76,5 +77,27 @@ export class RegisterAsEmployerPage implements OnInit {
 
   onImageClick() {
     this.onImageToggel = !this.onImageToggel;
+  }
+
+  async presentAlertConfirm(form: NgForm) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Confirm!',
+      message: 'Are you <strong>Sure</strong>!!!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+        }, {
+          text: 'Submit',
+          handler: () => {
+            this.onSubmit(form);
+            this.router.navigate(['/login']);
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 }

@@ -57,6 +57,9 @@ export class OtpVerifyComponent implements OnInit {
             this.modalCtrl.dismiss();
             this.router.navigate(['/register-as-employee']);
           }
+          else if(this.post.user_type.value == 'invalid') {
+            this.modalCtrl.dismiss();
+          }
           else {
             console.log("error state");
           }

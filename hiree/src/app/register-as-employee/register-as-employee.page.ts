@@ -3,6 +3,7 @@ import { MenuController } from '@ionic/angular';
 import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
 import { PostService } from '../servvices/post.service';
 import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 
 
@@ -28,7 +29,7 @@ export class RegisterAsEmployeePage implements OnInit {
   onIdImageToggel: boolean = false;
   onEImageToggel: boolean = false;
 
-  constructor(public menuCtrl: MenuController, private postdata:PostService,public alertController: AlertController) { }
+  constructor(public menuCtrl: MenuController, private postdata:PostService,public alertController: AlertController,private router: Router,) { }
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -164,6 +165,7 @@ export class RegisterAsEmployeePage implements OnInit {
           text: 'Submit',
           handler: () => {
             this.onSubmit(form);
+            this.router.navigate(['/login']);
           }
         }
       ]
