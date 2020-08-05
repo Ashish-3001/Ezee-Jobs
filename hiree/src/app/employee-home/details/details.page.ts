@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GetService } from 'src/app/servvices/get.service';
 import { HttpClient } from '@angular/common/http';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-details',
@@ -15,7 +16,7 @@ export class DetailsPage implements OnInit {
   image2:any;
   image3:any;
 
-  constructor(private acitivatedRoute: ActivatedRoute, private job_details: GetService, private http: HttpClient) { }
+  constructor(private acitivatedRoute: ActivatedRoute, private job_details: GetService, private http: HttpClient, public menuCtrl: MenuController,) { }
 
   ngOnInit() {
     this.acitivatedRoute.paramMap.subscribe(paraMap => {
@@ -36,5 +37,8 @@ export class DetailsPage implements OnInit {
     });
   }
   
+  ionViewWillEnter() {
+    this.menuCtrl.enable(true); 
+  }
 
 }

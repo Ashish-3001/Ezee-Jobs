@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/servvices/authentication.service';
 import { HttpClient } from '@angular/common/http';
-import { AlertController } from '@ionic/angular';
+import { AlertController, MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-application-status',
@@ -26,7 +26,8 @@ export class ApplicationStatusPage implements OnInit {
   image2:any;
   image3:any;
 
-  constructor(private http: HttpClient, 
+  constructor(private http: HttpClient,
+  public menuCtrl: MenuController, 
   private authservice:AuthenticationService,
   public alertController: AlertController) { }
 
@@ -181,4 +182,9 @@ export class ApplicationStatusPage implements OnInit {
 
     await alert.present();
   }
+
+  ionViewWillEnter() {
+    this.menuCtrl.enable(true); 
+  }
+
 }

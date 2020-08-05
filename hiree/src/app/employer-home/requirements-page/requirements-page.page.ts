@@ -64,6 +64,6 @@ export class RequirementsPagePage implements OnInit {
 
 
   ionViewWillEnter() {
-    this.menuCtrl.enable(true);
+    this.menuCtrl.enable(false);
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/servvices/authentication.service';
 import { HttpClient } from '@angular/common/http';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-favourites',
@@ -18,6 +19,7 @@ export class FavouritesPage implements OnInit {
 
   constructor(
     private http: HttpClient,
+    public menuCtrl: MenuController,
     private authService: AuthenticationService) 
   { 
     
@@ -68,6 +70,8 @@ export class FavouritesPage implements OnInit {
     }
   }
 
-
+  ionViewWillEnter() {
+    this.menuCtrl.enable(true); 
+  }
 
 }

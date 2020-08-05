@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GetService } from 'src/app/servvices/get.service';
 import { HttpClient } from '@angular/common/http';
 import { AuthenticationService } from 'src/app/servvices/authentication.service';
-import { AlertController } from '@ionic/angular';
+import { AlertController, MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-employee-profile',
@@ -14,7 +14,8 @@ export class EmployeeProfilePage implements OnInit {
   details: any = {};
   image:any;
 
-  constructor(private http:HttpClient, 
+  constructor(private http:HttpClient,
+    public menuCtrl: MenuController, 
     private get: GetService,
     private authService: AuthenticationService,
     public alertController: AlertController) { }
@@ -32,4 +33,7 @@ export class EmployeeProfilePage implements OnInit {
     this.job_post_toggle = !this.job_post_toggle;
   }
 
+  ionViewWillEnter() {
+    this.menuCtrl.enable(true); 
+  }
 }

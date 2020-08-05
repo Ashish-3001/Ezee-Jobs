@@ -4,7 +4,7 @@ import { GetService } from 'src/app/servvices/get.service';
 import { AuthenticationService } from 'src/app/servvices/authentication.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { AlertController } from '@ionic/angular';
+import { AlertController, MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-employee-apply',
@@ -27,6 +27,7 @@ export class EmployeeApplyPage implements OnInit {
   job_no_emplyee_appilied:any;
 
   constructor(
+    public menuCtrl: MenuController,
     private acitivatedRoute: ActivatedRoute, 
     private authService: AuthenticationService,
     public get: GetService,
@@ -87,5 +88,9 @@ export class EmployeeApplyPage implements OnInit {
       ]
     });
     await alert.present();
+  }
+
+  ionViewWillEnter() {
+    this.menuCtrl.enable(true); 
   }
 }
