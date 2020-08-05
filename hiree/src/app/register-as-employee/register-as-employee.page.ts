@@ -58,7 +58,7 @@ export class RegisterAsEmployeePage implements OnInit {
       eyee_pre_experience: form.value.previousExperience,
       eyee_place_pre_experience: form.value.placePreviousExprience,
       eyee_add_skills: form.value.additionalSkills,
-      eyee_salary_expected: 5000,
+      eyee_salary_expected: form.value.salary,
     }
     this.postdata.post_employee_details(postdata,
       this.imageStringDp,

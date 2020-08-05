@@ -181,9 +181,26 @@
          </ion-item>
          <ion-item *ngIf="!typeCtrl.valid && typeCtrl.touched" lines="none">
           <div class="warn">  Please Enter Valid Type of Hotel</div>
-         </ion-item>
- 
+         </ion-item> 
       </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+       <ion-item>
+          <ion-label>Salary Expected* (per month in INR)</ion-label>
+         <ion-select interface="popover"ngModel name ="salary" required #salCtrl="ngModel">
+          <ion-select-option value=5000>Less than ten thousand</ion-select-option>
+          <ion-select-option value=10000>Ten to Twenty Thousand</ion-select-option>
+          <ion-select-option value=20000>Twenty to Thirty Thousand</ion-select-option>
+          <ion-select-option value=30000>Thirty to Fourty Thousand</ion-select-option>
+          <ion-select-option value=40000>Fourty to Fifty Thousand</ion-select-option>
+          <ion-select-option value=50000>Fifty Thousand plus</ion-select-option>
+         </ion-select>
+         </ion-item>
+         <ion-item *ngIf="!salCtrl.valid && salCtrl.touched" lines="none">
+          <div class="warn">  Please Enter a Valid range</div>
+         </ion-item> 
+         </ion-col>
     </ion-row>
      <ion-row>
          <ion-col size-md="6" offset-md="3">
