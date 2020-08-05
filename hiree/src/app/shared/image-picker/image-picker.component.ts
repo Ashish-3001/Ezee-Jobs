@@ -39,7 +39,7 @@ export class ImagePickerComponent implements OnInit {
       return;
     }
     await Camera.getPhoto({
-      quality:50,
+      quality:100,
       source: CameraSource.Prompt,
       correctOrientation: true,
       allowEditing: false,

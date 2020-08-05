@@ -5,6 +5,9 @@ import { GetService } from './get.service';
 import { AuthenticationService } from './authentication.service';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { OtpVerifyComponent } from 'src/app/shared/otp-verify/otp-verify.component';
+import { Router } from '@angular/router';
+import { AlertController, ModalController } from '@ionic/angular';
 
 function dataURItoBlob(dataURI) {
   // convert base64/URLEncoded data component to raw binary data held in a string
@@ -39,13 +42,15 @@ export class PostService {
   imageFile: Blob; 
   
 
-  constructor(private http: HttpClient, private log_details: GetService, private authService: AuthenticationService,)  { }
+  constructor(private http: HttpClient, private log_details: GetService, private authService: AuthenticationService,public alertController: AlertController,private router: Router,private modalCtrl: ModalController,)  { }
 
   post_basic_details(postdata:any) {
     this.http.post('http://tekhab.pythonanywhere.com/UserLogin/', postdata).subscribe( (data) =>{
       this.data =data;
       this.user_id.next(this.data.id);
       this.user_phone.next(this.data.user_phone_no);
+    }, (error) => {
+      this.presentAlertConfirm();
     });
   }
 
@@ -207,5 +212,25 @@ export class PostService {
      else {
        console.log("error in reciving the string");
      }
+  }
+
+  async presentAlertConfirm() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Invaild Input',
+      message: 'Please try<strong>Again</strong>!!!',
+      buttons: [
+        {
+          text: 'Ok',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            this.user_type.next('invalid');
+            this.modalCtrl.dismiss({component: OtpVerifyComponent });
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 }

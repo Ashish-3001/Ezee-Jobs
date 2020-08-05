@@ -42,7 +42,6 @@ export class RegEmployerBasicPage implements OnInit {
       this.get.otp_verification.next(otp);
       this.get.eyer_time.next(data.time)
     })
-    this.postdata.post_basic_details(postdata);
     this.modalCtrl.create({component: OtpVerifyComponent }).then(modalEl => {
       modalEl.present();
       this.postdata.user_type.next('employer');

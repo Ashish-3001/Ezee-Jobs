@@ -47,13 +47,17 @@
       <ion-text> Please Add Clear Images It Will Be Verified </ion-text>
       <ion-row>
         <ion-col size-md="6" offset-md="3">
-          <app-image-picker (imagePick)="onImagePickedIdF($event)"  ></app-image-picker>
+          <div *ngIf='!this.imageStringIdF'>
+            <app-image-picker (imagePick)="onImagePickedIdF($event)"  ></app-image-picker>
+          </div>
         </ion-col>
       </ion-row>
       <ion-text> Front Side Of The Card</ion-text>
       <ion-row>
         <ion-col size-md="6" offset-md="3">
-          <app-image-picker (imagePick)="onImagePickedIdB($event)"  ></app-image-picker>
+          <div *ngIf='!this.imageStringIdB'>
+            <app-image-picker (imagePick)="onImagePickedIdB($event)"  ></app-image-picker>
+          </div>
         </ion-col>
       </ion-row>
       <ion-text> Back Side Of The Card</ion-text>
@@ -293,33 +297,43 @@
         <ion-text> Please Add Clear Images Of Any Certifications Or You Can Also Add Your Resume (Optional)</ion-text>
         <ion-row>
           <ion-col size-md="6" offset-md="3">
-            <app-image-picker (imagePick)="onImagePickedE1($event)" ></app-image-picker>
+            <div *ngIf='!this.imageStringE1'>
+              <app-image-picker (imagePick)="onImagePickedE1($event)" ></app-image-picker>
+            </div>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col size-md="6" offset-md="3">
-            <app-image-picker (imagePick)="onImagePickedE2($event)" ></app-image-picker>
+            <div *ngIf='!this.imageStringE2'>
+              <app-image-picker (imagePick)="onImagePickedE2($event)" ></app-image-picker>
+            </div>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col size-md="6" offset-md="3">
-            <app-image-picker (imagePick)="onImagePickedE3($event)" ></app-image-picker>
+            <div *ngIf='!this.imageStringE3'>
+              <app-image-picker (imagePick)="onImagePickedE3($event)" ></app-image-picker>
+            </div>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col size-md="6" offset-md="3">
-            <app-image-picker (imagePick)="onImagePickedE4($event)" ></app-image-picker>
+            <div *ngIf='!this.imageStringE4'>
+              <app-image-picker (imagePick)="onImagePickedE4($event)" ></app-image-picker>
+            </div>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col size-md="6" offset-md="3">
-            <app-image-picker (imagePick)="onImagePickedE5($event)" ></app-image-picker>
+            <div *ngIf='!this.imageStringE5'>
+              <app-image-picker (imagePick)="onImagePickedE5($event)" ></app-image-picker>
+            </div>
           </ion-col>
         </ion-row>
       </div>
       <ion-row>
         <ion-col size-md="6" offset-md="3">
-          <ion-button class="ion-margin-vertical" type="submit" [disabled]="!form.valid " size='default' color="secondary" expand="full" [routerLink]="['/login']">
+          <ion-button class="ion-margin-vertical" type="submit" [disabled]="!form.valid " size='default' color="secondary" expand="full">
             Submit
           </ion-button>
         </ion-col>
