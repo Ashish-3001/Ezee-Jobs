@@ -12,7 +12,7 @@
       <ion-col size-md="6" offset-md="3">
         <ion-card *ngFor = " let result of applied_jobs; let i = index" >
           <div *ngIf="!this.value[0]">
-            <div class="null">No Applied Jobs Available</div>
+            <div class="null">No Candidates Applied</div>
           </div>
           <div *ngIf='this.value[0]'>
               <div *ngIf= "!job_post_toggle">

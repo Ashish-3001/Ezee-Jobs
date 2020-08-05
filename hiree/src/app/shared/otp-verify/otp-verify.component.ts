@@ -51,7 +51,7 @@ export class OtpVerifyComponent implements OnInit {
         else {
           if(this.post.user_type.value == 'employer') {
             this.modalCtrl.dismiss();
-            this.router.navigate(['/register-as-employee']);
+            this.router.navigate(['/register-as-employer']);
           }
           else if(this.post.user_type.value == 'employee') {
             this.modalCtrl.dismiss();
