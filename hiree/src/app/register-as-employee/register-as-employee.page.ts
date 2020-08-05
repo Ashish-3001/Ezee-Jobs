@@ -28,7 +28,7 @@ export class RegisterAsEmployeePage implements OnInit {
   onIdImageToggel: boolean = false;
   onEImageToggel: boolean = false;
 
-  constructor(public menuCtrl: MenuController, private postdata:PostService) { }
+  constructor(public menuCtrl: MenuController, private postdata:PostService,public alertController: AlertController) { }
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -148,6 +148,27 @@ export class RegisterAsEmployeePage implements OnInit {
   }
   onEImageClick() {
     this.onEImageToggel = !this.onEImageToggel;
+  }
+
+  async presentAlertConfirm(form: NgForm) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Confirm!',
+      message: 'Are you <strong>Sure</strong>!!!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+        }, {
+          text: 'Submit',
+          handler: () => {
+            this.onSubmit(form);
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 }
 
