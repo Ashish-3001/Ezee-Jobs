@@ -30,7 +30,7 @@
             <ion-col size-md="6" offset-md="3">
      <ion-item>
          <ion-label position="floating">Password:*</ion-label>
-         <ion-input type = 'password' ngModel name ="password" minlength="8" maxlength="30" required #pCtrl='ngModel' ></ion-input>
+         <ion-input type = 'password' inputmode="password" ngModel name ="password" minlength="8" maxlength="30" required #pCtrl='ngModel' ></ion-input>
      </ion-item>
      <ion-item *ngIf="!pCtrl.valid && pCtrl.touched" lines="none">
         <div class="warn">Enter Valid Password</div>
@@ -41,7 +41,7 @@
             <ion-col size-md="6" offset-md="3">
      <ion-item>
          <ion-label position="floating">Email:</ion-label>
-         <ion-input type = 'email'ngModel name ="email" ></ion-input>
+         <ion-input type = 'email'inputmode="email" ngModel name ="email" ></ion-input>
      </ion-item>
      
             </ion-col>

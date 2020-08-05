@@ -29,7 +29,7 @@
             <ion-col size-md="6" offset-md="3">
      <ion-item>
          <ion-label position="floating">Enter Password:*</ion-label>
-         <ion-input type = 'text' minlength="8" ngModel name ="password" required #passCtrl="ngModel"></ion-input>
+         <ion-input type = 'text' minlength="8" inputmode="password" ngModel name ="password" required #passCtrl="ngModel"></ion-input>
      </ion-item>
      <ion-item *ngIf="!passCtrl.valid && passCtrl.touched" lines="none">
         <div class="warn">Enter Valid Password</div>
