@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-searchbar placeholder = 'search jobs by role,hotel name,location' autocorrect autocomplete  enterkeyhint="enter" [(ngModel)] ="test" (keyup.enter)="ionViewDidEnter()" (ionClear)=" this.search_state = false || ionViewDidEnter() || test=''  " (ionFocus)="this.search_state = true" ></ion-searchbar>
+  <ion-searchbar placeholder = "search jobs by role,hotel name,location"  enterkeyhint="enter" [(ngModel)] ="this.test" (keyup.enter)="ionViewDidEnter()" (ionClear)="this.search_state=false && ionViewDidEnter()" (ionFocus)="this.search_state=true" ></ion-searchbar>
   <div *ngIf="this.search_state == true">
     <ion-list>      
       <ion-list-header>

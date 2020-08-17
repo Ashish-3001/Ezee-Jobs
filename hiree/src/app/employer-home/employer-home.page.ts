@@ -21,7 +21,7 @@ export class FolderPage implements OnInit {
   k:number =0;
   fav: object = [{ }];
   active_job_post:any;
-  active_job_post_name:any =[];
+  public active_job_post_name:any=[];
   eyer_details:any;
   test:any;
   results: any;
@@ -42,8 +42,11 @@ export class FolderPage implements OnInit {
     
   }
 
-  state() {
+  state(n:number) {
     this.job_post_toggle = !this.job_post_toggle;
+    if(n !== 5) {
+      this.get.job_post_state.next(n);
+    }
   }
  
   like(f, a) {

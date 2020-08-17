@@ -6,10 +6,6 @@
     <ion-title><ion-text color="secondary">
       <div class="heading">Ezee Jobs</div>
     </ion-text></ion-title>
-    <ion-buttons slot="start" class="ion-padding">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    
   </ion-toolbar>
 </ion-header>
 
@@ -167,7 +163,7 @@
               <ion-grid>
                 <ion-row>
                   <ion-col>
-                    <ion-button  color="primary" expand="block" (click) = "state1(0)">Back To List</ion-button>
+                    <ion-button  color="primary" expand="block" (click) = "state1(0,'Offers Recived')">Back To List</ion-button>
                   </ion-col>
                   </ion-row>
                   <ion-row>
@@ -312,7 +308,7 @@
                 </ion-row>  
             </ion-card-content>
             <ion-card-content>
-              <ion-button  color="primary" expand="block" (click) = "state1(0)">Back To List</ion-button>
+              <ion-button  color="primary" expand="block" (click) = "state1(0,'Applied Jobs')">Back To List</ion-button>
             </ion-card-content>
             </div>
           </ion-col>
@@ -362,7 +358,7 @@
                   <ion-item>
                       Requried Skills:<b> {{ result.job_skills}}</b>
                   </ion-item>
-                  <ion-button (click) = "state1(i,'shortlisted')" color="success" expand="block">Read More</ion-button>
+                  <ion-button (click) = "state1(i,'Shortlisted')" color="success" expand="block">Read More</ion-button>
                 </ion-card-content>
               </div>
             </ion-card>
@@ -459,7 +455,7 @@
                 </ion-row>  
             </ion-card-content>
             <ion-card-content>
-              <ion-button  color="primary" expand="block" (click) = "state1(0)">Back To List</ion-button>
+              <ion-button  color="primary" expand="block" (click) = "state1(0,'shortlisted')">Back To List</ion-button>
             </ion-card-content>
             </div>
           </ion-col>

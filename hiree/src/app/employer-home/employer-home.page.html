@@ -15,26 +15,26 @@
   <ion-grid>
     <ion-row>
       <ion-col size-md="6" offset-md="3">
-        <ion-button expand="block"  (click) = "state()">
+        <ion-button expand="block"  (click) = "state(5)">
           Searching for: 
         </ion-button>
         <div *ngIf= "job_post_toggle">
-          <ion-chip class='hi' *ngIf='this.active_job_post_name[0] && this.get.job_post_state.value == 0' (click) = "this.get.job_post_state.next('0') || state()">
+          <ion-chip class='hi' *ngIf='this.active_job_post_name[0] && this.get.job_post_state.value == 0' (click) = 'state(0)'>
             {{ this.active_job_post_name[0] }}                 
           </ion-chip>
-          <ion-chip class='nhi' *ngIf='this.active_job_post_name[0] && this.get.job_post_state.value != 0' (click) = "this.get.job_post_state.next('0') || state()">
+          <ion-chip class='nhi' *ngIf='this.active_job_post_name[0] && this.get.job_post_state.value != 0' (click) = 'state(0)'>
             {{ this.active_job_post_name[0] }}                 
           </ion-chip>
-          <ion-chip class='hi' *ngIf='this.active_job_post_name[1] && this.get.job_post_state.value == 1' (click) = "this.get.job_post_state.next('1') || state()">
+          <ion-chip class='hi' *ngIf='this.active_job_post_name[1] && this.get.job_post_state.value == 1' (click) = 'state(1)'>
             {{ this.active_job_post_name[1] }} 
           </ion-chip>
-          <ion-chip class='nhi' *ngIf='this.active_job_post_name[1] && this.get.job_post_state.value != 1' (click) = "this.get.job_post_state.next('1') || state()">
+          <ion-chip class='nhi' *ngIf='this.active_job_post_name[1] && this.get.job_post_state.value != 1' (click) = 'state(1)'>
             {{ this.active_job_post_name[1] }} 
           </ion-chip>
-          <ion-chip class="hi" color="success" *ngIf='this.active_job_post_name[2]  && this.get.job_post_state.value == 2' (click) = "this.get.job_post_state.next('2') || state()">
+          <ion-chip class="hi" color="success" *ngIf='this.active_job_post_name[2]  && this.get.job_post_state.value == 2' (click) = 'state(2)'>
             {{ this.active_job_post_name[2] }}                   
           </ion-chip>                
-          <ion-chip class="nhi" color="success" *ngIf='this.active_job_post_name[2] && this.get.job_post_state.value != 2' (click) = "this.get.job_post_state.next('2') || state()">
+          <ion-chip class="nhi" color="success" *ngIf='this.active_job_post_name[2] && this.get.job_post_state.value != 2' (click) = 'state(2)'>
             {{ this.active_job_post_name[2] }}                   
           </ion-chip>               
         </div>
