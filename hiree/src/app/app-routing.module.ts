@@ -116,6 +116,14 @@ const routes: Routes = [
     path: 'help',
     loadChildren: () => import('./help/help.module').then( m => m.HelpPageModule)
   },
+  {
+    path: 'employee-registration',
+    loadChildren: () => import('./employee-registration/employee-registration.module').then( m => m.EmployeeRegistrationPageModule)
+  },
+  {
+    path: 'employer-registration',
+    loadChildren: () => import('./employer-registration/employer-registration.module').then( m => m.EmployerRegistrationPageModule)
+  },
 
 
   

@@ -7,6 +7,7 @@ import { AppComponent } from '../app.component';
 import { NgForm, FormControl, FormGroup, Validator, Validators } from '@angular/forms';
 import { OtpVerifyComponent } from '../shared/otp-verify/otp-verify.component';
 import { Router } from '@angular/router';
+import { PostService } from '../servvices/post.service';
 
 
 @Component({
@@ -29,6 +30,7 @@ export class LoginPage implements OnInit {
      private menu: AppComponent,
      private modalCtrl: ModalController,
      private router: Router,
+     private post: PostService,
      ) { 
  
   }
@@ -74,6 +76,7 @@ export class LoginPage implements OnInit {
         }
       }
       if(state== false) {
+        this.post.user_phone.next(login_id);
         this.router.navigate(['register']);
       }
     });
