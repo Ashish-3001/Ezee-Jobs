@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Platform } from '@ionic/angular';
+import { Platform, NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { Router } from '@angular/router';
 import { AppComponent } from '../app.component';
@@ -22,11 +22,10 @@ export class AuthenticationService {
     private platform: Platform,
     private router: Router,
     private http:HttpClient,
+    private navController:NavController
     )
   {
-    this.platform.ready().then(() => {
-      this.check();
-    });
+    
   } 
 
   login(type:string, user_id: number) {
@@ -75,10 +74,12 @@ export class AuthenticationService {
       if(res == 'employee') {
         this.authenticationState.next(true);
         this.router.navigate(['/employee-home']);
+        this.navController.navigateRoot(['/employee-home']);
       }
       else if (res == 'employer') {
         this.authenticationState.next(true);
         this.router.navigate(['employer-profile/employer-home']);
+        this.navController.navigateRoot(['employer-profile/employer-home']);
       }
     });
   }

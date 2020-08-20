@@ -54,9 +54,9 @@ export class EmployeeApplyPage implements OnInit {
     });
   }
   apply(form: NgForm) {
-    this.postdata.reason = form.value.reason;
-    this.postdata.what_can_he_do = form.value.for_hotel;
-    this.postdata.quries = form.value.queries;
+    this.postdata.reason = "default";
+    this.postdata.what_can_he_do = "default";
+    this.postdata.quries = "default";
     this.http.post('http://tekhab.pythonanywhere.com/JobApplied/', this.postdata).subscribe( () => { });
     var pactheyee = {
       eyee_no_appiled: ++this.eyee_no_appiled,

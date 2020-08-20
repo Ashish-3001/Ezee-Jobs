@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { GetService } from 'src/app/servvices/get.service';
 import { AuthenticationService } from 'src/app/servvices/authentication.service';
 import { AppComponent } from 'src/app/app.component';
-import { ModalController, AlertController } from '@ionic/angular';
+import { ModalController, AlertController, NavController } from '@ionic/angular';
 import { PostService } from 'src/app/servvices/post.service';
 
 @Component({
@@ -24,7 +24,8 @@ export class OtpVerifyComponent implements OnInit {
     private menu: AppComponent,
     private modalCtrl: ModalController,
     private post: PostService,
-    public alertController: AlertController) { }
+    public alertController: AlertController,
+    private navController:NavController) { }
 
   ngOnInit() {
     this.menu.ngOnInit();
@@ -38,11 +39,13 @@ export class OtpVerifyComponent implements OnInit {
         if(this.menu.state === 'employee') {
           this.modalCtrl.dismiss();
           this.router.navigate(['employee-home']);
+          this.navController.navigateRoot(['/employee-home']);
         }
         else if (this.menu.state === 'employer') {
           this.modalCtrl.dismiss();
           if(this.get.eyer_time.value === "exists"){
             this.router.navigate(['employer-profile/employer-home']);
+            this.navController.navigateRoot(['employer-profile/employer-home']);
           }
           else {
             this.router.navigate(['employer-profile']);

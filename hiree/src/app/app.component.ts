@@ -80,7 +80,7 @@ export class AppComponent implements OnInit {
     private router: Router,
   ) {
     this.initializeApp();
-  
+    
   }
 
   initializeApp() {
@@ -88,6 +88,7 @@ export class AppComponent implements OnInit {
       if(Capacitor.isPluginAvailable('SplashScreen')) {
         Plugins.SplashScreen.hide();
       }
+      this.authService.check();
     });
   }
 

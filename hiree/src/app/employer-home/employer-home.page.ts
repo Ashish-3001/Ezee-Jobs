@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MenuController, AlertController } from '@ionic/angular';
 import { GetService } from '../servvices/get.service';
 import { HttpClient } from '@angular/common/http';
+import { Platform } from '@ionic/angular';
 import { AuthenticationService } from '../servvices/authentication.service';
 
 
@@ -32,9 +33,9 @@ export class FolderPage implements OnInit {
     public get: GetService,
     private http: HttpClient,
     private authService: AuthenticationService,
-    public alertController: AlertController) 
+    public alertController: AlertController,
+    private platform: Platform) 
   { 
-    
     
   }
 

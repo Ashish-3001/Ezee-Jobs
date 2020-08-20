@@ -36,14 +36,15 @@ export class EmployeeHomePage implements OnInit {
 
   like(f, a) {
     for(var i=0; i<this.k;i++) {
-      if(this.fav[i].job_id == f) {
-        
-        var pacthdata = {
-          unliked: false,
+      if(this.fav[i]){
+        if(this.fav[i].job_id == f) {
+          var pacthdata = {
+            unliked: false,
+          }
+          this.http.patch(`http://tekhab.pythonanywhere.com/EmployeeDetailsFav/${this.fav[i].id}/`, pacthdata).subscribe( () => { });
+          this.selectedIndex.push(f);
+          return;
         }
-        this.http.patch(`http://tekhab.pythonanywhere.com/EmployeeDetailsFav/${this.fav[i].id}/`, pacthdata).subscribe( () => { });
-        this.selectedIndex.push(f);
-        return;
       }
     }
     var postdata = {
@@ -63,14 +64,16 @@ export class EmployeeHomePage implements OnInit {
 
   dislike(f) {
     for(var i=0; i<this.k;i++) {
-      if(this.fav[i].job_id == f) {
-        var pacthdata = {
-          unliked: true,
-        }
-        this.http.patch(`http://tekhab.pythonanywhere.com/EmployeeDetailsFav/${this.fav[i].id}/`, pacthdata).subscribe( () => { });
-        const index = this.selectedIndex.indexOf(f);
-        if (index > -1) {
-          this.selectedIndex.splice(index, 1);
+      if(this.fav[i]) {
+        if(this.fav[i].job_id == f) {
+          var pacthdata = {
+            unliked: true,
+          }
+          this.http.patch(`http://tekhab.pythonanywhere.com/EmployeeDetailsFav/${this.fav[i].id}/`, pacthdata).subscribe( () => { });
+          const index = this.selectedIndex.indexOf(f);
+          if (index > -1) {
+            this.selectedIndex.splice(index, 1);
+          }
         }
       }
     }
