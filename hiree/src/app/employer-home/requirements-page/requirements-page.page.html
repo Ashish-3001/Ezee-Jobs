@@ -22,11 +22,11 @@
           <ion-select interface="popover" ngModel name ="post" required #postCtrl="ngModel">
             <ion-select-option value="Bartender">Bartender</ion-select-option>
             <ion-select-option value="Chef">Chef</ion-select-option>
-            <ion-select-option value="deliver">Delivery Person</ion-select-option>
-            <ion-select-option value="janitor">Janitor</ion-select-option>
-            <ion-select-option value="manager">Manager</ion-select-option>            
-            <ion-select-option value="receptionist">Receptionist</ion-select-option>
-            <ion-select-option value="waiter">Waiter</ion-select-option>        
+            <ion-select-option value="Delivery Person">Delivery Person</ion-select-option>
+            <ion-select-option value="Janitor">Janitor</ion-select-option>
+            <ion-select-option value="Manager">Manager</ion-select-option>            
+            <ion-select-option value="Receptionist">Receptionist</ion-select-option>
+            <ion-select-option value="Waiter">Waiter</ion-select-option>        
           </ion-select>
       </ion-item>
       <ion-item *ngIf="!postCtrl.valid && postCtrl.touched" lines="none">
