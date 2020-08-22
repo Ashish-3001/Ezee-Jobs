@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ApplicationStatusPageRoutingModule } from './application-status-routing.module';
 
 import { ApplicationStatusPage } from './application-status.page';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 @NgModule({
   imports: [
@@ -15,6 +16,8 @@ import { ApplicationStatusPage } from './application-status.page';
     IonicModule,
     ApplicationStatusPageRoutingModule
   ],
-  declarations: [ApplicationStatusPage]
+  declarations: [ApplicationStatusPage],
+  providers: [
+    CallNumber],
 })
 export class ApplicationStatusPageModule {}

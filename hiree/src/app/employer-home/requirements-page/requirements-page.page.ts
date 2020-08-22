@@ -24,7 +24,6 @@ export class RequirementsPagePage implements OnInit {
 
   ngOnInit() {
     this.authService.data.then((value) => {
-      console.log(value);
       this.eyer_id = value.id;
       this.eyer_name = value.eyer_hotel_name;
       this.eyer_location = value.eyer_address_2;

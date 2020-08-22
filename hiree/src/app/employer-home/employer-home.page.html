@@ -42,45 +42,55 @@
     </ion-row>
     <ion-row>
       <ion-col size-md="6" offset-md="3">
-        <ion-card *ngFor = " let result of this.results; let i = index" >
-          <ion-card-header  color="light">
-              <ion-row>
-                <ion-col size="3">
-                  <ion-icon name="person" size ="large"></ion-icon>
-                </ion-col>
-                <ion-col size="6">
-                  <ion-card-title>
-                    {{ result.eyee_name }} 
-                  </ion-card-title>
-                  <ion-card-subtitle >
-                    Phone Number :<b> {{ result.eyee_phone }} </b>
-                  </ion-card-subtitle>
-                </ion-col>
-                <ion-col offset="1" size="2"  >
-                  <ion-icon (click)='like(result.id, i)' *ngIf='selectedIndex.includes(result.id) == false' name="heart-outline" size ="large"></ion-icon>
-                  <ion-icon (click)='dislike(result.id) ' *ngIf='selectedIndex.indexOf(result.id) !== -1' name="heart" size ="large" ></ion-icon>
-                </ion-col>
-              </ion-row>
-            </ion-card-header>
-          <ion-card-content >
-            <ion-item>
-              Postion: <b> {{ result.eyee_choice }}</b>
-             </ion-item>
-            <ion-item>
-               Previous Experience: <b>{{ result.eyee_pre_experience }} </b>
-            </ion-item>
-            <ion-item>
-             Education: <b>{{ result.eyee_education }}</b>
-            </ion-item>
-            <ion-item>
-             Skills: <b>{{ result.eyee_add_skills }}</b>
-            </ion-item>
-           </ion-card-content>
-          <ion-card-content>
-            <ion-button  [routerLink] = "['./', result.id]" color="secondary" expand="block">View More</ion-button>
-          </ion-card-content>
-
-        </ion-card>
+        <div *ngIf = this.results>
+          <ion-card *ngFor = " let result of this.results; let i = index" >
+            <ion-card-header  color="light">
+                <ion-row>
+                  <ion-col size="3">
+                    <ion-icon name="person" size ="large"></ion-icon>
+                  </ion-col>
+                  <ion-col size="6">
+                    <ion-card-title>
+                      {{ result.eyee_name }} 
+                    </ion-card-title>
+                    <ion-card-subtitle >
+                      Phone Number :<b> {{ result.eyee_phone }} </b>
+                    </ion-card-subtitle>
+                  </ion-col>
+                  <ion-col offset="1" size="2"  >
+                    <ion-icon (click)='like(result.id, i)' *ngIf='selectedIndex.includes(result.id) == false' name="heart-outline" size ="large"></ion-icon>
+                    <ion-icon (click)='dislike(result.id) ' *ngIf='selectedIndex.indexOf(result.id) !== -1' name="heart" size ="large" ></ion-icon>
+                  </ion-col>
+                </ion-row>
+              </ion-card-header>
+            <ion-card-content >
+              <ion-item>
+                Postion: <b> {{ result.eyee_choice }}</b>
+              </ion-item>
+              <ion-item>
+                Previous Experience: <b>{{ result.eyee_pre_experience }} </b>
+              </ion-item>
+              <ion-item>
+              Education: <b>{{ result.eyee_education }}</b>
+              </ion-item>
+              <ion-item>
+              Skills: <b>{{ result.eyee_add_skills }}</b>
+              </ion-item>
+            </ion-card-content>
+            <ion-card-content>
+              <ion-grid>
+                <ion-row>          
+                  <ion-col>
+                    <ion-button  (click)='presentAlertCallNow(result.eyee_phone)' expand="block" color="success">Call Now</ion-button>
+                  </ion-col>
+                  <ion-col>
+                    <ion-button  [routerLink] = "['./', result.id]" color="secondary" expand="block">View More</ion-button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>       
+            </ion-card-content>
+          </ion-card>
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>

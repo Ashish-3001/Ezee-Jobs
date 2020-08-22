@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { EmployerHomePageRoutingModule } from './employer-home-routing.module';
 
 import { FolderPage } from './employer-home.page';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 @NgModule({
   imports: [
@@ -15,6 +16,8 @@ import { FolderPage } from './employer-home.page';
     IonicModule,
     EmployerHomePageRoutingModule
   ],
-  declarations: [FolderPage]
+  declarations: [FolderPage],
+  providers: [
+    CallNumber],
 })
 export class EmployerHomePageModule {}

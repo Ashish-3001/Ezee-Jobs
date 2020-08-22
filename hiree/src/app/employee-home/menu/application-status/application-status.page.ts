@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/servvices/authentication.service';
 import { HttpClient } from '@angular/common/http';
 import { AlertController, MenuController } from '@ionic/angular';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 @Component({
   selector: 'app-application-status',
@@ -29,7 +30,8 @@ export class ApplicationStatusPage implements OnInit {
   constructor(private http: HttpClient,
   public menuCtrl: MenuController, 
   private authservice:AuthenticationService,
-  public alertController: AlertController) { }
+  public alertController: AlertController,
+  private callNumber: CallNumber) { }
 
   ngOnInit() {
     this.authservice.data.then( (value) => {
@@ -187,4 +189,31 @@ export class ApplicationStatusPage implements OnInit {
     this.menuCtrl.enable(true); 
   }
 
+  async presentAlertCallNow(phoneNum) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Connect Call',
+      message: 'This call may be recorded for <strong>Security</strong> purpose...Please Refrain from using foul language ',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+        }, {
+          text: 'Processed',
+          handler: () => {
+            this.callNow(phoneNum);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  callNow(phoneNum) {
+    this.callNumber.callNumber(phoneNum, true)
+      .then(res => console.log('Launched dialer!', res))
+      .catch(err => console.log('Error launching dialer', err));
+  }
 }

@@ -46,7 +46,16 @@
               </ion-item>
             </ion-card-content>
             <ion-card-content>
-              <ion-button  [routerLink] = "['/employer-profile/employer-home/', result.id]" color="success" expand="block">Offer job</ion-button>
+              <ion-grid>
+                <ion-row>          
+                  <ion-col>
+                    <ion-button  (click)='presentAlertCallNow(result.eyee_phone)' expand="block" color="success">Call Now</ion-button>
+                  </ion-col>
+                  <ion-col>
+                    <ion-button  [routerLink] = "['/employer-profile/employer-home/', result.id]" color="secondary" expand="block">View More</ion-button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
             </ion-card-content>
           </ion-card>
         </ion-col>

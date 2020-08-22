@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { EyeeAppliedPageRoutingModule } from './eyee-applied-routing.module';
 
 import { EyeeAppliedPage } from './eyee-applied.page';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 @NgModule({
   imports: [
@@ -15,6 +16,8 @@ import { EyeeAppliedPage } from './eyee-applied.page';
     IonicModule,
     EyeeAppliedPageRoutingModule
   ],
-  declarations: [EyeeAppliedPage]
+  declarations: [EyeeAppliedPage],
+  providers: [
+    CallNumber],
 })
 export class EyeeAppliedPageModule {}

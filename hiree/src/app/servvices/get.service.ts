@@ -39,6 +39,7 @@ export class GetService {
 
   get_employee(e_c:any,e_s:any,e_ex:any,e_e:any,e_l:any,e_a:any,e_g:any,eyer_id:number) {
     this.results_eyee_details = [];
+    console.log(this.results_eyee_details);
     var remove_offer_jobs:any =[];
     return this.http.get(`http://tekhab.pythonanywhere.com/JobOffer/?eyer_id=${eyer_id}`).toPromise().then( (data) =>{
       remove_offer_jobs = data;

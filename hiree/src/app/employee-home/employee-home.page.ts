@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { MenuController, AlertController } from '@ionic/angular';
 import { GetService } from '../servvices/get.service';
 import { HttpClient } from '@angular/common/http';
 import { AuthenticationService } from '../servvices/authentication.service';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 @Component({
   selector: 'app-employee-home',
@@ -24,7 +25,9 @@ export class EmployeeHomePage implements OnInit {
     public menuCtrl: MenuController,
     private get: GetService,
     private http: HttpClient,
-    private authService: AuthenticationService) 
+    private authService: AuthenticationService,
+    public alertController: AlertController,
+    private callNumber: CallNumber) 
   { 
 
 
@@ -142,5 +145,33 @@ export class EmployeeHomePage implements OnInit {
     this.search_state = !this.search_state;
     this.test = search;
     this.ionViewDidEnter();
+  }
+
+  async presentAlertCallNow(phoneNum) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Connect Call',
+      message: 'This call may be recorded for <strong>Security</strong> purpose...Please Refrain from using foul language ',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+        }, {
+          text: 'Processed',
+          handler: () => {
+            this.callNow(phoneNum);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  callNow(phoneNum) {
+    this.callNumber.callNumber(phoneNum, true)
+      .then(res => console.log('Launched dialer!', res))
+      .catch(err => console.log('Error launching dialer', err));
   }
 }

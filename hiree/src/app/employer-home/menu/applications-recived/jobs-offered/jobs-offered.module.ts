@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { JobsOfferedPageRoutingModule } from './jobs-offered-routing.module';
 
 import { JobsOfferedPage } from './jobs-offered.page';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 @NgModule({
   imports: [
@@ -15,6 +16,8 @@ import { JobsOfferedPage } from './jobs-offered.page';
     IonicModule,
     JobsOfferedPageRoutingModule
   ],
-  declarations: [JobsOfferedPage]
+  declarations: [JobsOfferedPage],
+  providers: [
+    CallNumber],
 })
 export class JobsOfferedPageModule {}

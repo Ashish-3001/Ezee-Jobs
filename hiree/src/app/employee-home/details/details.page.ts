@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GetService } from 'src/app/servvices/get.service';
 import { HttpClient } from '@angular/common/http';
-import { MenuController } from '@ionic/angular';
+import { MenuController, AlertController } from '@ionic/angular';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 @Component({
   selector: 'app-details',
@@ -16,7 +17,13 @@ export class DetailsPage implements OnInit {
   image2:any;
   image3:any;
 
-  constructor(private acitivatedRoute: ActivatedRoute, private job_details: GetService, private http: HttpClient, public menuCtrl: MenuController,) { }
+  constructor(
+  private acitivatedRoute: ActivatedRoute, 
+  private job_details: GetService, 
+  private http: HttpClient, 
+  public menuCtrl: MenuController,
+  public alertController: AlertController,
+  private callNumber: CallNumber) { }
 
   ngOnInit() {
     this.acitivatedRoute.paramMap.subscribe(paraMap => {
@@ -41,4 +48,31 @@ export class DetailsPage implements OnInit {
     this.menuCtrl.enable(true); 
   }
 
+  async presentAlertCallNow(phoneNum) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Connect Call',
+      message: 'This call may be recorded for <strong>Security</strong> purpose...Please Refrain from using foul language ',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+        }, {
+          text: 'Processed',
+          handler: () => {
+            this.callNow(phoneNum);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  callNow(phoneNum) {
+    this.callNumber.callNumber(phoneNum, true)
+      .then(res => console.log('Launched dialer!', res))
+      .catch(err => console.log('Error launching dialer', err));
+  }
 }

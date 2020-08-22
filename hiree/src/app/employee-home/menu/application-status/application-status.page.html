@@ -63,7 +63,16 @@
                   <ion-item>
                       Requried Skills:<b> {{ result.job_skills}}</b>
                   </ion-item>
-                  <ion-button (click) = "state1(i,'jobs_offered')" color="success" expand="block">Read More</ion-button>
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col>
+                        <ion-button (click) = "state1(i,'jobs_offered')" color="secondary" expand="block">Read More</ion-button>
+                      </ion-col>
+                      <ion-col>
+                        <ion-button  (click)='presentAlertCallNow(result.eyer_number)' expand="block" color="success">Call Now</ion-button>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
                 </ion-card-content>
               </div>
             </ion-card>
@@ -71,7 +80,10 @@
               <ion-row>
                 <ion-col size="10" offset="1">
                   <ion-slides pager="true">
-                    <ion-slide>
+                    <ion-slide *ngIf='!this.image1'>
+                      <ion-icon name="person-outline" class="img"></ion-icon>
+                    </ion-slide>
+                    <ion-slide *ngIf='this.image1'>
                       <ion-img [src]='this.image1' class="img" ></ion-img>
                     </ion-slide>
                     <ion-slide *ngIf='this.image2' >
@@ -163,6 +175,9 @@
               <ion-grid>
                 <ion-row>
                   <ion-col>
+                    <ion-button  (click)='presentAlertCallNow(jobs_offered[n].eyer_number)' expand="block" color="success">Call Now</ion-button>
+                  </ion-col>
+                  <ion-col>
                     <ion-button  color="primary" expand="block" (click) = "state1(0,'Offers Recived')">Back To List</ion-button>
                   </ion-col>
                   </ion-row>
@@ -219,7 +234,16 @@
                   <ion-item>
                       Requried Skills:<b>{{ result.job_skills}}</b> 
                   </ion-item>
-                  <ion-button (click) = "state1(i,'applied_jobs')" color="success" expand="block">Read More</ion-button>
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col>
+                        <ion-button (click) = "state1(i,'applied_jobs')" color="secondary" expand="block">Read More</ion-button>
+                      </ion-col>
+                      <ion-col>
+                        <ion-button  (click)='presentAlertCallNow(result.eyer_number)' expand="block" color="success">Call Now</ion-button>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
                 </ion-card-content>
               </div>
             </ion-card>
@@ -227,7 +251,10 @@
               <ion-row>
                 <ion-col size="10" offset="1">
                   <ion-slides pager="true">
-                    <ion-slide>
+                    <ion-slide *ngIf='!this.image1'>
+                      <ion-icon name="person-outline" class="img"></ion-icon>
+                    </ion-slide>
+                    <ion-slide *ngIf='this.image1'>
                       <ion-img [src]='this.image1' class="img" ></ion-img>
                     </ion-slide>
                     <ion-slide *ngIf='this.image2' >
@@ -308,7 +335,14 @@
                 </ion-row>  
             </ion-card-content>
             <ion-card-content>
-              <ion-button  color="primary" expand="block" (click) = "state1(0,'Applied Jobs')">Back To List</ion-button>
+              <ion-row>
+                <ion-col>
+                  <ion-button  (click)='presentAlertCallNow(applied_jobs[n].eyer_number)' expand="block" color="success">Call Now</ion-button>
+                </ion-col>
+                <ion-col>
+                  <ion-button  color="primary" expand="block" (click) = "state1(0,'Applied Jobs')">Back To List</ion-button>
+                </ion-col>
+              </ion-row>
             </ion-card-content>
             </div>
           </ion-col>
@@ -358,7 +392,16 @@
                   <ion-item>
                       Requried Skills:<b> {{ result.job_skills}}</b>
                   </ion-item>
-                  <ion-button (click) = "state1(i,'Shortlisted')" color="success" expand="block">Read More</ion-button>
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col>
+                        <ion-button (click) = "state1(i,'Shortlisted')" color="secondary" expand="block">Read More</ion-button>
+                      </ion-col>
+                      <ion-col>
+                        <ion-button  (click)='presentAlertCallNow(result.eyer_number)' expand="block" color="success">Call Now</ion-button>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
                 </ion-card-content>
               </div>
             </ion-card>
@@ -366,7 +409,10 @@
               <ion-row>
                 <ion-col size="10" offset="1">
                   <ion-slides pager="true">
-                    <ion-slide>
+                    <ion-slide *ngIf='!this.image1'>
+                      <ion-icon name="person-outline" class="img"></ion-icon>
+                    </ion-slide>
+                    <ion-slide *ngIf='this.image1'>
                       <ion-img [src]='this.image1' class="img" ></ion-img>
                     </ion-slide>
                     <ion-slide *ngIf='this.image2' >
@@ -455,7 +501,14 @@
                 </ion-row>  
             </ion-card-content>
             <ion-card-content>
-              <ion-button  color="primary" expand="block" (click) = "state1(0,'shortlisted')">Back To List</ion-button>
+              <ion-row>
+                <ion-col>
+                  <ion-button  (click)='presentAlertCallNow(applied_jobs[n].eyer_number)' expand="block" color="success">Call Now</ion-button>
+                </ion-col>
+                <ion-col>
+                  <ion-button  color="primary" expand="block" (click) = "state1(0,'shortlisted')">Back To List</ion-button>
+                </ion-col>
+              </ion-row>
             </ion-card-content>
             </div>
           </ion-col>

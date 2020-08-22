@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { AuthenticationService } from 'src/app/servvices/authentication.service';
 import { AlertController, MenuController } from '@ionic/angular';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 @Component({
   selector: 'app-eyee-shortlisted',
@@ -22,7 +23,8 @@ export class EyeeShortlistedPage implements OnInit {
   private authService: AuthenticationService,
   public alertController: AlertController,
   public menuCtrl: MenuController,
-  private router: Router) { }
+  private router: Router,
+  private callNumber: CallNumber) { }
 
   ngOnInit() {
     this.acitivatedRoute.paramMap.subscribe(paraMap => {
@@ -130,5 +132,34 @@ export class EyeeShortlistedPage implements OnInit {
 
   ionViewWillEnter() {
     this.menuCtrl.enable(true);
+  }
+
+  async presentAlertCallNow(phoneNum) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Connect Call',
+      message: 'This call may be recorded for <strong>Security</strong> purpose...Please Refrain from using foul language ',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+        }, {
+          text: 'Processed',
+          handler: () => {
+            this.callNow(phoneNum);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+
+  callNow(phoneNum) {
+    this.callNumber.callNumber(phoneNum, true)
+      .then(res => console.log('Launched dialer!', res))
+      .catch(err => console.log('Error launching dialer', err));
   }
 }

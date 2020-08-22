@@ -35,7 +35,16 @@
                 </ion-item>
               </ion-card-content>
               <ion-card-content>
-                <ion-button  color="primary" expand="block" (click) = "state(i)">Read More</ion-button>
+                <ion-grid>
+                  <ion-row>          
+                    <ion-col>
+                      <ion-button  (click)='presentAlertCallNow(result.eyee_phone)' expand="block" color="success">Call Now</ion-button>
+                    </ion-col>
+                    <ion-col>
+                      <ion-button  color="secondary" expand="block" (click) = "state(i)">Read More</ion-button>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
               </ion-card-content>
             </div>
           </ion-card>
@@ -43,7 +52,8 @@
         <div *ngIf= "job_post_toggle">
           <ion-row>
             <ion-col size="10" offset="1">
-              <ion-img [src]='this.image' class="img" ></ion-img>
+              <ion-icon name="person-outline" class="img"></ion-icon>
+              <ion-img *ngIf='this.image' [src]='this.image' class="img" ></ion-img>
             </ion-col>
           </ion-row>
           <ion-card-header color="light">
@@ -102,11 +112,12 @@
               <ion-col>
                 <ion-button  color="primary" expand="block" (click) = "state(0)">Back To List</ion-button>
               </ion-col>
+              <ion-col>
+                <ion-button  (click)='presentAlertCallNow(offered_jobs[n].eyee_phone)' expand="block" color="success">Call Now</ion-button>
+              </ion-col>
             </ion-row>
           </ion-grid>
-             
           </ion-card-content>
-         
         </div>
       </ion-col>
     </ion-row>

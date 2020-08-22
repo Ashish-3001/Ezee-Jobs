@@ -5,7 +5,7 @@ import { GetService } from '../servvices/get.service';
 import { HttpClient } from '@angular/common/http';
 import { Platform } from '@ionic/angular';
 import { AuthenticationService } from '../servvices/authentication.service';
-
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 @Injectable()
 @Component({
@@ -34,18 +34,65 @@ export class FolderPage implements OnInit {
     private http: HttpClient,
     private authService: AuthenticationService,
     public alertController: AlertController,
-    private platform: Platform) 
+    private platform: Platform,
+    private callNumber: CallNumber) 
   { 
     
   }
 
   ngOnInit() {
-    
+    this.get.job_post_state.subscribe( (number) => {
+      this.active_job_post_name = [];
+      this.authService.data.then((value:any) => {
+        this.eyer_details = value;
+        this.http.get(`http://tekhab.pythonanywhere.com/JobPost/?eyer_id=${value.id}&job_active=true`).subscribe( (value:any) => {
+          for(var i=0;i<3;i++) {
+            if(value[i]) {
+              if(this.active_job_post_name.includes(value[i].job_post) == false) {
+                this.active_job_post_name.push(value[i].job_post);
+              }
+            }
+            else {
+              break;
+            }
+          }
+          this.active_job_post = value[this.get.job_post_state.value];
+          this.get.get_employee(this.active_job_post.job_post,
+            this.active_job_post.job_salary,
+            this.active_job_post.job_experience,
+            this.active_job_post.job_education,
+            this.active_job_post.eyer_location,
+            this.active_job_post.job_age,
+            this.active_job_post.job_gender,
+            this.eyer_details.id).then( (res) => {
+            this.results = this.get.results_eyee_details;
+            console.log(this.results);
+            console.log("hey");
+            this.test = this.get.image_eyee;
+            this.http.get(`http://tekhab.pythonanywhere.com/EmployerDetailsFav/?eyer_id=${this.eyer_details.id}`).subscribe( (data:any) => {
+              this.fav = data;
+              for(var i=0; i>=0;i++) {
+                if(this.fav[i]) {
+                  if(this.fav[i].unliked == false) {
+                    this.selectedIndex.push(this.fav[i].eyee_id);
+                  }
+                  this.k++;
+                }
+                else {
+                  break;
+                }
+              }
+            });
+          });
+        });
+      });
+    });
   }
 
   state(n:number) {
     this.job_post_toggle = !this.job_post_toggle;
-    if(n !== 5) {
+    console.log(this.results);
+    if(n == 0 || n == 1 || n == 2) {
       this.get.job_post_state.next(n);
     }
   }
@@ -95,48 +142,6 @@ export class FolderPage implements OnInit {
 
   ionViewWillEnter() {
     this.menuCtrl.enable(true);
-    this.get.job_post_state.subscribe( (number) => {
-      this.active_job_post_name = [];
-      this.authService.data.then((value:any) => {
-        this.eyer_details = value;
-        this.http.get(`http://tekhab.pythonanywhere.com/JobPost/?eyer_id=${value.id}&job_active=true`).subscribe( (value:any) => {
-          for(var i=0;i<3;i++) {
-            if(value[i]) {
-              this.active_job_post_name.push(value[i].job_post);
-            }
-            else {
-              break;
-            }
-          }
-          this.active_job_post = value[this.get.job_post_state.value];
-          this.get.get_employee(this.active_job_post.job_post,
-            this.active_job_post.job_salary,
-            this.active_job_post.job_experience,
-            this.active_job_post.job_education,
-            this.active_job_post.eyer_location,
-            this.active_job_post.job_age,
-            this.active_job_post.job_gender,
-            this.eyer_details.id).then( (res) => {
-            this.results = this.get.results_eyee_details;
-            this.test = this.get.image_eyee;
-            this.http.get(`http://tekhab.pythonanywhere.com/EmployerDetailsFav/?eyer_id=${this.eyer_details.id}`).subscribe( (data:any) => {
-              this.fav = data;
-              for(var i=0; i>=0;i++) {
-                if(this.fav[i]) {
-                  if(this.fav[i].unliked == false) {
-                    this.selectedIndex.push(this.fav[i].eyee_id);
-                  }
-                  this.k++;
-                }
-                else {
-                  break;
-                }
-              }
-            });
-          });
-        });
-      });
-    });
   }
 
   async presentAlertJobMax() {
@@ -154,5 +159,35 @@ export class FolderPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+
+  async presentAlertCallNow(phoneNum) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Connect Call',
+      message: 'This call may be recorded for <strong>Security</strong> purpose...Please Refrain from using foul language ',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+        }, {
+          text: 'Processed',
+          handler: () => {
+            this.callNow(phoneNum);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+
+  callNow(phoneNum) {
+    this.callNumber.callNumber(phoneNum, true)
+      .then(res => console.log('Launched dialer!', res))
+      .catch(err => console.log('Error launching dialer', err));
   }
 }
