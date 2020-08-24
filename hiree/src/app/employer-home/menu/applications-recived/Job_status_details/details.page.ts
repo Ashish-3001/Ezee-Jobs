@@ -63,7 +63,9 @@ export class DetailsPage implements OnInit {
       var pactheyer = {
         eyer_active_job_post: --value.eyer_active_job_post,
       }
-      this.http.patch(`http://tekhab.pythonanywhere.com/EmployerDetails/${value.id}/`, pactheyer).subscribe( () => { });
+      this.http.patch(`http://tekhab.pythonanywhere.com/EmployerDetails/${value.id}/`, pactheyer).subscribe( () => { 
+        this.authService.token_set(value.id, 'employer');
+       });
     });
   }
 

@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { JobOfferPageRoutingModule } from './job-offer-routing.module';
 
 import { JobOfferPage } from './job-offer.page';
+import { FolderPage } from '../employer-home.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    JobOfferPageRoutingModule
+    JobOfferPageRoutingModule,
   ],
   declarations: [JobOfferPage]
 })

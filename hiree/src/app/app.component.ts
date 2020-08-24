@@ -8,6 +8,8 @@ import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+const { App } = Plugins;
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -77,10 +79,12 @@ export class AppComponent implements OnInit {
   constructor(
     private platform: Platform,
     private authService: AuthenticationService,
-    private router: Router,
+    private router: Router
   ) {
     this.initializeApp();
-    
+    this.platform.backButton.subscribeWithPriority(-1, () => {
+      App.exitApp();
+    });
   }
 
   initializeApp() {

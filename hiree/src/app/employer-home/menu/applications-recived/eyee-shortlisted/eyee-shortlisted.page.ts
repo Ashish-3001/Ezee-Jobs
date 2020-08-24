@@ -73,7 +73,9 @@ export class EyeeShortlistedPage implements OnInit {
       var pactheyer = {
         eyer_job_hier: ++value.eyer_job_hier,
       }
-      this.http.patch(`http://tekhab.pythonanywhere.com/EmployerDetails/${this.value[this.n].eyee_id}/`, pactheyer).subscribe( () => { });
+      this.http.patch(`http://tekhab.pythonanywhere.com/EmployerDetails/${this.value[this.n].eyee_id}/`, pactheyer).subscribe( () => {
+        this.authService.token_set(this.value[this.n].eyee_id, 'employer');
+       });
     });
   }
 

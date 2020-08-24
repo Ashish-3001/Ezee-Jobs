@@ -66,8 +66,6 @@ export class FolderPage implements OnInit {
             this.active_job_post.job_gender,
             this.eyer_details.id).then( (res) => {
             this.results = this.get.results_eyee_details;
-            console.log(this.results);
-            console.log("hey");
             this.test = this.get.image_eyee;
             this.http.get(`http://tekhab.pythonanywhere.com/EmployerDetailsFav/?eyer_id=${this.eyer_details.id}`).subscribe( (data:any) => {
               this.fav = data;
@@ -91,7 +89,6 @@ export class FolderPage implements OnInit {
 
   state(n:number) {
     this.job_post_toggle = !this.job_post_toggle;
-    console.log(this.results);
     if(n == 0 || n == 1 || n == 2) {
       this.get.job_post_state.next(n);
     }
@@ -190,4 +187,16 @@ export class FolderPage implements OnInit {
       .then(res => console.log('Launched dialer!', res))
       .catch(err => console.log('Error launching dialer', err));
   }
+
+  refresh() {
+    console.log("asd");
+    this.get.refresh.subscribe( (number) => {
+      if(this.get.refresh.value !== 0) {
+        this.get.refresh.next(0);
+        this.ngOnInit();
+      }
+    });
+  }
+
+
 }

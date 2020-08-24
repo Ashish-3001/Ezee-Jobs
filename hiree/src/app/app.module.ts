@@ -13,7 +13,7 @@ import { IonicStorageModule } from '@ionic/storage'
 import { FolderPage } from './employer-home/employer-home.page';
 import { EmployeeHomePage } from './employee-home/employee-home.page';
 import { AuthInterceptor } from './token.interceptor';
-import { ErrorHandler, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {  CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,6 +30,7 @@ import { ErrorHandler, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     SplashScreen,
     AppComponent,
     EmployeeHomePage,
+    FolderPage,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {
       provide: HTTP_INTERCEPTORS,

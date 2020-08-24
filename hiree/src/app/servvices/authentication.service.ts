@@ -101,4 +101,20 @@ export class AuthenticationService {
     });
   }
 
+  token_set(id:number, type:string) {
+    if(type == 'employer') {
+      this.http.get(`http://tekhab.pythonanywhere.com/EmployerDetails/${id}`).subscribe( (data) => {
+        this.storage.set(DATA_KEY, data ).then(res => {
+        });
+      });
+    }
+    else if(type == 'employee') {
+      this.http.get(`http://tekhab.pythonanywhere.com/EmployeeDetails/${id}`).subscribe( (data) => {
+        this.storage.set(DATA_KEY, data ).then(res => {
+        });
+      });
+    }
+
+  }
+
 }

@@ -14,6 +14,7 @@ export class GetService {
   logged_user_id = new BehaviorSubject(0);
   logged_ey_id = new BehaviorSubject(0);
   job_post_state = new BehaviorSubject<number>(0);
+  refresh = new BehaviorSubject<number>(0);
   otp_verification = new BehaviorSubject("0000");
   eyer_time = new BehaviorSubject("none");
   
@@ -39,7 +40,6 @@ export class GetService {
 
   get_employee(e_c:any,e_s:any,e_ex:any,e_e:any,e_l:any,e_a:any,e_g:any,eyer_id:number) {
     this.results_eyee_details = [];
-    console.log(this.results_eyee_details);
     var remove_offer_jobs:any =[];
     return this.http.get(`http://tekhab.pythonanywhere.com/JobOffer/?eyer_id=${eyer_id}`).toPromise().then( (data) =>{
       remove_offer_jobs = data;

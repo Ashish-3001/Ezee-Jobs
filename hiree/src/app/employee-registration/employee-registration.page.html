@@ -1,9 +1,188 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>employee-registration</ion-title>
+    <ion-title><ion-title><ion-text color="secondary">
+      <div class="heading">Ezee Jobs</div>
+    </ion-text></ion-title>
+  </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content padding>
+  <form #form="ngForm" (ngSubmit)="eyee_details(form)">
+    <div *ngIf='state==1'>
+      <ion-grid>
+        <ion-row>
+          <ion-col size-md="6" offset-med="6">
+            <div class="req">* Required</div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <app-image-picker (imagePick)="onImagePickedDp($event)"  ></app-image-picker>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <ion-item>
+              <ion-label position="floating">Full Name:*</ion-label>
+              <ion-input type = 'text' ngModel name ="Name" required #nameCtrl="ngModel"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="!nameCtrl.valid && nameCtrl.touched" lines="none">
+              <div class="warn">  Please Enter Your Name</div>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <ion-item>
+              <ion-label position="floating">Email:</ion-label>
+              <ion-input type = 'email'inputmode="email" ngModel name ="email" ></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>    
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <ion-item>
+              <ion-label position="floating">Age:*</ion-label>
+              <ion-input type = 'number'ngModel name ="age" required #ageCtrl="ngModel"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="!ageCtrl.valid && ageCtrl.touched" lines="none">
+              <div class="warn">Please Enter Your Age</div>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <ion-item>
+              <ion-label>Gender:*</ion-label>
+              <ion-select interface="popover"ngModel name ="gender" required #genderCtrl="ngModel">
+                <ion-select-option value="M">Male</ion-select-option>
+                <ion-select-option value="F">Female</ion-select-option>
+                <ion-select-option value="O">Others</ion-select-option>
+              </ion-select>
+            </ion-item> 
+            <ion-item *ngIf="!genderCtrl.valid && genderCtrl.touched" lines="none">
+              <div class="warn">  Please Enter Your Gender</div>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">       
+            <ion-item>
+              <ion-label position="floating">Address 1:* (door no: ,street)</ion-label>
+              <ion-input type = 'text'ngModel name ="address1" required #addCtrl="ngModel"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="!addCtrl.valid && addCtrl.touched" lines="none">
+              <div class="warn">  Please Enter Address1</div>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <ion-item>
+              <ion-label position="floating">Address 2:* (Area: ,Land mark)</ion-label>
+              <ion-input type = 'text'ngModel name ="address2" required #add2Ctrl="ngModel"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="!add2Ctrl.valid && addCtrl.touched" lines="none">
+              <div class="warn">  Please Enter Valid Address2</div>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <ion-item>
+              <ion-label position="floating">City:*</ion-label>
+              <ion-input type = 'text'ngModel name ="city" autocomplete autocorrect required #cityCtrl="ngModel"> </ion-input>
+            </ion-item>
+            <ion-item *ngIf="!cityCtrl.valid && cityCtrl.touched" lines="none">
+              <div class="warn">  Please Enter Valid City</div>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <ion-item>
+              <ion-label>State:*</ion-label>
+              <ion-select interface="popover"ngModel name ="state" required #stateCtrl="ngModel">
+                <ion-select-option value="Andhra Pradesh">Andhra Pradesh</ion-select-option>
+                <ion-select-option value="Arunachal Pradesh">Arunachal Pradesh</ion-select-option>
+                <ion-select-option value="Assam">Assam</ion-select-option>
+                <ion-select-option value="Bihar">Bihar</ion-select-option>
+                <ion-select-option value="Chhattisgarh">Chhattisgarh</ion-select-option>
+                <ion-select-option value="Goa">Goa</ion-select-option>
+                <ion-select-option value="Gujarat">Gujarat</ion-select-option>
+                <ion-select-option value="Haryana">Haryana</ion-select-option>
+                <ion-select-option value="Himachal Pradesh">Himachal Pradesh</ion-select-option>
+                <ion-select-option value="Jammu & Kashmir">Jammu & Kashmir</ion-select-option>
+                <ion-select-option value="Jharkhand">Jharkhand</ion-select-option>
+                <ion-select-option value="Karnataka">Karnataka</ion-select-option>
+                <ion-select-option value="Kerala">Kerala</ion-select-option>
+                <ion-select-option value="Ladakh">Ladakh</ion-select-option>
+                <ion-select-option value="Madhya Pradesh">Madhya Pradesh</ion-select-option>
+                <ion-select-option value="Maharashtra">Maharashtra</ion-select-option>
+                <ion-select-option value="Manipur">Manipur</ion-select-option>
+                <ion-select-option value="Meghalaya">Meghalaya</ion-select-option>
+                <ion-select-option value="Mizoram">Mizoram</ion-select-option>
+                <ion-select-option value="Nagaland">Nagaland</ion-select-option>
+                <ion-select-option value="Oddissa">Oddissa</ion-select-option>
+                <ion-select-option value="Punjab">Punjab</ion-select-option>
+                <ion-select-option value="Rajasthan">Rajasthan</ion-select-option>
+                <ion-select-option value="Sikkim">Sikkim</ion-select-option>
+                <ion-select-option value="Tamil Nadu">Tamil Nadu</ion-select-option>
+                <ion-select-option value="Telangana">Telangana</ion-select-option>
+                <ion-select-option value="Tripura">Tripura</ion-select-option>
+                <ion-select-option value="Uttar Pradesh">Uttar Pradesh</ion-select-option>
+                <ion-select-option value="Uttrakhand">Uttrakhand</ion-select-option>
+                <ion-select-option value="West Bengal">West Bengal</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item *ngIf="!stateCtrl.valid && stateCtrl.touched" lines="none">
+              <div class="warn">  Please Enter Valid State</div>
+            </ion-item>
+          </ion-col> 
+        </ion-row>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">   
+            <ion-item>
+              <ion-label position="floating">Aadhar Number:*</ion-label>
+              <ion-input type = 'text' inputmode="numeric" ngModel name ="aadhar"required minlength="12" maxlength="12" #aadCtrl="ngModel" ></ion-input>
+            </ion-item>
+            <ion-item *ngIf="!aadCtrl.valid && aadCtrl.touched" lines="none">
+              <div class="warn">  Please Do not leave spaces in between</div>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-button color="light" (click)="onIdImageClick()" expand="full" >Upload Aadhar Card: *</ion-button>
+        <div *ngIf="onIdImageToggel">
+          <ion-text> Please Add Clear Images It Will Be Verified </ion-text>
+          <ion-row>
+            <ion-col size-md="6" offset-md="3">
+              <div *ngIf='!this.imageStringIdF'>
+                <app-image-picker (imagePick)="onImagePickedIdF($event)"  ></app-image-picker>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-text> Front Side Of The Card</ion-text>
+          <ion-row>
+            <ion-col size-md="6" offset-md="3">
+              <div *ngIf='!this.imageStringIdB'>
+                <app-image-picker (imagePick)="onImagePickedIdB($event)"  ></app-image-picker>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-text> Back Side Of The Card</ion-text>
+        </div>
+        <ion-row>
+            <ion-col size-md="6" offset-md="3">
+              <ion-button class="ion-margin-vertical" [disabled]="!form.valid" (click)='state=2' size='default' color="danger" expand="full">
+                  Next
+              </ion-button>
+            </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <div *ngIf='state==2'>
+      hey
+    </div>
+  </form>
 </ion-content>

@@ -183,7 +183,8 @@ export class PostService {
     this.http.post('http://tekhab.pythonanywhere.com/JobPost/', postdata).subscribe( () =>{
       total_job_post += 1;
       active_job_post += 1;
-      this.test_put(total_job_post, eyer_id, active_job_post)
+      this.test_put(total_job_post, eyer_id, active_job_post);
+      this.log_details.job_post_state.next(0);
     });
   }
 
@@ -192,7 +193,9 @@ export class PostService {
       eyer_tot_no_job_post: total_job_post,
       eyer_active_job_post: active_job_post,
     }
-    this.http.patch(`http://tekhab.pythonanywhere.com/EmployerDetails/${eyer_id}/`, data ).subscribe( () =>{ });
+    this.http.patch(`http://tekhab.pythonanywhere.com/EmployerDetails/${eyer_id}/`, data ).subscribe( (data) =>{
+      console.log(data);
+     });
   }
 
   onImagePicked(imageData:string) {

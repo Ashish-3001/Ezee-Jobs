@@ -5,6 +5,7 @@ import { GetService } from 'src/app/servvices/get.service';
 import { HttpClient } from '@angular/common/http';
 import { AlertController, MenuController } from '@ionic/angular';
 
+
 @Component({
   selector: 'app-job-offer',
   templateUrl: './job-offer.page.html',
@@ -92,11 +93,13 @@ export class JobOfferPage implements OnInit {
           var pactheyer = {
             eyer_job_offer: ++eyer_job_offer,
           }
-          this.http.patch(`http://tekhab.pythonanywhere.com/EmployerDetails/${value.id}/`, pactheyer).subscribe( () => { });
+          this.http.patch(`http://tekhab.pythonanywhere.com/EmployerDetails/${value.id}/`, pactheyer).subscribe( () => { 
+            this.authService.token_set(value.id, 'employer');
+           });
         });
       });
     });
-    setTimeout(()=>{ this.router.navigate(['../employer-profile/employer-home']); }, 2000)
+    setTimeout(()=>{ this.router.navigate(['../employer-profile/employer-home']); this.get.job_post_state.next(0); }, 2000)
   }
 
   async presentAlertConfirm() {
