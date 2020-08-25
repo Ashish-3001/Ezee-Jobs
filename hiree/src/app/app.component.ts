@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { Platform, AlertController, NavController} from '@ionic/angular';
 import { AuthenticationService } from './servvices/authentication.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Plugins, Capacitor } from '@capacitor/core';
-import { Injectable } from '@angular/core';
-import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 const { App } = Plugins;
 
@@ -79,12 +76,12 @@ export class AppComponent implements OnInit {
   constructor(
     private platform: Platform,
     private authService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    public alertController: AlertController,
+    private navController:NavController,
   ) {
     this.initializeApp();
-    this.platform.backButton.subscribeWithPriority(-1, () => {
-      App.exitApp();
-    });
+    
   }
 
   initializeApp() {
@@ -105,11 +102,54 @@ export class AppComponent implements OnInit {
       this.state = value;
       console.log(this.state);
     });
+    this.platform.backButton.subscribeWithPriority(97, ()  => {
+      this.navigation();
+    });
   }
 
   logout() {
     this.authService.logout();
     this.state = null;
+  }
+
+  async presentAlertExit() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Exit',
+      message: 'Are you <strong>Sure</strong> you want to <strong>Exit</strong> the app!!!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+        }, {
+          text: 'Exit',
+          handler: () => {
+            App.exitApp();
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+  
+  navigation() {
+    this.authService.menu().then((value) => { 
+      if(value == 'employer') {
+        if(this.router.url.toString() == '/employer-profile/employer-home') {
+          this.presentAlertExit();
+        }
+      }
+      else if(value == 'employee') {
+        if(this.router.url.toString() == '/employee-home') {
+          this.presentAlertExit();
+        }
+      }
+      else {
+        return;
+      }
+    });
   }
 
 }

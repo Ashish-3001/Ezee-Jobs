@@ -99,7 +99,7 @@ export class JobOfferPage implements OnInit {
         });
       });
     });
-    setTimeout(()=>{ this.router.navigate(['../employer-profile/employer-home']); this.get.job_post_state.next(0); }, 2000)
+    setTimeout(()=>{ this.router.navigate(['../employer-profile/employer-home']); this.get.refresh.next(1); }, 2000)
   }
 
   async presentAlertConfirm() {

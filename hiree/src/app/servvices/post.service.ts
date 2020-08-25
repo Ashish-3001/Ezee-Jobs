@@ -184,7 +184,7 @@ export class PostService {
       total_job_post += 1;
       active_job_post += 1;
       this.test_put(total_job_post, eyer_id, active_job_post);
-      this.log_details.job_post_state.next(0);
+      this.log_details.refresh.next(1);
     });
   }
 

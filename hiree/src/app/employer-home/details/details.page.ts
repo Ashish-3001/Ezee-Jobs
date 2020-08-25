@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GetService } from 'src/app/servvices/get.service';
 import { HttpClient } from '@angular/common/http';
 import { MenuController, AlertController } from '@ionic/angular';
@@ -21,6 +21,7 @@ export class DetailsPage implements OnInit {
   public menuCtrl: MenuController, 
   private http: HttpClient,
   public alertController: AlertController,
+  private router: Router,
   private callNumber: CallNumber) { }
 
   ngOnInit() {
@@ -34,8 +35,8 @@ export class DetailsPage implements OnInit {
       this.http.get(`http://tekhab.pythonanywhere.com/EmployeeDetails/${eyee_id}`).subscribe((data:any) =>{
         this.details = data;
         this.http.get(`http://tekhab.pythonanywhere.com/ImageEyeeDp/?eyee_id=${eyee_id}`).subscribe((data: any) => {
-        this.image = data[0].image_dp;
-      });
+          this.image = data[0].image_dp;
+        });
        });
     });
   }
