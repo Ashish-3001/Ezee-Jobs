@@ -133,11 +133,11 @@
 </ion-row>
 <ion-row>
   <ion-col size-md="6" offset-md="3">
-<ion-item>
-      <ion-label position="floating">Website:</ion-label>
-      <ion-input type = 'website' ngModel name="website"></ion-input>
-</ion-item>
-</ion-col>
+    <ion-item>
+          <ion-label position="floating">Website:</ion-label>
+          <ion-input type = 'website' ngModel name="website"></ion-input>
+    </ion-item>
+  </ion-col>
 </ion-row>
 <ion-row>
   <ion-col size-md="6" offset-md="3">
@@ -211,14 +211,14 @@
  </ion-row>
  <ion-row>
   <ion-col size-md="6" offset-md="3">           
- <ion-item>
-        <ion-label position="floating">Number of Seats in Hotel:</ion-label>
-        <ion-input type = 'number' ngModel name="seats" required #seatCtrl="ngModel"></ion-input>
- </ion-item>
- <ion-item *ngIf="!seatCtrl.valid && seatCtrl.touched" lines="none">
-  <div class="warn">  Please Enter The seats in the hotel</div>
- </ion-item>
- </ion-col>
+    <ion-item>
+      <ion-label position="floating">Number of Seats in Hotel:</ion-label>
+      <ion-input type = 'number' ngModel name="seats" required #seatCtrl="ngModel"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!seatCtrl.valid && seatCtrl.touched" lines="none">
+      <div class="warn">  Please Enter The seats in the hotel</div>
+    </ion-item>
+  </ion-col>
  </ion-row>
  <ion-row>
   <ion-col size-md="6" offset-md="3">

@@ -52,15 +52,7 @@ export class OtpVerifyComponent implements OnInit {
           }
         }
         else {
-          if(this.post.user_type.value == 'employer') {
-            this.modalCtrl.dismiss();
-            this.router.navigate(['/register-as-employer']);
-          }
-          else if(this.post.user_type.value == 'employee') {
-            this.modalCtrl.dismiss();
-            this.router.navigate(['/register-as-employee']);
-          }
-          else if(this.post.user_type.value == 'invalid') {
+          if(this.post.user_type.value == 'invalid') {
             this.modalCtrl.dismiss();
           }
           else {

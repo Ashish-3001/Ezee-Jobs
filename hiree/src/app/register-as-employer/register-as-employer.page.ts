@@ -44,7 +44,9 @@ export class RegisterAsEmployerPage implements OnInit {
     this.postdata.post_employer_details(postdata,
       this.imageString1,
       this.imageString2,
-      this.imageString3);
+      this.imageString3,
+      "hey",
+      "hey");
 
   }
 

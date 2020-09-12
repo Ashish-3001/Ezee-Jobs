@@ -7,9 +7,9 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <form #form="ngForm" (ngSubmit)="eyer_details(form)">
-    <div *ngIf='state==1'>
+<ion-content>  
+  <div *ngIf='state==1'>
+    <form #form="ngForm" (ngSubmit)="eyer_details1(form)">
       <ion-grid>
         <ion-row>
           <ion-col size-md="6" offset-med="6">
@@ -53,7 +53,7 @@
           <ion-col size-md="6" offset-md="3">
             <ion-item>
               <ion-label position="floating">Email:</ion-label>
-              <ion-input type = 'email'inputmode="email" ngModel name ="email" ></ion-input>
+              <ion-input type = 'email' required ngModel name ="email" ></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
@@ -144,16 +144,168 @@
           </ion-col>
         </ion-row>
         <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <ion-item>
+              <ion-label position="floating">Website:</ion-label>
+              <ion-input type = 'website' ngModel name="website"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
             <ion-col size-md="6" offset-md="3">
-              <ion-button class="ion-margin-vertical" [disabled]="!form.valid" (click)='state=2' size='default' color="danger" expand="full">
+              <ion-button class="ion-margin-vertical" [disabled]="!form.valid" type="submit"  size='default' color="danger" expand="full">
                   Next
               </ion-button>
             </ion-col>
         </ion-row>
       </ion-grid>
-    </div>
-    <div *ngIf='state==2'>
-      hey
-    </div>
-  </form>
+    </form>
+  </div>
+  <div *ngIf='state==2'>
+    <ion-list>
+      <ion-list-header>
+        <h3>Please Select Your Category</h3> <br>
+      </ion-list-header>
+      <ion-chip (click)='Category("Restaurants")'>
+        Restaurants
+      </ion-chip>
+      <ion-chip (click)='Category("Hotels")'>
+        Hotels
+      </ion-chip>
+      <ion-chip (click)='Category("Service Apartments")'>
+        Service Apartments 
+      </ion-chip>
+      <ion-chip (click)='Category("Homestays")'>
+        Homestays
+      </ion-chip>
+      <ion-chip (click)='Category("Paying guest")'>
+        Paying guest
+      </ion-chip>
+    </ion-list>
+  </div>
+  <div *ngIf='state==3'>
+    <form #form="ngForm" (ngSubmit)="eyer_details(form)">
+      <div>
+        <h3>Finaly step !!</h3> <br>
+      </div>
+      <div *ngIf='this.Category_input=="Restaurants"'>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <ion-list>
+              <ion-item>
+                <ion-label>Type of Hotel:</ion-label>
+                <ion-select interface="popover" ngModel name="type" required #typeCtrl="ngModel">
+                  <ion-select-option value="Vegetarian">Vegetarian</ion-select-option>
+                  <ion-select-option value="Non Vegetarian">Non Vegetarian</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <ion-item *ngIf="!typeCtrl.valid && typeCtrl.touched" lines="none">
+                <div class="warn">Please don't leave it empty</div>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <ion-item>
+              <ion-label>Cuisines:</ion-label>
+              <ion-select multiple="true" cancelText="Cancel" okText="Submit" ngModel name="cuisines" required #cCtrl="ngModel">
+                <ion-select-option value="American">American</ion-select-option>
+                <ion-select-option value="British">British</ion-select-option>
+                <ion-select-option value="Caribbean">Caribbean</ion-select-option>
+                <ion-select-option value="Chinnese">Chinnese</ion-select-option>
+                <ion-select-option value="French">French</ion-select-option>
+                <ion-select-option value="Greek">Greek</ion-select-option>
+                <ion-select-option value="Italian">Italian</ion-select-option>
+                <ion-select-option value="Japanese">Japanese</ion-select-option>
+                <ion-select-option value="Mediterranean">Mediterranean</ion-select-option>
+                <ion-select-option value="Mexican">Mexican</ion-select-option>
+                <ion-select-option value="Moroccan">Moroccan</ion-select-option>
+                <ion-select-option value="North Indian">North Indian</ion-select-option>
+                <ion-select-option value="South Indian">South Indian</ion-select-option>
+                <ion-select-option value="Spanish">Spanish</ion-select-option>
+                <ion-select-option value="Thai">Thai</ion-select-option>
+                <ion-select-option value="Turkish">Turkish</ion-select-option>
+                <ion-select-option value="Vietnamese">Vietnamese</ion-select-option>
+              </ion-select>
+            </ion-item> 
+            <ion-item *ngIf="!cCtrl.valid && cCtrl.touched" lines="none">
+              <div class="warn">Please don't leave this empty</div>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+         <ion-col size-md="6" offset-md="3">           
+           <ion-item>
+             <ion-label position="floating">Number of Seats in Restaurants:</ion-label>
+             <ion-input type = 'number' ngModel name="seats"></ion-input>
+           </ion-item>
+         </ion-col>
+        </ion-row>
+      </div>
+      <div *ngIf='this.Category_input=="Hotels"'>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <ion-item>
+              <ion-label>Category:</ion-label>
+              <ion-select interface="popover" ngModel name="category" required #catCtrl="ngModel">
+                <ion-select-option value="5 Star">5 Star</ion-select-option>
+                <ion-select-option value="3 Star">4 Star</ion-select-option>
+                <ion-select-option value="Fine Dining">3 Star</ion-select-option>
+                <ion-select-option value="Casual Dining">Budget Dining</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item *ngIf="!catCtrl.valid && catCtrl.touched" lines="none">
+              <div class="warn">Please don't leave this empty</div>
+            </ion-item>
+          </ion-col>
+        </ion-row>>
+        <ion-row>
+         <ion-col size-md="6" offset-md="3">           
+           <ion-item>
+             <ion-label position="floating">Number of Rooms in Hotels:</ion-label>
+             <ion-input type = 'number' ngModel name="seats"></ion-input>
+           </ion-item>
+         </ion-col>
+        </ion-row>
+      </div>
+      <div *ngIf='this.Category_input=="Service Apartments"'>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">           
+            <ion-item>
+              <ion-label position="floating">Number of Rooms:</ion-label>
+              <ion-input type = 'number' ngModel name="seats"></ion-input>
+            </ion-item>
+          </ion-col>
+         </ion-row>
+      </div>
+      <div *ngIf='this.Category_input=="Homestays"'>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">           
+            <ion-item>
+              <ion-label position="floating">Number of accommodates:</ion-label>
+              <ion-input type = 'number' ngModel name="seats"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </div>
+      <div *ngIf='this.Category_input=="Paying guest"'>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">           
+            <ion-item>
+              <ion-label position="floating">Number of accommodates:</ion-label>
+              <ion-input type = 'number' ngModel name="seats"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </div>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-button class="ion-margin-vertical" [disabled]="!form.valid" type="submit" size='default' color="danger" expand="full">
+            Submit
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </div>
 </ion-content>

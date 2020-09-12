@@ -57,9 +57,11 @@ export class PostService {
   post_employer_details(postdata: any,
     imageString1: string, 
     imageString2: string,
-    imageString3: string) {
-    postdata.user_id = this.user_id.value;
-    postdata.eyer_phone = this.user_phone.value;
+    imageString3: string,
+    user_id: any,
+    user_phone: any) {
+    postdata.user_id = user_id;
+    postdata.eyer_phone = user_phone;
     this.http.post('http://tekhab.pythonanywhere.com/EmployerDetails/', postdata).subscribe( (data) =>{
       this.data =data;
       this.user_id.next(this.data.id);
@@ -88,6 +90,10 @@ export class PostService {
         console.log("hii");
         this.http.post('http://tekhab.pythonanywhere.com/ImageEyerPic/' , postimage).subscribe( () =>{ });
       }
+    }, (error) => {
+      console.log(error);
+      this.http.delete(`http://tekhab.pythonanywhere.com/UserLogin/${user_id}`).subscribe( () => { });
+      this.presentAlertConfirm();
     });
   }
 
