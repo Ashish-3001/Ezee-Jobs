@@ -12,38 +12,17 @@
 <ion-content [fullscreen]="true">
   <ion-searchbar placeholder = "search jobs by role,hotel name,location"  enterkeyhint="enter" [(ngModel)] ="this.test" (keyup.enter)="ionViewDidEnter() || this.search_state=false" (ionClear)="this.search_state=false && ionViewDidEnter()" (ionFocus)="this.search_state=true" ></ion-searchbar>
   <div *ngIf="this.search_state == true">
-    <ion-list>      
-      <ion-list-header>
-        Tap to Change the Searching profession
-      </ion-list-header>
-      <ion-chip (click)="tset('manager')" color="secondary">
-        manager
-      </ion-chip>
-      <ion-chip (click)="tset('chef')" color="secondary">
-        chef
-      </ion-chip>
-      <ion-chip (click)="tset('janitor')" color="secondary">
-        janitor
-      </ion-chip>
-      <ion-chip (click)="tset('bartender')" color="secondary">
-        bartender
-      </ion-chip>
-      <ion-chip (click)="tset('delivery person')" color="secondary">
-        delivery person
-      </ion-chip>
-      <ion-chip (click)="tset('receptionist')" color="secondary">
-        receptionist
-      </ion-chip>
-      <ion-chip (click)="tset('waiter')" color="secondary">
-        waiter
-      </ion-chip>
-      <div class="or">OR</div>    
+    <ion-list>    
       <ion-list-header>
         <div class="text">Search For Specific Hotel to see if they have vacancies: <br> Eg: Taj Hotel</div>>
         </ion-list-header>
         <div class="or">OR</div>
       <ion-list-header>
       <div class="text">Search For Specific Location <br> Eg: HSR Layout</div>
+      </ion-list-header>
+      <div class="or">OR</div>      
+      <ion-list-header>
+        To Change the Searching profession you must edit your area of choice in your profile
       </ion-list-header>       
     </ion-list>
   </div>

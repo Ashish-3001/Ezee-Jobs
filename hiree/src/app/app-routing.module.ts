@@ -112,7 +112,8 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
-  },  {
+  },
+  {
     path: 'help',
     loadChildren: () => import('./help/help.module').then( m => m.HelpPageModule)
   },
@@ -123,7 +124,19 @@ const routes: Routes = [
   {
     path: 'employer-registration',
     loadChildren: () => import('./employer-registration/employer-registration.module').then( m => m.EmployerRegistrationPageModule)
+  },  {
+    path: 'edit-eyee',
+    loadChildren: () => import('./edit-eyee/edit-eyee.module').then( m => m.EditEyeePageModule)
   },
+  {
+    path: 'edit-eyer',
+    loadChildren: () => import('./edit-eyer/edit-eyer.module').then( m => m.EditEyerPageModule)
+  },
+  {
+    path: 'edit-job',
+    loadChildren: () => import('./edit-job/edit-job.module').then( m => m.EditJobPageModule)
+  },
+
 
 
   

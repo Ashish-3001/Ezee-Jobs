@@ -1,0 +1,185 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title><ion-text color="secondary">
+      <div class="heading">Ezee Jobs</div>
+    </ion-text></ion-title>
+    <ion-buttons slot="start" class="ion-padding">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div><h4> Edit Your Job Post</h4></div>
+  <form #form="ngForm" (ngSubmit)="onEdit(form)"> 
+    <ion-grid>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-item>
+            <ion-label>Monthly Salary:*</ion-label>
+            <ion-select interface="popover" ngModel name ="salary" #salCtrl="ngModel" placeholder={{this.details.job_salary}}>
+              <ion-select-option value="lessThan10000"> less than 10000</ion-select-option>
+              <ion-select-option value="10000-20000">10000-20000</ion-select-option>
+              <ion-select-option value="20000_30000">20000-30000</ion-select-option>
+              <ion-select-option value="30000_40000">30000-40000</ion-select-option>
+              <ion-select-option value="40000_50000">40000-50000</ion-select-option>
+              <ion-select-option value="50000_75000">50000-75000</ion-select-option>
+              <ion-select-option value="75000_100000">75000-100000</ion-select-option>
+              <ion-select-option value="100000">100000+</ion-select-option>
+            </ion-select>
+          </ion-item> 
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-item>
+            <ion-label>Working Days:*</ion-label>
+            <ion-select interface="popover"ngModel name ="workingDays" #dayCtrl="ngModel" placeholder={{this.details.job_working_days}}>
+              <ion-select-option value="five">5</ion-select-option>
+              <ion-select-option value="six">6</ion-select-option>
+              <ion-select-option value="seven">7</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-item>
+            <ion-label>Previous Experience:*</ion-label>
+            <ion-select interface="popover"ngModel name ="previousExperience" #exCtrl="ngModel" placeholder={{this.details.job_experience}}>
+              <ion-select-option value="fresher">fresher</ion-select-option>
+              <ion-select-option value="1_3">1-3</ion-select-option>
+              <ion-select-option value="3_5">3-5</ion-select-option>
+              <ion-select-option value="5_10">5-10</ion-select-option>
+              <ion-select-option value="10_15">10-15</ion-select-option>    
+              <ion-select-option value="15+">15+</ion-select-option>
+            </ion-select>
+        </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-item>
+            <ion-label>Employment:*</ion-label>
+            <ion-select interface="popover"ngModel name ="employment" #emCtrl="ngModel" placeholder={{this.details.job_employment}}>
+              <ion-select-option value="full Time">Full Time</ion-select-option>
+              <ion-select-option value="part Time">Part Time</ion-select-option>
+              <ion-select-option value="work From Home">Work from Home</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-item>
+            <ion-label>Gender:*</ion-label>
+            <ion-select interface="popover"ngModel name ="gender" #genCtrl="ngModel" placeholder={{this.details.job_gender}}>
+              <ion-select-option value="Male">Male</ion-select-option>
+              <ion-select-option value="Female">Female</ion-select-option>
+              <ion-select-option value="Others">Others</ion-select-option>
+            </ion-select>
+          </ion-item> 
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+        <ion-item>
+            <ion-label>Education:*</ion-label>
+            <ion-select interface="popover" ngModel name ="education" #edCtrl="ngModel" placeholder={{this.details.job_education}}>
+              <ion-select-option value="None">None</ion-select-option>
+              <ion-select-option value="tenth">Tenth</ion-select-option>
+              <ion-select-option value="intermediate">Intermediate</ion-select-option>
+              <ion-select-option value="Diploma">Diploma</ion-select-option>
+              <ion-select-option value="Degree">Degree</ion-select-option>
+              <ion-select-option value="Masters">Masters</ion-select-option>
+              <ion-select-option value="PhD">Ph.D</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-item>
+            <ion-label>Languages Known:*</ion-label>
+            <ion-select multiple="true" cancelText="Cancel" okText="Confirm" ngModel name ="language" #lanCtrl="ngModel" placeholder={{this.details.job_language}}>
+              <ion-select-option value="kannada">Kannada</ion-select-option>
+              <ion-select-option value="hindi">Hindi</ion-select-option>
+              <ion-select-option value="english">English</ion-select-option>
+              <ion-select-option value="telugu">Telugu</ion-select-option>
+              <ion-select-option value="tamil">Tamil</ion-select-option>            
+              <ion-select-option value="malayalam">Malayalam</ion-select-option>
+              <ion-select-option value="others">Others</ion-select-option>      
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-item>
+            <ion-label>Perks And Benefits:*</ion-label>
+            <ion-select multiple="true" cancelText="Cancel" okText="Confirm" ngModel name ="perksBenefits" #pbCtrl="ngModel" placeholder={{this.details.job_benefits}}>
+              <ion-select-option value="Appraisals">Performance Based Appraisals</ion-select-option>
+              <ion-select-option value="Cab">Cab Service</ion-select-option>
+              <ion-select-option value="Health">Health Insurance</ion-select-option>
+              <ion-select-option value="Over-Time">Over-Time Allowances</ion-select-option>
+              <ion-select-option value="Bonus">Bonus - Annual/Half Yearly/Quaterly</ion-select-option>            
+              <ion-select-option value="Attendance">Attendance Bonus</ion-select-option>
+              <ion-select-option value="Accommodation">Accommodation Allowances</ion-select-option>   
+              <ion-select-option value="others">Others</ion-select-option>       
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-item>
+            <ion-label>Working Shift:*</ion-label>
+            <ion-select interface="popover"ngModel name ="Shift" #shiftCtrl="ngModel" placeholder={{this.details.job_working_shifts}}>
+              <ion-select-option value="day">Day Shift</ion-select-option>
+              <ion-select-option value="night">Night Shift</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-item>
+            <ion-label position="floating">Skills*:</ion-label>
+            <ion-input type = 'text' ngModel name ="additionalSkills" #sklCtrl="ngModel" placeholder={{this.details.job_skills}} ></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-item>
+            <ion-label position="floating">Job Description (less than 280 char):</ion-label>
+            <ion-input type = 'textarea' ngModel name ="jobDescription" placeholder={{this.details.job_discription}} ></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row> 
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-item>
+            <ion-label position="floating">Employer Name:*</ion-label>
+            <ion-input type = 'text' ngModel name ="employerName" #nameCtrl="ngModel" placeholder={{this.details.job_posted_by}}></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-item>
+            <ion-label position="floating">Employer Designation:*</ion-label>
+            <ion-input type = 'text' ngModel name ="employerDesignation" #desCtrl="ngModel" placeholder={{this.details.job_posted_designation}}></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-button class="ion-margin-vertical"[disabled]="!form.valid" type = 'submit' size='default' color="warning" expand="full" >
+            Edit 
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

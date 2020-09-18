@@ -15,7 +15,7 @@
     <ion-grid>
       <ion-row>
         <ion-col size="10" offset="1">
-          <ion-icon name="person-outline" class="img"></ion-icon>
+          <ion-icon *ngIf='!this.image' name="person-outline" class="img"></ion-icon>
           <ion-img *ngIf='this.image' [src]='this.image' class="img" ></ion-img>
         </ion-col>
       </ion-row>
@@ -173,7 +173,7 @@
         </p>
         
           <ion-button fill="outline"
-           color="warning"slot="end" expand="block" >
+           color="warning"slot="end" expand="block" [routerLink] = "['/edit-eyee']" >
             Edit Profile 
           </ion-button>
           <ion-button (click) = "state()" fill="outline" slot="end" expand="block">

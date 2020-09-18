@@ -100,18 +100,7 @@ export class EmployeeHomePage implements OnInit {
     this.authService.data.then((value:any) => {
       this.eyee_details = value;
       var eyee_choice:any;
-      if(this.test.toLowerCase() == "manager" || 
-        this.test.toLowerCase() == "chef" || 
-        this.test.toLowerCase() == "janitor" ||
-        this.test.toLowerCase() == "bartender" ||
-        this.test.toLowerCase() == "delivery person" ||
-        this.test.toLowerCase() == "receptionist" ||
-        this.test.toLowerCase() == "waiter" ) {
-        eyee_choice = this.test;
-      }
-      else {
-        eyee_choice = value.eyee_choice;
-      }
+      eyee_choice = value.eyee_choice;
       this.get.get_job_post(eyee_choice,
         value.eyee_salary_expected,
         value.eyee_address_2,

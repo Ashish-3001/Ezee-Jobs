@@ -1,0 +1,412 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title><ion-text color="secondary">
+      <div class="heading">Ezee Jobs</div>
+    </ion-text></ion-title>
+    <ion-buttons slot="start" class="ion-padding">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div>
+            <ion-button color="light" expand="block" (click)="state(1)">
+              Edit Image 
+              <ion-icon *ngIf='!imageToggle' name="caret-down-outline" slot="end"></ion-icon>
+              <ion-icon *ngIf='imageToggle' name="caret-up-outline" slot="end"></ion-icon>
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+      <div *ngIf='imageToggle'>
+        <div *ngIf='imageToggle'>
+        <div *ngIf='!editImage'>
+          <ion-row>
+            <ion-col size="10" offset="1">
+              <ion-icon *ngIf='!this.image' name="person-outline" class="img"></ion-icon>
+              <ion-img *ngIf='this.image' [src]='this.image' class="img" ></ion-img>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button color="warning" expand="block" (click)='this.editImage=true'>
+                Edit Profile Pic
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </div>
+        <div *ngIf='editImage'>
+          <ion-row>
+            <ion-col size-md="6" offset-md="3">
+              <app-image-picker (imagePick)="onImagePickedDp($event)"  ></app-image-picker>
+            </ion-col>
+          </ion-row>
+        </div>
+      </div>
+      </div>
+      <ion-row>
+        <ion-col>
+          <div>
+            <ion-button color="light" expand="block" (click)="state(2)">
+              Edit Email id
+              <ion-icon *ngIf='!emailToggle' name="caret-down-outline" slot="end"></ion-icon>
+              <ion-icon *ngIf='emailToggle' name="caret-up-outline" slot="end"></ion-icon>
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+      <div *ngIf='emailToggle'>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <ion-item>
+              <ion-label position="floating">Email:</ion-label>
+              <ion-input type = 'email'inputmode="email" ngModel name ="email" [(ngModel)]='emailId'  ></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <ion-button class="ion-margin-vertical" (click)='editEmail()' size='default' color="danger" expand="full">
+              Submit
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </div>
+      <ion-row>
+        <ion-col>
+          <div>
+            <ion-button color="light" expand="block" (click)="state(3)">
+              Change Area of Choice
+              <ion-icon *ngIf='!professionToggle' name="caret-down-outline" slot="end"></ion-icon>
+              <ion-icon *ngIf='professionToggle' name="caret-up-outline" slot="end"></ion-icon>
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+      <div *ngIf='professionToggle'>
+        <ion-list>
+          <ion-list-header>
+            <h3>Please Select Your Position: <b>{{this.category}}</b> </h3> <br>
+          </ion-list-header>
+          <ion-chip (click)='Category("Front office Manager")'>
+            Front Office
+          </ion-chip>
+          <ion-chip (click)='Category("Receptionist")'>
+            Waiters/Steward
+          </ion-chip>
+          <ion-chip (click)='Category("Front office Executive")'>
+            House keeping 
+          </ion-chip>
+          <ion-chip (click)='Category("Front office Assistant")'>
+            Kitchen
+          </ion-chip>
+          <ion-chip (click)='Category("Front office Supervisor")'>
+            Repair And Labor
+          </ion-chip>
+          <ion-chip (click)='Category("Guest Relation Executive")'>
+            Guest Relation Executive
+          </ion-chip>
+          <ion-chip (click)='Category("Bell Boy")'>
+            Bell Boy
+          </ion-chip>
+          <ion-chip (click)='Category("Valet")'>
+            Valet
+          </ion-chip>
+          <ion-chip (click)='Category("Doorman")'>
+            Doorman
+          </ion-chip>
+          <ion-chip (click)='Category("Cashier")'>
+            Cashier
+          </ion-chip>
+          <ion-chip (click)='Category("Revenue executive")'>
+            Revenue executive
+          </ion-chip>
+          <ion-chip (click)='Category("Back office executive")'>
+            Back office executive
+          </ion-chip>
+          <ion-chip (click)='Category("Night Auditor")'>
+            Night Auditor
+          </ion-chip>
+          <ion-chip (click)='Category("Concierge")'>
+            Concierge
+          </ion-chip>
+          <ion-chip (click)='Category("Driver")'>
+            Driver
+          </ion-chip>
+          <ion-chip (click)='Category("Sales executive")'>
+            Sales executive
+          </ion-chip>
+          <ion-chip (click)='Category("Waiters/Steward")'>
+            Waiters/Steward
+          </ion-chip>
+          <ion-chip (click)='Category("F&B Captain")'>
+            F&B Captain
+          </ion-chip>
+          <ion-chip (click)='Category("F&B Supervisor")'>
+            F&B Supervisor
+          </ion-chip>
+          <ion-chip (click)='Category("F&B Assistant")'>
+            F&B Assistant
+          </ion-chip>
+          <ion-chip (click)='Category("Restaurant Manager")'>
+            Restaurant Manager
+          </ion-chip>
+          <ion-chip (click)='Category("Food and Beverage Manager")'>
+            Food and Beverage Manager
+          </ion-chip>
+          <ion-chip (click)='Category("Bartender")'>
+            Bartender
+          </ion-chip>
+          <ion-chip (click)='Category("Bar Jugglers")'>
+            Bar Jugglers
+          </ion-chip>
+          <ion-chip (click)='Category("Bar man")'>
+            Bar man
+          </ion-chip>
+          <ion-chip (click)='Category("Bar Manager")'>
+            Bar Manager
+          </ion-chip>
+          <ion-chip (click)='Category("Hostess")'>
+            Hostess
+          </ion-chip>
+          <ion-chip (click)='Category("Food Cost Controller ")'>
+            Food Cost Controller
+          </ion-chip>
+          <ion-chip (click)='Category("Chef")'>
+            Chef 
+          </ion-chip>
+          <ion-chip (click)='Category("Commis")'>
+            Commis
+          </ion-chip>
+          <ion-chip (click)='Category("Cook")'>
+            Cook
+          </ion-chip>
+          <ion-chip (click)='Category("Dishwasher / Pot washer")'>
+            Dishwasher / Pot washer
+          </ion-chip>
+          <ion-chip (click)='Category("Kitchen Stewarding Boys/Girls ")'>
+            Kitchen Stewarding Boys/Girls
+          </ion-chip>
+          <ion-chip (click)='Category("Housekeeping Boy/Girl")'>
+            Housekeeping Boy/Girl
+          </ion-chip>
+          <ion-chip (click)='Category("Housekeeping Supervisor")'>
+            Housekeeping Supervisor
+          </ion-chip>
+          <ion-chip (click)='Category("Housekeeping Manager/ Executive Housekeeper")'>
+            Housekeeping Manager/ Executive Housekeeper
+          </ion-chip>
+          <ion-chip (click)='Category("Swimming pool operator")'>
+            Swimming pool operator
+          </ion-chip>
+          <ion-chip (click)='Category("Organic Waste Converter operator")'>
+            Organic Waste Converter operator
+          </ion-chip>
+          <ion-chip (click)='Category("STP/WTP Operator")'>
+            STP/WTP Operator
+          </ion-chip>
+          <ion-chip (click)='Category("Nurse (Female)")'>
+            Nurse (Female)
+          </ion-chip>
+          <ion-chip (click)='Category("Nurse (Male)")'>
+            Nurse (Male)
+          </ion-chip>
+          <ion-chip (click)='Category("Civil Labour (Mistri)")'>
+            Civil Labour (Mistri)
+          </ion-chip>
+          <ion-chip (click)='Category("Electrician")'>
+            Electrician
+          </ion-chip>
+          <ion-chip (click)='Category("Plumber ")'>
+            Plumber
+          </ion-chip>
+          <ion-chip (click)='Category("Carpenter")'>
+            Carpenter
+          </ion-chip>
+          <ion-chip (click)='Category(" Gardener")'>
+            Gardener
+          </ion-chip>
+          <ion-chip (click)='Category(" Janitor")'>
+            Janitor
+          </ion-chip>
+          <ion-chip (click)='Category("HR executive")'>
+            HR executive
+          </ion-chip>
+          <ion-chip (click)='Category("Accountant")'>
+            Accountant
+          </ion-chip>
+          <ion-chip (click)='Category("Store executive")'>
+            Store executive
+          </ion-chip>
+          <ion-chip (click)='Category("Cost controller")'>
+            Cost controller
+          </ion-chip>
+          <ion-chip (click)='Category("Auditor")'>
+            Auditor
+          </ion-chip>
+          <ion-chip (click)='Category("Hygiene executive")'>
+            Hygiene executive
+          </ion-chip>
+          <ion-chip (click)='Category("Trainer")'>
+            Trainer
+          </ion-chip>
+        </ion-list>
+      </div>
+      <ion-row>
+        <ion-col>
+          <div>
+            <ion-button color="light" expand="block" (click)="state(4)">
+              Edit personal detials 
+              <ion-icon *ngIf='!personalDetailToggle' name="caret-down-outline" slot="end"></ion-icon>
+              <ion-icon *ngIf='personalDetailToggle' name="caret-up-outline" slot="end"></ion-icon>
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+      <div *ngIf='personalDetailToggle'>
+        <form #form="ngForm" (ngSubmit)="edit(form)">
+          <ion-row>
+            <ion-col size-md="6" offset-md="3">       
+              <ion-item>
+                <ion-label position="floating">Address 1:* (door no: ,street)</ion-label>
+                <ion-input type = 'text'ngModel name ="address1"  #addCtrl="ngModel"  placeholder={{this.details.eyee_address_1}} ></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size-md="6" offset-md="3">
+              <ion-item>
+                <ion-label position="floating">Address 2:* (Area: ,Land mark)</ion-label>
+                <ion-input type = 'text'ngModel name ="address2" #add2Ctrl="ngModel" placeholder={{this.details.eyee_address_2}} ></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size-md="6" offset-md="3">
+              <ion-item>
+                <ion-label position="floating">City:*</ion-label>
+                <ion-input type = 'text'ngModel name ="city" autocomplete autocorrect #cityCtrl="ngModel" placeholder={{this.details.eyee_city}}> </ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size-md="6" offset-md="3">
+              <ion-item>
+                <ion-label>State:*</ion-label>
+                <ion-select interface="popover"ngModel name ="state" #stateCtrl="ngModel" placeholder={{this.details.eyee_state}}>
+                  <ion-select-option value="Andhra Pradesh">Andhra Pradesh</ion-select-option>
+                  <ion-select-option value="Arunachal Pradesh">Arunachal Pradesh</ion-select-option>
+                  <ion-select-option value="Assam">Assam</ion-select-option>
+                  <ion-select-option value="Bihar">Bihar</ion-select-option>
+                  <ion-select-option value="Chhattisgarh">Chhattisgarh</ion-select-option>
+                  <ion-select-option value="Goa">Goa</ion-select-option>
+                  <ion-select-option value="Gujarat">Gujarat</ion-select-option>
+                  <ion-select-option value="Haryana">Haryana</ion-select-option>
+                  <ion-select-option value="Himachal Pradesh">Himachal Pradesh</ion-select-option>
+                  <ion-select-option value="Jammu & Kashmir">Jammu & Kashmir</ion-select-option>
+                  <ion-select-option value="Jharkhand">Jharkhand</ion-select-option>
+                  <ion-select-option value="Karnataka">Karnataka</ion-select-option>
+                  <ion-select-option value="Kerala">Kerala</ion-select-option>
+                  <ion-select-option value="Ladakh">Ladakh</ion-select-option>
+                  <ion-select-option value="Madhya Pradesh">Madhya Pradesh</ion-select-option>
+                  <ion-select-option value="Maharashtra">Maharashtra</ion-select-option>
+                  <ion-select-option value="Manipur">Manipur</ion-select-option>
+                  <ion-select-option value="Meghalaya">Meghalaya</ion-select-option>
+                  <ion-select-option value="Mizoram">Mizoram</ion-select-option>
+                  <ion-select-option value="Nagaland">Nagaland</ion-select-option>
+                  <ion-select-option value="Oddissa">Oddissa</ion-select-option>
+                  <ion-select-option value="Punjab">Punjab</ion-select-option>
+                  <ion-select-option value="Rajasthan">Rajasthan</ion-select-option>
+                  <ion-select-option value="Sikkim">Sikkim</ion-select-option>
+                  <ion-select-option value="Tamil Nadu">Tamil Nadu</ion-select-option>
+                  <ion-select-option value="Telangana">Telangana</ion-select-option>
+                  <ion-select-option value="Tripura">Tripura</ion-select-option>
+                  <ion-select-option value="Uttar Pradesh">Uttar Pradesh</ion-select-option>
+                  <ion-select-option value="Uttrakhand">Uttrakhand</ion-select-option>
+                  <ion-select-option value="West Bengal">West Bengal</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col> 
+          </ion-row>
+          <ion-row>
+            <ion-col size-md="6" offset-md="3">
+              <ion-item>
+                <ion-label>Salary Expected* (per month in INR)</ion-label>
+                <ion-select interface="popover"ngModel name ="salary"  #salCtrl="ngModel" placeholder={{this.details.eyee_salary_expected}}>
+                  <ion-select-option value=5000>Less than ten thousand</ion-select-option>
+                  <ion-select-option value=10000>Ten to Twenty Thousand</ion-select-option>
+                  <ion-select-option value=20000>Twenty to Thirty Thousand</ion-select-option>
+                  <ion-select-option value=30000>Thirty to Fourty Thousand</ion-select-option>
+                  <ion-select-option value=40000>Fourty to Fifty Thousand</ion-select-option>
+                  <ion-select-option value=50000>Fifty Thousand plus</ion-select-option>
+                </ion-select>
+              </ion-item> 
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size-md="6" offset-md="3">
+               <ion-item>
+                <ion-label>Education:*</ion-label>
+                <ion-select interface="popover" ngModel name ="education"  #edCtrl="ngModel" placeholder={{this.details.eyee_education}}> 
+                  <ion-select-option value="None">None</ion-select-option>
+                  <ion-select-option value="tenth">Tenth</ion-select-option>
+                  <ion-select-option value="intermediate">Intermediate</ion-select-option>
+                  <ion-select-option value="Diploma">Diploma</ion-select-option>
+                  <ion-select-option value="Degree">Degree</ion-select-option>
+                  <ion-select-option value="Masters">Masters</ion-select-option>
+                  <ion-select-option value="PhD">Ph.D</ion-select-option>
+                </ion-select>
+              </ion-item>     
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size-md="6" offset-md="3">
+              <ion-item>
+                <ion-label>Time of work:*</ion-label>
+                <ion-select interface="popover"ngModel name ="time"  #timeCtrl="ngModel" placeholder={{this.details.eyee_time}}>
+                  <ion-select-option value="0-6 hrs">0-6 hrs</ion-select-option>
+                  <ion-select-option value="6-8 hrs">6-8 hrs</ion-select-option>
+                  <ion-select-option value="8-14 hrs">8-14 hrs</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size-md="6" offset-md="3">
+              <ion-item>
+                <ion-label position="floating">Previous Experience(in years):*</ion-label>
+                <ion-input type = 'number' ngModel name ="previousExperience"  #expCtrl="ngModel" placeholder={{this.details.eyee_pre_experience}}></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size-md="6" offset-md="3">
+              <ion-item>
+                <ion-label position="floating">Place of Experience:</ion-label>
+                <ion-input type = 'text' ngModel name ="placePreviousExprience" placeholder={{this.details.eyee_place_pre_experience}}></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size-md="6" offset-md="3">
+              <ion-item>
+                <ion-label position="floating">Skills:*</ion-label>
+                <ion-input type = 'text'ngModel name ="additionalSkills"  #skillCtrl="ngModel" placeholder={{this.details.eyee_add_skills}}></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size-md="6" offset-md="3">
+              <ion-button class="ion-margin-vertical" [disabled]="!form.valid" type="submit" size='default' color="primary" expand="full">
+                Submit
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+      </div>
+    </ion-grid>
+</ion-content>

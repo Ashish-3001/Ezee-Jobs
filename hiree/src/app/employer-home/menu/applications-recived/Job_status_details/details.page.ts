@@ -20,7 +20,7 @@ export class DetailsPage implements OnInit {
 
 
   constructor(private acitivatedRoute: ActivatedRoute, 
-    private job_details: GetService, 
+    private get: GetService, 
     private http: HttpClient,
     public menuCtrl: MenuController, 
     private authService: AuthenticationService,
@@ -34,6 +34,7 @@ export class DetailsPage implements OnInit {
         return
       }
       const job_id = paraMap.get('eyer_id');
+      this.get.Job_Id.next(job_id);
       var i:number =0;
       this.authService.data.then((value) => {
         this.http.get(`http://tekhab.pythonanywhere.com/JobPost/?eyer_id=${value.id}`).subscribe((data)=>{

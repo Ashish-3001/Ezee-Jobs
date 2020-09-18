@@ -1,0 +1,350 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title><ion-text color="secondary">
+      <div class="heading">Ezee Jobs</div>
+    </ion-text></ion-title>
+    <ion-buttons slot="start" class="ion-padding">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div>
+          <ion-button color="light" expand="block" (click)="state(1)">
+            Edit Images
+            <ion-icon *ngIf='!imageToggle' name="caret-down-outline" slot="end"></ion-icon>
+            <ion-icon *ngIf='imageToggle' name="caret-up-outline" slot="end"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+    <div *ngIf='imageToggle'>
+      <div *ngIf='!editImage1'>
+        <ion-row>
+          <ion-col size="10" offset="1">
+            <ion-icon *ngIf='!this.image1' name="person-outline" class="img"></ion-icon>
+            <ion-img *ngIf='this.image1' [src]='this.image1' class="img" ></ion-img>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-button color="warning" expand="block" (click)='this.editImage1=true'>
+              Edit The Above Pic
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </div>
+      <div *ngIf='editImage1'>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <app-image-picker (imagePick)="onImagePicked1($event)"  ></app-image-picker>
+          </ion-col>
+        </ion-row>
+      </div>
+      <div *ngIf='!editImage2'>
+        <ion-row>
+          <ion-col size="10" offset="1">
+            <ion-icon *ngIf='!this.image2' name="person-outline" class="img"></ion-icon>
+            <ion-img *ngIf='this.image2' [src]='this.image2' class="img" ></ion-img>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-button color="warning" expand="block" (click)='this.editImage2=true'>
+              Edit The Above Pic
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </div>
+      <div *ngIf='editImage2'>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <app-image-picker (imagePick)="onImagePicked2($event)"  ></app-image-picker>
+          </ion-col>
+        </ion-row>
+      </div>
+      <div *ngIf='!editImage3'>
+        <ion-row>
+          <ion-col size="10" offset="1">
+            <ion-icon *ngIf='!this.image3' name="person-outline" class="img"></ion-icon>
+            <ion-img *ngIf='this.image3' [src]='this.image3' class="img" ></ion-img>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-button color="warning" expand="block" (click)='this.editImage3=true'>
+              Edit The Above Pic
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </div>
+      <div *ngIf='editImage3'>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <app-image-picker (imagePick)="onImagePicked3($event)"  ></app-image-picker>
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+    <ion-row>
+      <ion-col>
+        <div>
+          <ion-button color="light" expand="block" (click)="state(2)">
+            Edit Email id
+            <ion-icon *ngIf='!emailToggle' name="caret-down-outline" slot="end"></ion-icon>
+            <ion-icon *ngIf='emailToggle' name="caret-up-outline" slot="end"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+    <div *ngIf='emailToggle'>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-item>
+            <ion-label position="floating">Email:</ion-label>
+            <ion-input type = 'email'inputmode="email" ngModel name ="email" [(ngModel)]='emailId'  ></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-button class="ion-margin-vertical" (click)='editEmail()' size='default' color="danger" expand="full">
+            Submit
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+    <ion-row>
+      <ion-col>
+        <div>
+          <ion-button color="light" expand="block" (click)="state(3)">
+            Change Area of Category
+            <ion-icon *ngIf='!professionToggle' name="caret-down-outline" slot="end"></ion-icon>
+            <ion-icon *ngIf='professionToggle' name="caret-up-outline" slot="end"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+    <div *ngIf='professionToggle'>
+      <ion-list>
+        <ion-list-header>
+          <h3>Please Select Your Category: <b>{{this.category}}</b></h3><br>
+        </ion-list-header>
+        <ion-chip (click)='Category("Restaurants")'>
+          Restaurants
+        </ion-chip>
+        <ion-chip (click)='Category("Hotels")'>
+          Hotels
+        </ion-chip>
+        <ion-chip (click)='Category("Service Apartments")'>
+          Service Apartments 
+        </ion-chip>
+        <ion-chip (click)='Category("Homestays")'>
+          Homestays
+        </ion-chip>
+        <ion-chip (click)='Category("Paying guest")'>
+          Paying guest
+        </ion-chip>
+      </ion-list>
+    </div>
+    <ion-row>
+      <ion-col>
+        <div>
+          <ion-button color="light" expand="block" (click)="state(4)">
+            Edit personal detials 
+            <ion-icon *ngIf='!personalDetailToggle' name="caret-down-outline" slot="end"></ion-icon>
+            <ion-icon *ngIf='personalDetailToggle' name="caret-up-outline" slot="end"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+    <div *ngIf='personalDetailToggle'>
+      <form #form="ngForm" (ngSubmit)="edit(form)">
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">       
+            <ion-item>
+              <ion-label position="floating">Address 1:* (door no: ,street)</ion-label>
+              <ion-input type = 'text'ngModel name ="address1"  #addCtrl="ngModel"  placeholder={{this.details.eyer_address_2}} ></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <ion-item>
+              <ion-label position="floating">Address 2:* (Area: ,Land mark)</ion-label>
+              <ion-input type = 'text'ngModel name ="address2" #add2Ctrl="ngModel" placeholder={{this.details.eyer_address_2}} ></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <ion-item>
+              <ion-label position="floating">City:*</ion-label>
+              <ion-input type = 'text'ngModel name ="city" autocomplete autocorrect #cityCtrl="ngModel" placeholder={{this.details.eyer_city}}> </ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <ion-item>
+              <ion-label>State:*</ion-label>
+              <ion-select interface="popover"ngModel name ="state" #stateCtrl="ngModel" placeholder={{this.details.eyer_state}}>
+                <ion-select-option value="Andhra Pradesh">Andhra Pradesh</ion-select-option>
+                <ion-select-option value="Arunachal Pradesh">Arunachal Pradesh</ion-select-option>
+                <ion-select-option value="Assam">Assam</ion-select-option>
+                <ion-select-option value="Bihar">Bihar</ion-select-option>
+                <ion-select-option value="Chhattisgarh">Chhattisgarh</ion-select-option>
+                <ion-select-option value="Goa">Goa</ion-select-option>
+                <ion-select-option value="Gujarat">Gujarat</ion-select-option>
+                <ion-select-option value="Haryana">Haryana</ion-select-option>
+                <ion-select-option value="Himachal Pradesh">Himachal Pradesh</ion-select-option>
+                <ion-select-option value="Jammu & Kashmir">Jammu & Kashmir</ion-select-option>
+                <ion-select-option value="Jharkhand">Jharkhand</ion-select-option>
+                <ion-select-option value="Karnataka">Karnataka</ion-select-option>
+                <ion-select-option value="Kerala">Kerala</ion-select-option>
+                <ion-select-option value="Ladakh">Ladakh</ion-select-option>
+                <ion-select-option value="Madhya Pradesh">Madhya Pradesh</ion-select-option>
+                <ion-select-option value="Maharashtra">Maharashtra</ion-select-option>
+                <ion-select-option value="Manipur">Manipur</ion-select-option>
+                <ion-select-option value="Meghalaya">Meghalaya</ion-select-option>
+                <ion-select-option value="Mizoram">Mizoram</ion-select-option>
+                <ion-select-option value="Nagaland">Nagaland</ion-select-option>
+                <ion-select-option value="Oddissa">Oddissa</ion-select-option>
+                <ion-select-option value="Punjab">Punjab</ion-select-option>
+                <ion-select-option value="Rajasthan">Rajasthan</ion-select-option>
+                <ion-select-option value="Sikkim">Sikkim</ion-select-option>
+                <ion-select-option value="Tamil Nadu">Tamil Nadu</ion-select-option>
+                <ion-select-option value="Telangana">Telangana</ion-select-option>
+                <ion-select-option value="Tripura">Tripura</ion-select-option>
+                <ion-select-option value="Uttar Pradesh">Uttar Pradesh</ion-select-option>
+                <ion-select-option value="Uttrakhand">Uttrakhand</ion-select-option>
+                <ion-select-option value="West Bengal">West Bengal</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col> 
+        </ion-row>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <ion-item>
+              <ion-label position="floating">Website:</ion-label>
+              <ion-input type = 'website' ngModel name="website" placeholder={{this.details.eyer_website}}></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <div *ngIf='this.category=="Restaurants"'>
+          <ion-row>
+            <ion-col size-md="6" offset-md="3">
+              <ion-list>
+                <ion-item>
+                  <ion-label>Type of Hotel:</ion-label>
+                  <ion-select interface="popover" ngModel name="type"  #typeCtrl="ngModel" placeholder={{this.details.eyer_type}}>
+                    <ion-select-option value="Vegetarian">Vegetarian</ion-select-option>
+                    <ion-select-option value="Non Vegetarian">Non Vegetarian</ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-list>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size-md="6" offset-md="3">
+              <ion-item>
+                <ion-label>Cuisines:</ion-label>
+                <ion-select multiple="true" cancelText="Cancel" okText="Submit" ngModel name="cuisines"  #cCtrl="ngModel" placeholder={{this.details.eyer_cuisines}}>
+                  <ion-select-option value="American">American</ion-select-option>
+                  <ion-select-option value="British">British</ion-select-option>
+                  <ion-select-option value="Caribbean">Caribbean</ion-select-option>
+                  <ion-select-option value="Chinnese">Chinnese</ion-select-option>
+                  <ion-select-option value="French">French</ion-select-option>
+                  <ion-select-option value="Greek">Greek</ion-select-option>
+                  <ion-select-option value="Italian">Italian</ion-select-option>
+                  <ion-select-option value="Japanese">Japanese</ion-select-option>
+                  <ion-select-option value="Mediterranean">Mediterranean</ion-select-option>
+                  <ion-select-option value="Mexican">Mexican</ion-select-option>
+                  <ion-select-option value="Moroccan">Moroccan</ion-select-option>
+                  <ion-select-option value="North Indian">North Indian</ion-select-option>
+                  <ion-select-option value="South Indian">South Indian</ion-select-option>
+                  <ion-select-option value="Spanish">Spanish</ion-select-option>
+                  <ion-select-option value="Thai">Thai</ion-select-option>
+                  <ion-select-option value="Turkish">Turkish</ion-select-option>
+                  <ion-select-option value="Vietnamese">Vietnamese</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+           <ion-col size-md="6" offset-md="3">           
+             <ion-item>
+               <ion-label position="floating">Number of Seats in Restaurants:</ion-label>
+               <ion-input type = 'number' ngModel name="seats" placeholder={{this.details.eyer_no_seats}}></ion-input>
+             </ion-item>
+           </ion-col>
+          </ion-row>
+        </div>
+        <div *ngIf='this.category=="Hotels"'>
+          <ion-row>
+            <ion-col size-md="6" offset-md="3">
+              <ion-item>
+                <ion-label>Category:</ion-label>
+                <ion-select interface="popover" ngModel name="category" #catCtrl="ngModel" placeholder={{this.details.eyer_type}}>
+                  <ion-select-option value="5 Star">5 Star</ion-select-option>
+                  <ion-select-option value="3 Star">4 Star</ion-select-option>
+                  <ion-select-option value="Fine Dining">3 Star</ion-select-option>
+                  <ion-select-option value="Casual Dining">Budget Dining</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+           <ion-col size-md="6" offset-md="3">           
+             <ion-item>
+               <ion-label position="floating">Number of Rooms in Hotels:</ion-label>
+               <ion-input type = 'number' ngModel name="seats" placeholder={{this.details.eyer_no_seats}}></ion-input>
+             </ion-item>
+           </ion-col>
+          </ion-row>
+        </div>
+        <div *ngIf='this.category=="Service Apartments"'>
+          <ion-row>
+            <ion-col size-md="6" offset-md="3">           
+              <ion-item>
+                <ion-label position="floating">Number of Rooms:</ion-label>
+                <ion-input type = 'number' ngModel name="seats" placeholder={{this.details.eyer_no_seats}}></ion-input>
+              </ion-item>
+            </ion-col>
+           </ion-row>
+        </div>
+        <div *ngIf='this.category=="Homestays"'>
+          <ion-row>
+            <ion-col size-md="6" offset-md="3">           
+              <ion-item>
+                <ion-label position="floating">Number of accommodates:</ion-label>
+                <ion-input type = 'number' ngModel name="seats" placeholder={{this.details.eyer_no_seats}}></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </div>
+        <div *ngIf='this.category=="Paying guest"'>
+          <ion-row>
+            <ion-col size-md="6" offset-md="3">           
+              <ion-item>
+                <ion-label position="floating">Number of accommodates:</ion-label>
+                <ion-input type = 'number' ngModel name="seats" placeholder={{this.details.eyer_no_seats}}></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </div>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <ion-button class="ion-margin-vertical" [disabled]="!form.valid" type="submit" size='default' color="primary" expand="full">
+              Submit
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </div>
+  </ion-grid>
+</ion-content>

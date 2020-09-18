@@ -81,6 +81,9 @@ export class AuthenticationService {
         this.router.navigate(['employer-profile/employer-home']);
         this.navController.navigateRoot(['employer-profile/employer-home']);
       }
+      else {
+        this.router.navigate(['login']);
+      }
     });
   }
 

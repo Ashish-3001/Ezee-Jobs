@@ -17,6 +17,7 @@ export class GetService {
   refresh = new BehaviorSubject<number>(0);
   otp_verification = new BehaviorSubject("0000");
   eyer_time = new BehaviorSubject("none");
+  Job_Id = new BehaviorSubject("none");
   
 
 
