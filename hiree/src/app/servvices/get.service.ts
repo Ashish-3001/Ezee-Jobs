@@ -267,7 +267,7 @@ export class GetService {
                         console.log("hi");
                       }
                       else {
-                        this.results_job_post.push(data[i]);  
+                        this.results_job_post.push(data[i]);
                       }
                     }
                     else {
@@ -302,7 +302,7 @@ export class GetService {
                           break;
                         }
                       }
-                      this.http.get(`http://tekhab.pythonanywhere.com/JobPost/?eyer_id=&job_active=true&job_post=${j_P}&job_salary=&eyer_location=&job_gender=&job_education=&job_experience=&job_age=&negated_job_salary=${j_s}&negated_eyer_location=&negated_job_gender=&negated_job_education${j_e}=&negated_job_experience=${j_ex}&negated_job_age=&search=&search=${s}`).toPromise().then( (data:any) =>{ 
+                      this.http.get(`http://tekhab.pythonanywhere.com/JobPost/?eyer_id=&job_active=true&job_post=${j_P}&job_salary=&eyer_location=&job_gender=&job_education=&job_experience=&job_age=&negated_job_salary=${j_s}&negated_eyer_location=&negated_job_gender=&negated_job_education=${j_e}&negated_job_experience=${j_ex}&negated_job_age=&search=&search=${s}`).toPromise().then( (data:any) =>{ 
                         for(var i=0; i>=0;i++) {
                           if(data[i]) {
                             if(remove_offer_jobs.some((item) => item.job_id === data[i].id)) {
