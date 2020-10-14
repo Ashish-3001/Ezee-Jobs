@@ -20,6 +20,7 @@ export class EmployeeHomePage implements OnInit {
   results_job: any;
   test:any ="";
   search_state:boolean = false;
+  empty:boolean;
 
   constructor(
     public menuCtrl: MenuController,
@@ -34,7 +35,12 @@ export class EmployeeHomePage implements OnInit {
   }
 
   ngOnInit() {
-    
+    this.empty = false;
+    setTimeout(() => {
+      if(!this.results_job || !this.results_job[0]) {
+        this.empty = true;
+      }
+    }, 12000);
   }
 
   like(f, a) {

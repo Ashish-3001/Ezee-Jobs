@@ -52,7 +52,7 @@ export class GetService {
             break;
           }
         }
-        this.http.get(`http://tekhab.pythonanywhere.com/EmployeeDetails/?user_id=&eyee_choice=${e_c}&eyee_salary_expected=${e_s}&eyee_pre_experience=${e_ex}&eyee_education=${e_e}&eyee_city=&eyee_type_hotel=&eyee_age=&eyee_gender=&negated_eyee_salary_expected=&negated_eyee_pre_experience=&negated_eyee_education=&negated_eyee_address_2=&negated_eyee_type_hotel=&negated_eyee_age=&negated_eyee_gender=`).toPromise().then( (data) =>{
+        this.http.get(`http://tekhab.pythonanywhere.com/EmployeeDetails/?user_id=&eyee_choice=${e_c}&eyee_salary_expected=${e_s}&eyee_pre_experience=${e_ex}&eyee_education=${e_e}&eyee_city=&eyee_type_hotel=&eyee_age=&eyee_gender=&negated_eyee_salary_expected=&negated_eyee_pre_experience=&negated_eyee_education=&negated_eyee_address_2=&negated_eyee_type_hotel=&negated_eyee_age=&negated_eyee_gender=&eyee_active=true`).toPromise().then( (data) =>{
           for(var i=0; i>=0;i++) {
             if(data[i]) {
               if(remove_offer_jobs.some((item) => item.eyee_id === data[i].id)) {
@@ -66,7 +66,7 @@ export class GetService {
               break;
             }
           }
-          this.http.get(`http://tekhab.pythonanywhere.com/EmployeeDetails/?user_id=&eyee_choice=${e_c}&eyee_salary_expected=${e_s}&eyee_pre_experience=${e_ex}&eyee_education=&eyee_city=&eyee_type_hotel=&eyee_age=&eyee_gender=&negated_eyee_salary_expected=&negated_eyee_pre_experience=&negated_eyee_education=${e_e}&negated_eyee_address_2=&negated_eyee_type_hotel=&negated_eyee_age=&negated_eyee_gender=`).toPromise().then( (data) =>{
+          this.http.get(`http://tekhab.pythonanywhere.com/EmployeeDetails/?user_id=&eyee_choice=${e_c}&eyee_salary_expected=${e_s}&eyee_pre_experience=${e_ex}&eyee_education=&eyee_city=&eyee_type_hotel=&eyee_age=&eyee_gender=&negated_eyee_salary_expected=&negated_eyee_pre_experience=&negated_eyee_education=${e_e}&negated_eyee_address_2=&negated_eyee_type_hotel=&negated_eyee_age=&negated_eyee_gender=&eyee_active=true`).toPromise().then( (data) =>{
             for(var i=0; i>=0;i++) {
               if(data[i]) {
                 if(remove_offer_jobs.some((item) => item.eyee_id === data[i].id)) {
@@ -80,7 +80,7 @@ export class GetService {
                 break;
               }
             }
-            this.http.get(`http://tekhab.pythonanywhere.com/EmployeeDetails/?user_id=&eyee_choice=${e_c}&eyee_salary_expected=${e_s}&eyee_pre_experience=&eyee_education=${e_e}&eyee_city=&eyee_type_hotel=&eyee_age=&eyee_gender=&negated_eyee_salary_expected=&negated_eyee_pre_experience=${e_ex}&negated_eyee_education=&negated_eyee_address_2=&negated_eyee_type_hotel=&negated_eyee_age=&negated_eyee_gender=`).toPromise().then( (data) =>{
+            this.http.get(`http://tekhab.pythonanywhere.com/EmployeeDetails/?user_id=&eyee_choice=${e_c}&eyee_salary_expected=${e_s}&eyee_pre_experience=&eyee_education=${e_e}&eyee_city=&eyee_type_hotel=&eyee_age=&eyee_gender=&negated_eyee_salary_expected=&negated_eyee_pre_experience=${e_ex}&negated_eyee_education=&negated_eyee_address_2=&negated_eyee_type_hotel=&negated_eyee_age=&negated_eyee_gender=&eyee_active=true`).toPromise().then( (data) =>{
               for(var i=0; i>=0;i++) {
                 if(data[i]) {
                   if(remove_offer_jobs.some((item) => item.eyee_id === data[i].id)) {
@@ -94,7 +94,7 @@ export class GetService {
                   break;
                 }
               }
-              this.http.get(`http://tekhab.pythonanywhere.com/EmployeeDetails/?user_id=&eyee_choice=${e_c}&eyee_salary_expected=&eyee_pre_experience=${e_ex}&eyee_education=${e_e}&eyee_city=&eyee_type_hotel=&eyee_age=&eyee_gender=&negated_eyee_salary_expected=${e_s}&negated_eyee_pre_experience=&negated_eyee_education=&negated_eyee_address_2=&negated_eyee_type_hotel=&negated_eyee_age=&negated_eyee_gender=`).toPromise().then( (data) =>{
+              this.http.get(`http://tekhab.pythonanywhere.com/EmployeeDetails/?user_id=&eyee_choice=${e_c}&eyee_salary_expected=&eyee_pre_experience=${e_ex}&eyee_education=${e_e}&eyee_city=&eyee_type_hotel=&eyee_age=&eyee_gender=&negated_eyee_salary_expected=${e_s}&negated_eyee_pre_experience=&negated_eyee_education=&negated_eyee_address_2=&negated_eyee_type_hotel=&negated_eyee_age=&negated_eyee_gender=&eyee_active=true`).toPromise().then( (data) =>{
                 for(var i=0; i>=0;i++) {
                   if(data[i]) {
                     if(remove_offer_jobs.some((item) => item.eyee_id === data[i].id)) {
@@ -108,7 +108,7 @@ export class GetService {
                     break;
                   }
                 }
-                this.http.get(`http://tekhab.pythonanywhere.com/EmployeeDetails/?user_id=&eyee_choice=${e_c}&eyee_salary_expected=${e_s}&eyee_pre_experience=&eyee_education=&eyee_city=&eyee_type_hotel=&eyee_age=&eyee_gender=&negated_eyee_salary_expected=&negated_eyee_pre_experience=${e_ex}&negated_eyee_education=${e_e}&negated_eyee_address_2=&negated_eyee_type_hotel=&negated_eyee_age=&negated_eyee_gender=`).toPromise().then( (data) =>{
+                this.http.get(`http://tekhab.pythonanywhere.com/EmployeeDetails/?user_id=&eyee_choice=${e_c}&eyee_salary_expected=${e_s}&eyee_pre_experience=&eyee_education=&eyee_city=&eyee_type_hotel=&eyee_age=&eyee_gender=&negated_eyee_salary_expected=&negated_eyee_pre_experience=${e_ex}&negated_eyee_education=${e_e}&negated_eyee_address_2=&negated_eyee_type_hotel=&negated_eyee_age=&negated_eyee_gender=&eyee_active=true`).toPromise().then( (data) =>{
                   for(var i=0; i>=0;i++) {
                     if(data[i]) {
                       if(remove_offer_jobs.some((item) => item.eyee_id === data[i].id)) {
@@ -122,7 +122,7 @@ export class GetService {
                       break;
                     }
                   }
-                  this.http.get(`http://tekhab.pythonanywhere.com/EmployeeDetails/?user_id=&eyee_choice=${e_c}&eyee_salary_expected=&eyee_pre_experience=${e_ex}&eyee_education=&eyee_city=&eyee_type_hotel=&eyee_age=&eyee_gender=&negated_eyee_salary_expected=${e_s}&negated_eyee_pre_experience=&negated_eyee_education=${e_e}&negated_eyee_address_2=&negated_eyee_type_hotel=&negated_eyee_age=&negated_eyee_gender=`).toPromise().then( (data) =>{
+                  this.http.get(`http://tekhab.pythonanywhere.com/EmployeeDetails/?user_id=&eyee_choice=${e_c}&eyee_salary_expected=&eyee_pre_experience=${e_ex}&eyee_education=&eyee_city=&eyee_type_hotel=&eyee_age=&eyee_gender=&negated_eyee_salary_expected=${e_s}&negated_eyee_pre_experience=&negated_eyee_education=${e_e}&negated_eyee_address_2=&negated_eyee_type_hotel=&negated_eyee_age=&negated_eyee_gender=&eyee_active=true`).toPromise().then( (data) =>{
                     for(var i=0; i>=0;i++) {
                       if(data[i]) {
                         if(remove_offer_jobs.some((item) => item.eyee_id === data[i].id)) {
@@ -136,7 +136,7 @@ export class GetService {
                         break;
                       }
                     }
-                    this.http.get(`http://tekhab.pythonanywhere.com/EmployeeDetails/?user_id=&eyee_choice=${e_c}&eyee_salary_expected=&eyee_pre_experience=&eyee_education=${e_e}&eyee_city=&eyee_type_hotel=&eyee_age=&eyee_gender=&negated_eyee_salary_expected=${e_s}&negated_eyee_pre_experience=${e_ex}&negated_eyee_education=&negated_eyee_address_2=&negated_eyee_type_hotel=&negated_eyee_age=&negated_eyee_gender=`).toPromise().then( (data) =>{
+                    this.http.get(`http://tekhab.pythonanywhere.com/EmployeeDetails/?user_id=&eyee_choice=${e_c}&eyee_salary_expected=&eyee_pre_experience=&eyee_education=${e_e}&eyee_city=&eyee_type_hotel=&eyee_age=&eyee_gender=&negated_eyee_salary_expected=${e_s}&negated_eyee_pre_experience=${e_ex}&negated_eyee_education=&negated_eyee_address_2=&negated_eyee_type_hotel=&negated_eyee_age=&negated_eyee_gender=&eyee_active=true`).toPromise().then( (data) =>{
                       for(var i=0; i>=0;i++) {
                         if(data[i]) {
                           if(remove_offer_jobs.some((item) => item.eyee_id === data[i].id)) {
@@ -150,7 +150,7 @@ export class GetService {
                           break;
                         }
                       }
-                      this.http.get(`http://tekhab.pythonanywhere.com/EmployeeDetails/?user_id=&eyee_choice=${e_c}&eyee_salary_expected=&eyee_pre_experience=&eyee_education=&eyee_city=&eyee_type_hotel=&eyee_age=&eyee_gender=&negated_eyee_salary_expected=${e_s}&negated_eyee_pre_experience=${e_ex}&negated_eyee_education=${e_e}&negated_eyee_address_2=&negated_eyee_type_hotel=&negated_eyee_age=&negated_eyee_gender=`).toPromise().then( (data) =>{
+                      this.http.get(`http://tekhab.pythonanywhere.com/EmployeeDetails/?user_id=&eyee_choice=${e_c}&eyee_salary_expected=&eyee_pre_experience=&eyee_education=&eyee_city=&eyee_type_hotel=&eyee_age=&eyee_gender=&negated_eyee_salary_expected=${e_s}&negated_eyee_pre_experience=${e_ex}&negated_eyee_education=${e_e}&negated_eyee_address_2=&negated_eyee_type_hotel=&negated_eyee_age=&negated_eyee_gender=&eyee_active=true`).toPromise().then( (data) =>{
                         for(var i=0; i>=0;i++) {
                           if(data[i]) {
                             if(remove_offer_jobs.some((item) => item.eyee_id === data[i].id)) {

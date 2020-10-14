@@ -25,6 +25,7 @@ export class FolderPage implements OnInit {
   eyer_details:any;
   test:any;
   results: any;
+  empty: boolean;
   
 
   constructor(private activatedRoute: ActivatedRoute, 
@@ -39,6 +40,7 @@ export class FolderPage implements OnInit {
   }
 
   ngOnInit() {
+    this.empty = false;
     this.get.refresh.subscribe((data) => {
       if(this.get.refresh.value !== 0) {
         this.refresh();
@@ -85,6 +87,11 @@ export class FolderPage implements OnInit {
         });
       });
     });
+    setTimeout(() => {
+      if(!this.results || !this.results[0]) {
+        this.empty = true;
+      }
+    }, 12000);
   }
 
   state(n:number) {

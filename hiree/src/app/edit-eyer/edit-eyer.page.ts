@@ -175,8 +175,11 @@ export class EditEyerPage implements OnInit {
     if(this.Editchangd == true) {
       this.http.patch(`http://tekhab.pythonanywhere.com/EmployerDetails/${this.details.id}/`, this.postdataE).subscribe( () => {
         this.authService.token_set(this.details.id, 'employer');
-        this.personalDetailToggle = false;
-        this.ngOnInit();
+        setTimeout(()=>{ 
+          this.personalDetailToggle = false;
+          this.ngOnInit();
+          console.log("hey");
+          }, 2000);
       }, (error) => {
         console.log(error);
         this.personalDetailToggle = false;

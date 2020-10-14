@@ -20,6 +20,15 @@
         </ion-col>
       </ion-row>
       <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label>Show Profile to Employers</ion-label>
+            <ion-toggle *ngIf='details.eyee_active' checked (ionChange)='ToggleChange(false)'></ion-toggle>
+            <ion-toggle *ngIf='!details.eyee_active' (ionChange)='ToggleChange(true)'></ion-toggle>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
         <ion-col size-md="6" offset-md="3">
           <ion-card>
             <ion-card-header >

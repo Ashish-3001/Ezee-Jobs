@@ -30,7 +30,12 @@
     <ion-row>
       <ion-col  offset="5" >
         <div *ngIf = '!this.results_job || !this.results_job[0]'>
-          <ion-spinner name="lines" color="secondary"></ion-spinner>
+          <div *ngIf = '!this.empty'>
+            <ion-spinner name="lines" color="secondary" ></ion-spinner>
+          </div>
+          <div *ngIf = 'this.empty' >
+            No Employees avaiable for this post at the moment Please try again later.
+          </div>
         </div>
       </ion-col>
       <ion-col size-md="6" offset-md="3">

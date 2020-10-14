@@ -74,10 +74,9 @@ export class EditEyeePage implements OnInit {
       eyee_add_skills: "",
       eyee_salary_expected: "",
     }
-
     this.authService.data.then((value) => {
       this.details = value;
-      this.postdataE.user_id = value.id;
+      this.postdataE.user_id = value.user_id;
       this.postdataE.eyee_phone = value.eyee_phone;
       this.postdataE.eyee_name = value.eyee_name;
       this.postdataE.eyee_aadhar_no = value.eyee_aadhar_no;
@@ -167,10 +166,11 @@ export class EditEyeePage implements OnInit {
       this.postdataE.eyee_add_skills = this.details.eyee_add_skills;
     }
     if(this.Editchangd == true) {
-      this.http.patch(`http://tekhab.pythonanywhere.com/EmployeeDetails/${this.details.id}/`, this.postdataE).subscribe( () => {
+      this.http.patch(`http://tekhab.pythonanywhere.com/EmployeeDetails/${this.details.id}/`, this.postdataE).subscribe( (data) => {
         this.authService.token_set(this.details.id, 'employee');
-        this.personalDetailToggle = false;
-        this.ngOnInit();
+        setTimeout(()=>{ 
+          this.personalDetailToggle = false;
+          this.ngOnInit(); }, 2000)
       }, (error) => {
         this.personalDetailToggle = false;
         this.presentAlertEditMistake();
@@ -220,7 +220,7 @@ export class EditEyeePage implements OnInit {
     }
     else {
       var pacthChoice = {
-        eyee_choice: profession,
+        eyee_choice: profession.toString(),
       }
       this.http.patch(`http://tekhab.pythonanywhere.com/EmployeeDetails/${this.details.id}/`, pacthChoice).subscribe( () => {
         this.authService.token_set(this.details.id, 'employee');
